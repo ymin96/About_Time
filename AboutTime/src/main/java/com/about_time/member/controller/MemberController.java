@@ -17,10 +17,10 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
-	@RequestMapping("/query")
+	@RequestMapping("/main")
 	public ModelAndView query() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("textview");
+		mv.setViewName("main");
 		return mv;
 	}
 }

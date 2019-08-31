@@ -12,8 +12,8 @@
        <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp" />
    </definition>
    
-   <definition name="main/*" extends="main-layout">
-       <put-attribute name="body" value="/WEB-INF/jsp/main/body/{1}.jsp" />
+   <definition name="main" extends="main-layout">
+       <put-attribute name="body" value="/WEB-INF/jsp/main/body/main.jsp" />
    </definition>
    
 
