@@ -1,29 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<html>
-<head>
-<meta charset="utf-8">
-<title>부트스트랩 적용</title>
-<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
-<style>
-</style>
-</head>
-<body>
-	<div class="container">
-		<header>
-			<tiles:insertAttribute name="header" />
-		</header>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-		<div class="col-md-12">
-			<tiles:insertAttribute name="body" />
+<!DOCTYPE html>
+<html lang="ko-kr">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/resources/bootstrap/css/kfonts2.css">
+</head>
+<title>어바웃 타임</title>
+<body>
+	<div class='container'>
+		<header>
+			<tiles:insertAttribute name='header'/>
+		</header>
+		<div>
+			<tiles:insertAttribute name='body'/>
 		</div>
+		<footer>
+			<tiles:insertAttribute name='footer'/>
+		</footer>
 	</div>
-	<footer>
-		<tiles:insertAttribute name="footer" />
-	</footer>
-	<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
-	<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
