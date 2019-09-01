@@ -6,20 +6,24 @@
 <head>
 <meta charset="utf-8">
 <title>부트스트랩 적용</title>
-<link rel="stylesheet"
-	href="/webjars/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+</style>
 </head>
-<div class="container">
-	<header>
-		<tiles:insertAttribute name="header" />
-	</header>
+<body>
+	<div class="container">
+		<header>
+			<tiles:insertAttribute name="header" />
+		</header>
 
-	<div class="col-md-12">
-		<tiles:insertAttribute name="body" />
+		<div class="col-md-12">
+			<tiles:insertAttribute name="body" />
+		</div>
 	</div>
-</div>
-<hr>
-<footer>
-	<tiles:insertAttribute name="footer" />
-</footer>
+	<footer>
+		<tiles:insertAttribute name="footer" />
+	</footer>
+	<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
 </html>
