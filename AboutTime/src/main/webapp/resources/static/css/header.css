@@ -1,0 +1,28 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+
+.navbar{
+    background-color: #fff;
+    border:none;
+    padding-bottom:10px;
+    font-family: 'Source Sans Pro', 'sans-serif';
+    font-weight:300;
+    font-size:18px;
+    height:90px;
+    text-transform: capitalize;
+    border-bottom:1px solid #AAAAAA
+}
+
+.navbar-toggle{
+    position:relative;
+    margin-top:40px;
+    top:2px;
+}
+.navbar-nav{
+    padding-right:10px;
+    margin-top:20px;
+    background-color:#fff
+}
+
+.navbar-nav li{
+    margin:0 20px;
+}

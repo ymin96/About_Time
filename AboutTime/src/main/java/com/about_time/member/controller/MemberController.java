@@ -23,11 +23,4 @@ public class MemberController {
 		mv.setViewName("main");
 		return mv;
 	}
-	
-	@RequestMapping("/test")
-	public ModelAndView test() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main/body/test");
-		return mv;
-	}
 }

@@ -11,19 +11,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/bootstrap/css/kfonts2.css">
+<link rel="stylesheet" href="/resources/static/css/header.css">
+<style>
+	body { padding-top: 70px; }
+</style>
 </head>
 <title>어바웃 타임</title>
 <body>
-	<div class='container'>
-		<header>
-			<tiles:insertAttribute name='header'/>
-		</header>
-		<div>
-			<tiles:insertAttribute name='body'/>
+	<div class='container-fluid'>
+		<div class='container'>
+			<header>
+				<tiles:insertAttribute name='header' />
+			</header>
+			<div>
+				<tiles:insertAttribute name='body' />
+			</div>
+			<footer>
+				<tiles:insertAttribute name='footer' />
+			</footer>
 		</div>
-		<footer>
-			<tiles:insertAttribute name='footer'/>
-		</footer>
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
