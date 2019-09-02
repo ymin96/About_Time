@@ -13,13 +13,11 @@
 <link rel="stylesheet" href="/resources/bootstrap/css/kfonts2.css">
 <link rel="stylesheet" href="/resources/static/css/header.css">
 <style>
-	body { padding-top: 70px; }
+
 </style>
 </head>
 <title>어바웃 타임</title>
 <body>
-	<div class='container-fluid'>
-		<div class='container'>
 			<header>
 				<tiles:insertAttribute name='header' />
 			</header>
@@ -29,8 +27,7 @@
 			<footer>
 				<tiles:insertAttribute name='footer' />
 			</footer>
-		</div>
-	</div>
+	
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>

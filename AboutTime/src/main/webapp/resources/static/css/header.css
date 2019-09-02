@@ -1,10 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
 
+header{
+	font-family: 'Source Sans Pro', 'sans-serif';
+}
+
 .navbar{
     background-color: #fff;
     border:none;
     padding-bottom:10px;
-    font-family: 'Source Sans Pro', 'sans-serif';
     font-weight:300;
     font-size:18px;
     height:90px;
@@ -17,12 +20,36 @@
     margin-top:40px;
     top:2px;
 }
+
 .navbar-nav{
     padding-right:10px;
-    margin-top:20px;
-    background-color:#fff
+    margin-top:30px;
+    background-color:#fff;
 }
 
 .navbar-nav li{
     margin:0 20px;
+}
+
+.navbar-nav li a{
+	padding:25px 15px 5px 15px;
+}
+
+header .topbar{
+	position:relative;
+}
+
+.login-bar{
+	float:right!important;
+	margin:0px;
+}
+
+.login-bar li{
+	list-style-type:none;
+	display:inline;
+	margin-right:5px;
+}
+
+.login-bar li a{
+	font-size:11px;
 }
