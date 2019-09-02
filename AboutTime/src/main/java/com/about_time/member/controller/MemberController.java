@@ -23,4 +23,11 @@ public class MemberController {
 		mv.setViewName("main");
 		return mv;
 	}
+	
+	@RequestMapping("/timetable")
+	public ModelAndView time() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("timetable");
+		return mv;
+	}
 }
