@@ -1,0 +1,15 @@
+footer{
+	background-color:#252525;
+	border-top:6px solid #5B5B5B;
+}
+
+footer .row{
+	margin:15px 0px;
+}
+footer p{
+	color:#FFFFFF;
+}
+
+footer a{
+	color:#FFFFFF;
+}

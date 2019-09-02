@@ -8,22 +8,22 @@ header{
     background-color: #fff;
     border:none;
     padding-bottom:10px;
-    font-weight:300;
+    font-weight:500;
     font-size:18px;
-    height:90px;
+    height:70px;
     text-transform: capitalize;
     border-bottom:1px solid #AAAAAA
 }
 
 .navbar-toggle{
     position:relative;
-    margin-top:40px;
+    margin-top:20px;
     top:2px;
 }
 
 .navbar-nav{
     padding-right:10px;
-    margin-top:30px;
+    margin-top:10px;
     background-color:#fff;
 }
 
@@ -33,6 +33,11 @@ header{
 
 .navbar-nav li a{
 	padding:25px 15px 5px 15px;
+}
+
+header .navbar-brand{
+	position:relative;
+	top:-25px;
 }
 
 header .topbar{

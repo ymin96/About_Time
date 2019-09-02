@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-<title>메인</title>
-</head>
 <body>
-<h1>메인입니다</h1>
-
+	<div class="container">
+		<h1>메인화면이 표시될 곳입니다.</h1>
+	</div>
 </body>
-</html>
