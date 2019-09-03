@@ -27,4 +27,8 @@
    <definition name="timetable" extends="timetable-layout">
        <put-attribute name="body" value="/WEB-INF/jsp/timetable/body/main.jsp" />
    </definition>
+   
+   <definition name="addForm" extends="timetable-layout">
+       <put-attribute name="body" value="/WEB-INF/jsp/timetable/body/addForm.jsp" />
+   </definition>
 </tiles-definitions>

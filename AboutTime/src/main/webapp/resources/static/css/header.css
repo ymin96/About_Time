@@ -7,12 +7,11 @@ header{
 .navbar{
     background-color: #ffffff;
     border:none;
-    padding-bottom:10px;
     font-weight:500;
     font-size:18px;
-    height:70px;
+    height:62px;
     text-transform: capitalize;
-    border-bottom:1px solid #AAAAAA
+    border-bottom:2px solid #AAAAAA;
 }
 
 .navbar-toggle{
@@ -22,17 +21,18 @@ header{
 }
 
 .navbar-nav{
-    padding-right:10px;
     margin-top:10px;
     background-color:#ffffff;
 }
 
-.navbar-nav li{
-    margin:0 20px;
+.navbar > .container{
+	position:relative;
 }
 
+
 .navbar-nav li a{
-	padding:25px 15px 5px 15px;
+	padding:25px 35px 5px 35px;
+	border-bottom:2px solid #AAAAAA;
 }
 
 header .navbar-brand{

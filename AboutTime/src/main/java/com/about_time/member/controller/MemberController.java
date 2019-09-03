@@ -30,4 +30,11 @@ public class MemberController {
 		mv.setViewName("timetable");
 		return mv;
 	}
+	
+	@RequestMapping("/timetable/addForm")
+	public ModelAndView add() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("addForm");
+		return mv;
+	}
 }
