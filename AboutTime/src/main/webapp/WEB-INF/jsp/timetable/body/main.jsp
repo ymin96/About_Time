@@ -4,5 +4,15 @@
 
 
 <body>
-	<h1>메인화면</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>과목명</th>
+				<th>전공 구분</th>
+				<th>분반</th>
+				<th>수정 / 삭제</th>
+			</tr>
+		</thead>
+	</table>
 </body>

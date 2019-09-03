@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="/resources/bootstrap/css/kfonts2.css">
 <link rel="stylesheet" href="/resources/static/css/header.css">
 <link rel="stylesheet" href="/resources/static/css/footer.css">
+<link rel="stylesheet" href="/resources/static/css/sidebar.css">
+<link rel="stylesheet" href="/resources/static/css/timetable-body.css">
 <style>
 </style>
 </head>
@@ -24,12 +26,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
-				<tiles:insertAttribute name='sidebar'/>
+				<div class="sidebar">
+					<tiles:insertAttribute name='sidebar' />
+				</div>
 			</div>
 			<div class="col-md-10">
-				<tiles:insertAttribute name='body' />
+				<div class="body">
+					<tiles:insertAttribute name='body' />
+				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
 	<footer>
 		<tiles:insertAttribute name='footer' />
