@@ -1,8 +1,3 @@
-html, body {
-			margin: 0;
-			padding: 0;
-			height: 100%;
-		}
 
 .register-box{
 	border: 1px solid #EEE;
@@ -11,11 +6,19 @@ html, body {
 	margin-bottom:10px;
 }
 
+#first-row{
+	margin:0px 10px;
+}
 
 .toggle-box-row{
-	
+	margin: 0px 10px;
+	margin-bottom: 15px;
 }
+
+.toggle-box-row div{
+	padding: 0px 2%;
+}
+
 .toggle-box{
-	height:30%;
 	background-color: #EEE;
 }

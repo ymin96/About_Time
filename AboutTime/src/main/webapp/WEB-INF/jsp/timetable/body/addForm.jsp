@@ -25,11 +25,11 @@
 							</label>
 						</div>
 					</div>
-					<div class="form-group col-md-offset-3 col-md-2 col-sm-offset-3 col-sm-2 col-xs-offset-1 col-xs-3">
+					<div class="form-group col-md-offset-2 col-md-3 col-sm-offset-2 col-sm-3 col-xs-offset-1 col-xs-3">
 						<label>학점</label> <input type="text" class="form-control">
 					</div>
 					<!-- form-group end.// -->
-					<div class="form-group col-md-offset-3 col-md-2 col-sm-offset-3 col-sm-2  col-xs-offset-1 col-xs-3">
+					<div class="form-group col-md-offset-2 col-md-3 col-sm-offset-2 col-sm-3  col-xs-offset-1 col-xs-3">
 						<label>분반</label> <select id="inputState" class="form-control">
 							<option>1</option>
 							<option>2</option>
@@ -42,7 +42,7 @@
 					<!-- form-group end.// -->
 				</div>
 				<!-- form-group end.// -->
-				<div class="row">
+				<div class="row" id="first-row">
 					<div class="col-md-offset-2 col-md-2 col-sm-offset-2 col-sm-2  col-xs-offset-2 col-xs-2">
 						<p class="text-center">월</p>
 					</div>
