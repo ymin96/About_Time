@@ -1,0 +1,21 @@
+html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+		}
+
+.register-box{
+	border: 1px solid #EEE;
+	box-shadow:0 0 3px #EEE;
+	padding-top:10px;
+	margin-bottom:10px;
+}
+
+
+.toggle-box-row{
+	
+}
+.toggle-box{
+	height:30%;
+	background-color: #EEE;
+}

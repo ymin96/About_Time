@@ -15,6 +15,8 @@
 <link rel="stylesheet" href="/resources/static/css/footer.css">
 <link rel="stylesheet" href="/resources/static/css/sidebar.css">
 <link rel="stylesheet" href="/resources/static/css/timetable-body.css">
+<link rel="stylesheet" href="/resources/static/css/addForm/addForm-body.css">
+
 <style>
 </style>
 </head>
