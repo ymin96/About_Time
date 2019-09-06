@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/resources/static/css/sidebar.css">
 <link rel="stylesheet" href="/resources/static/css/timetable-body.css">
 <link rel="stylesheet" href="/resources/static/css/addForm/addForm-body.css">
-
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 </style>
 </head>
@@ -46,17 +46,6 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script>
-	$(document).ready(function(){
-		var cw = $('.toggle-box').width();
-		$('.toggle-box').css({'height':cw+'px'});
-		
-		$( window ).resize( function() {
-			var cw = $('.toggle-box').width();
-			$('.toggle-box').css({'height':cw+'px'});
-		});
-	});
-	</script>
+	
 </body>
 </html>
