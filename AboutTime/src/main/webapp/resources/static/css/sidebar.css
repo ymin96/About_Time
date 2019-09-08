@@ -1,3 +1,9 @@
 .sidebar{
-	margin: 10px 0px;
+	padding: 10px 10px;
+	margin-bottom: 15px;
+}
+
+.sidebar{
+	box-shadow:0 0 3px #428bca;
+	border-radius: 4px;
 }

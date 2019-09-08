@@ -12,16 +12,17 @@
 
 .addForm .toggle-box-row{
 	margin: 0px 10px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 .addForm .toggle-box-row div{
-	padding: 0px 2%;
+	padding: 0px 1.5%;
 }
 
 .addForm .toggle-box{
 	text-align: center;
 	vertical-align: middle;
+	border-radius: 4px;
 }
 
 .addForm .toggle-button-off{
@@ -38,4 +39,8 @@
 
 .addForm .toggle-button-on:hover{
 	box-shadow:0 0 3px #0275d8;
+}
+
+.addForm #register{
+	margin-bottom: 15px;
 }
