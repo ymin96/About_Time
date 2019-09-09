@@ -4,19 +4,19 @@ import lombok.Data;
 
 @Data
 public class LectureTime {
-	private String day;         //°­ÀÇ ¿äÀÏ
-    private int time;           //°­ÀÇ ±³½Ã
+	private String day;         //ê°•ì˜ ìš”ì¼
+    private int time;           //ê°•ì˜ êµì‹œ
     
     public int getDaytoInt(){
-        if(this.day.equals("¿ù"))
+        if(this.day.equals("ì›”"))
             return 1;
-        else if(this.day.equals("È­"))
+        else if(this.day.equals("í™”"))
             return 2;
-        else if(this.day.equals("¼ö"))
+        else if(this.day.equals("ìˆ˜"))
             return 3;
-        else if(this.day.equals("¸ñ"))
+        else if(this.day.equals("ëª©"))
             return 4;
-        else if(this.day.equals("±İ"))
+        else if(this.day.equals("ê¸ˆ"))
             return 5;
         return -1;
     }

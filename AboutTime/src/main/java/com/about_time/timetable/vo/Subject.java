@@ -6,9 +6,9 @@ import lombok.Data;
 
 @Data
 public class Subject {
-	private String title;          //°ú¸ñ¸í
-    private int division;           //ºĞ¹İ
-    private int credit;             //ÇĞÁ¡
-    private String major;            //Àü°ø
-    private List<LectureTime> lectureTime;         //°­ÀÇ ½Ã°£
+	private String title;          //ê³¼ëª©ëª…
+    private int division;           //ë¶„ë°˜
+    private int credit;             //í•™ì 
+    private String major;            //ì „ê³µ
+    private List<LectureTime> lectureTime;         //ê°•ì˜ì‹œ
 }

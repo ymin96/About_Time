@@ -6,12 +6,12 @@ import lombok.Data;
 
 @Data
 public class Schedule {
-	private int num; // ±¸ºĞ ¹øÈ£
-	private List<Subject> subjectList; // °ú¸ñ ¸®½ºÆ®
-	private int sumCredit; // ÇĞÁ¡ ÇÕ°è
-	private int sumMajor; // Àü°ø ÇĞÁ¡ ÇÕ°è
-	private int sumLibralArts; // ±³¾ç ÇĞÁ¡ ÇÕ°è
-	private List<String> hollyDay; // °ø°­ ¿äÀÏ
+	private int num; // êµ¬ë¶„ ë²ˆí˜¸
+	private List<Subject> subjectList; // ê³¼ëª© ë¦¬ìŠ¤íŠ¸
+	private int sumCredit; // í•™ì  í•©ê³„ 
+	private int sumMajor; // ì „ê³µ í•™ì  í•©ê³„
+	private int sumLibralArts; // êµì–‘ í•™ì  í•©ê³„
+	private List<String> hollyDay; // ê³µê°• ìš”ì¼
 	
 	
 	public boolean isTitle(String title){

@@ -9,11 +9,11 @@ import lombok.Data;
 
 @Data
 public class Combination {
-	private List<Schedule> scheduleList; // Á¶ÇÕ ¸®½ºÆ®
-	private List<Subject> subjectList; // °ú¸ñ ¸®½ºÆ®
-	private int maxCredit; // ÃÖ´ë ÇĞÁ¡
-	private int minMajor; // ÃÖ¼Ò Àü°ø ÇĞÁ¡
-	private int minLiberalArts; // ÃÖ¼Ò ±³¾ç ÇĞÁ¡
+	private List<Schedule> scheduleList; //ì¡°í•© ë¦¬ìŠ¤íŠ¸
+	private List<Subject> subjectList; //ê³¼ëª© ë¦¬ìŠ¤íŠ¸
+	private int maxCredit; //ìµœëŒ€ í•™ì 
+	private int minMajor; //ìµœì†Œ ì „ê³µ í•™ì 
+	private int minLiberalArts; //ìµœì†Œ êµì–‘ í•™ì 
 
 	public Combination(List<Schedule> scheduleList, List<Subject> subjectList) {
 		this.scheduleList = scheduleList;
@@ -34,10 +34,10 @@ public class Combination {
 		for (int i = 0; i < scheduleList.size(); i++) {
 			Schedule schedule = scheduleList.get(i);
 			List<Subject> temp = schedule.getSubjectList();
-			// ½ºÄÉÁÙ¿¡ ¹øÈ£ ÁöÁ¤
+			//ìŠ¤ì¼€ì¤„ì— ë²ˆí˜¸ ì§€ì •
 			schedule.setNum(i + 1);
 
-			// °ø°­ÀÎ ¿äÀÏ Ã¼Å©
+			//ê³µê°•ì¸ ìš”ì¼ ì²´í¬
 			boolean visit[] = new boolean[6];
 
 			for (Subject subject : temp) {
@@ -48,20 +48,20 @@ public class Combination {
 			}
 
 			if (!visit[1])
-				schedule.addHollyDay("¿ù");
+				schedule.addHollyDay("ì›”");
 			if (!visit[2])
-				schedule.addHollyDay("È­");
+				schedule.addHollyDay("í™”");
 			if (!visit[3])
-				schedule.addHollyDay("¼ö");
+				schedule.addHollyDay("ìˆ˜");
 			if (!visit[4])
-				schedule.addHollyDay("¸ñ");
+				schedule.addHollyDay("ëª©");
 			if (!visit[5])
-				schedule.addHollyDay("±İ");
+				schedule.addHollyDay("ê¸ˆ");
 		}
 		return scheduleList;
 	}
 
-	// ½Ã°£Ç¥ Á¶ÇÕÀ» ±¸ÇØÁÖ´Â ÇÔ¼ö
+	// ì‹œê°„í‘œ ì¡°í•©ì„ êµ¬í•´ì£¼ëŠ” í•¨ìˆ˜
 	public void powerSet(List<Subject> subjectList, boolean[] visited, int n, int idx) {
 		if (idx == n) {
 			Schedule schedule = new Schedule();
@@ -71,13 +71,13 @@ public class Combination {
 					subject = subjectList.get(i);
 					schedule.addSubject(subject);
 					schedule.addSumCredit(subject.getCredit());
-					if (subject.getMajor().equals("Àü°ø"))
+					if (subject.getMajor().equals("ì „ê³µ"))
 						schedule.addSumMajor(subject.getCredit());
 					else
 						schedule.addSumLibralArts(subject.getCredit());
 				}
 			}
-			// ±¸ÇØÁø ½ºÄÉÁÙÀÌ À¯È¿ÇÑÁö °Ë»ç
+			// êµ¬í•´ì§„ ìŠ¤ì¼€ì¤„ì´ ìœ íš¨í•œì§€ ê²€ì‚¬
 			if (isValid(schedule))
 				scheduleList.add(schedule);
 			return;
@@ -90,17 +90,17 @@ public class Combination {
 		powerSet(subjectList, visited, n, idx + 1);
 	}
 
-	// ½ºÄÉÁÙÀÌ À¯È¿ÇÑ ½ºÄÉÁÙÀÎÁö ÆÇ´Ü(ºĞ¹İ¸¸ ´Ù¸¥ °ú¸ñÀÌ °ãÄ¡´ÂÁö,½Ã°£Ç¥°¡ °ãÄ¡´ÂÁö ÆÇ´Ü)
+	//ìŠ¤ì¼€ì¤„ì´ ìœ íš¨í•œ ìŠ¤ì¼€ì¤„ì¸ì§€ íŒë‹¨(ë¶„ë°˜ë§Œ ë‹¤ë¥¸ ê³¼ëª©ì´ ê²¹ì¹˜ëŠ”ì§€, ì‹œê°„í‘œê°€ ê²¹ì¹˜ëŠ”ì§€ íŒë‹¨)
 	private boolean isValid(Schedule schedule) {
 		int checked[][] = new int[6][10];
-		// ½Ã°£Ç¥ÀÇ ÇĞÁ¡ÀÌ Á¶°Ç¿¡ ¸Â´ÂÁö °Ë»ç
+		// ì‹œê°„í‘œì˜ í•™ì ì´ ì¡°ê±´ì— ë§ëŠ”ì§€ ê²€ì‚¬
 		if ((schedule.getSumCredit() == maxCredit)
 				&& (minMajor <= schedule.getSumMajor() && minLiberalArts <= schedule.getSumLibralArts())) {
 			List<Subject> subjectList = schedule.getSubjectList();
 
 			for (int i = 0; i < subjectList.size(); i++) {
 				Subject subject = subjectList.get(i);
-				// ÀÌ¸§Àº °°°í ºĞ¹İ¸¸ ´Ù¸¥ °ú¸ñÀÌ °ãÄ¡´Â °Ë»ç
+				// ì´ë¦„ì€ ê°™ê³  ë¶„ë°˜ë§Œ ë‹¤ë¥¸ ê³¼ëª©ì´ ê²¹ì¹˜ëŠ”ì§€ ê²€ì‚¬
 				for (int j = i + 1; j < subjectList.size(); j++) {
 					Subject temp = subjectList.get(j);
 					if (subject.getTitle().equals(temp.getTitle()))
@@ -109,7 +109,7 @@ public class Combination {
 
 				List<LectureTime> lectureTimeList = subject.getLectureTime();
 
-				// ½Ã°£Ç¥°¡ °ãÄ¡´ÂÁö °Ë»ç
+				// ì‹œê°„í‘œê°€ ê²¹ì¹˜ëŠ”ì§€ ê²€ì‚¬
 				for (int j = 0; j < lectureTimeList.size(); j++) {
 					LectureTime lectureTime = lectureTimeList.get(j);
 					if (checked[lectureTime.getDaytoInt()][lectureTime.getTime()] == 1)
