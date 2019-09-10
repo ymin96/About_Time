@@ -4,6 +4,7 @@
 }
 
 .sidebar{
-	box-shadow:0 0 3px #428bca;
+	/*box-shadow:0 0 3px #428bca;*/
 	border-radius: 4px;
+	border: 1px solid #428bca;
 }

@@ -450,7 +450,18 @@
 			$('.toggle-button-on').each(function(index, item){
 				subject.lectureTime.push(timetoObjects($(this).attr('id')));
 			});
-			alert(JSON.stringify(subject));
+			$.ajax({
+				type:"POST",
+				url:"${contextPath}/timetable/subjects",
+				data:JSON.stringify(subject),
+				contentType : "application/json; charset=UTF-8",
+				success:function(){
+					alert(JSON.stringify(subject));
+				},
+				error:function(request,status,error){
+			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			    }
+			});
 		});
 	});
 </script>
