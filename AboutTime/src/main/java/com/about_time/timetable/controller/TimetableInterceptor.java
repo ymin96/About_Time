@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,19 +16,19 @@ import com.about_time.timetable.vo.Subject;
 
 @Component
 public class TimetableInterceptor extends HandlerInterceptorAdapter{
-
-	@Autowired
-	private ServletContext servletContext;
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
 		
-		if(servletContext.getAttribute("subjectList") == null) {
+		HttpSession session = request.getSession();
+		
+		if(session.isNew()) {
 			List<Subject> subjectList = new ArrayList<Subject>();
-			servletContext.setAttribute("subjectList", subjectList);
+			session.setAttribute("subjectList", subjectList);
 		}
+		
 		return true;
 	}
 

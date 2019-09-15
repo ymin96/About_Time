@@ -11,14 +11,24 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>번호</th>
 				<th>과목명</th>
 				<th>전공 구분</th>
 				<th>학점</th>
 				<th>분반</th>
-				<th>수정 / 삭제</th>
+				<th>삭제</th>
 			</tr>
 		</thead>
+		<tbody>
+			<c:forEach var="subject" items="${subjectList}">
+				<tr>
+					<th>${subject.title}</th>
+					<th>${subject.major}</th>
+					<th>${subject.credit}</th>
+					<th>${subject.division}</th>
+					<th>삭제</th>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 	</div>
 </body>

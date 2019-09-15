@@ -10,5 +10,5 @@ public class Subject {
     private int division;           //분반
     private int credit;             //학점
     private String major;            //전공
-    private List<LectureTime> lectureTime;         //강의시
+    private List<LectureTime> lectureTime;         //강의 시간
 }

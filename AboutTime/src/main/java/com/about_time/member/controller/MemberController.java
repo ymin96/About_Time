@@ -24,17 +24,4 @@ public class MemberController {
 		return mv;
 	}
 	
-	@RequestMapping("/timetable")
-	public ModelAndView time() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("timetable");
-		return mv;
-	}
-	
-	@RequestMapping("/timetable/addForm")
-	public ModelAndView add() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("addForm");
-		return mv;
-	}
 }
