@@ -17,7 +17,7 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 	
-	@RequestMapping("/main")
+	@RequestMapping("/main.do")
 	public ModelAndView query() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");

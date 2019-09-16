@@ -1,5 +1,10 @@
 
 
-.add-subject a{
+.list .add-subject a{
 	float: right;
+}
+
+.list tbody th{
+	font-weight: normal;
+	color: #5b5b5b;
 }

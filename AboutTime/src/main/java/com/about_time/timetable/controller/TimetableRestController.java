@@ -1,11 +1,7 @@
 package com.about_time.timetable.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
@@ -31,15 +27,13 @@ public class TimetableRestController {
 	
 	@RequestMapping(value="/subjects", method=RequestMethod.POST)
 	public void addSubject(@RequestBody Subject subject, Model model, @ModelAttribute("subjectList")List<Subject> subjectList) {
-		System.out.println(subject.getTitle());
-		System.out.println(subject.getCredit());
-		List<LectureTime> lectureTimes = subject.getLectureTime();
-		for(LectureTime temp: lectureTimes) {
-			System.out.print(temp.getDay());
-			System.out.print(temp.getTime());
-		}
-		
+		subject.setS_num(subjectList.size()+1);
 		subjectList.add(subject);
 		model.addAttribute("subjectList", subjectList);
+	}
+	
+	public boolean deleteSubject(){
+		
+		return true;
 	}
 }

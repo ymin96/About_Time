@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<c:set var="contextPath" value="<%=request.getContextPath()%>"></c:set>
+<c:set var="contextPath" value="<%=request.getContextPath()%>"/>
 <!DOCTYPE html>
 <html lang="ko-kr">
 <head>

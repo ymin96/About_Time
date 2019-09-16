@@ -3,14 +3,15 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
 
-<body>
+<body class="list">
 	<div class="add-subject">
-		<a class="btn btn-primary" href="#" role="button" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+		<a class="btn btn-primary" href="/timetable/subject/addForm.do" role="button" >과목추가 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 	</div>
 	<div>
 	<table class="table">
 		<thead>
 			<tr>
+				<th>No</th>
 				<th>과목명</th>
 				<th>전공 구분</th>
 				<th>학점</th>
@@ -21,6 +22,7 @@
 		<tbody>
 			<c:forEach var="subject" items="${subjectList}">
 				<tr>
+					<th>${subject.s_num}</th>
 					<th>${subject.title}</th>
 					<th>${subject.major}</th>
 					<th>${subject.credit}</th>

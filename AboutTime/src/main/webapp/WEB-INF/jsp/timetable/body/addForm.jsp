@@ -456,7 +456,7 @@
 				data:JSON.stringify(subject),
 				contentType : "application/json; charset=UTF-8",
 				success:function(){
-					alert(JSON.stringify(subject));
+					location.href="/timetable/subject/list.do";
 				},
 				error:function(request,status,error){
 			        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

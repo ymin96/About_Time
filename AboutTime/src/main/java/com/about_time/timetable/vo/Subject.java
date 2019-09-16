@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class Subject {
+	private int s_num;				//과목 번호
 	private String title;          //과목명
     private int division;           //분반
     private int credit;             //학점
