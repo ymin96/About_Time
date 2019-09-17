@@ -20,17 +20,39 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="subject" items="${subjectList}">
-				<tr>
-					<th>${subject.s_num}</th>
+			<c:forEach var="subject" items="${subjectList}" varStatus="status">
+				<tr class='subject-row'>
+					<th>${status.count}</th>
 					<th>${subject.title}</th>
 					<th>${subject.major}</th>
 					<th>${subject.credit}</th>
 					<th>${subject.division}</th>
-					<th>삭제</th>
+					<th><a href="javascript:void(0);" onclick="callRemove(this)" value="${status.index}">삭제</a></th>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	</div>
 </body>
+<script>
+	function callRemove(arg){
+		
+		$.ajax({
+			type:"DELETE",
+			url:"${contextPath}/timetable/subjects/"+$(arg).attr('value'),
+			contentType : "application/json; charset=UTF-8",
+			success:function(){
+				$(arg).parent().parent().remove();
+				$('.subject-row').each(function(index,item){
+					$(item).find('th:first').text(index+1);
+					$(item).find('a').attr('value',index);
+				});			
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		    }
+		});
+		
+		
+	}
+</script>

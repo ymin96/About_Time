@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,13 +28,14 @@ public class TimetableRestController {
 	
 	@RequestMapping(value="/subjects", method=RequestMethod.POST)
 	public void addSubject(@RequestBody Subject subject, Model model, @ModelAttribute("subjectList")List<Subject> subjectList) {
-		subject.setS_num(subjectList.size()+1);
 		subjectList.add(subject);
 		model.addAttribute("subjectList", subjectList);
 	}
 	
-	public boolean deleteSubject(){
-		
+	@RequestMapping(value="/subjects/{idx}", method=RequestMethod.DELETE)
+	public boolean deleteSubject(@PathVariable("idx")int idx, Model model, @ModelAttribute("subjectList")List<Subject> subjectList){
+		subjectList.remove(idx);
+		model.addAttribute("subjectList", subjectList);
 		return true;
 	}
 }
