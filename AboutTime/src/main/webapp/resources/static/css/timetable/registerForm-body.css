@@ -1,46 +1,46 @@
 
-.addForm .register-box{
+.registerForm .register-box{
 	border: 1px solid #EEE;
 	box-shadow:0 0 3px #EEE;
 	padding-top:10px;
 	margin-bottom:10px;
 }
 
-.addForm #first-row{
+.registerForm #first-row{
 	margin:0px 10px;
 }
 
-.addForm .toggle-box-row{
+.registerForm .toggle-box-row{
 	margin: 0px 10px;
 	margin-bottom: 10px;
 }
 
-.addForm .toggle-box-row div{
+.registerForm .toggle-box-row div{
 	padding: 0px 1.5%;
 }
 
-.addForm .toggle-box{
+.registerForm .toggle-box{
 	text-align: center;
 	vertical-align: middle;
 	border-radius: 4px;
 }
 
-.addForm .toggle-button-off{
+.registerForm .toggle-button-off{
 	background-color: #86dcff;
 }
 
-.addForm .toggle-button-off:hover{
+.registerForm .toggle-button-off:hover{
 	box-shadow:0 0 3px #86dcff;
 }
 
-.addForm .toggle-button-on{
+.registerForm .toggle-button-on{
 	background-color: #0275d8;
 }
 
-.addForm .toggle-button-on:hover{
+.registerForm .toggle-button-on:hover{
 	box-shadow:0 0 3px #0275d8;
 }
 
-.addForm #register{
+.registerForm #register{
 	margin-bottom: 15px;
 }

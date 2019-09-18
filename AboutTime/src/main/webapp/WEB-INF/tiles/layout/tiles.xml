@@ -31,4 +31,8 @@
    <definition name="addForm" extends="timetable-layout">
        <put-attribute name="body" value="/WEB-INF/jsp/timetable/body/addForm.jsp" />
    </definition>
+   
+   <definition name="updateForm" extends="timetable-layout">
+   		<put-attribute name="body" value="/WEB-INF/jsp/timetable/body/updateForm.jsp"/>
+   </definition>
 </tiles-definitions>

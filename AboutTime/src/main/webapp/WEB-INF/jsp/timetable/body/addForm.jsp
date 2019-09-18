@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
 
-<body class="addForm">
+<body class="registerForm">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3 col-sm-12  register-box">
 			<form>
@@ -320,7 +320,7 @@
 	</div>
 </body>
 <script>
-	function timetoObjects(time){
+	function daytoObjects(time){
 		switch (time){
 			case "Monday1":
 				return {day:"월",time:1};
@@ -448,7 +448,7 @@
 				lectureTime:[]
 			};
 			$('.toggle-button-on').each(function(index, item){
-				subject.lectureTime.push(timetoObjects($(this).attr('id')));
+				subject.lectureTime.push(daytoObjects($(this).attr('id')));
 			});
 			$.ajax({
 				type:"POST",

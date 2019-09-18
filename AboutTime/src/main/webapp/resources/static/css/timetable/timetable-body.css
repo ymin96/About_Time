@@ -1,0 +1,14 @@
+
+
+.body .add-subject a{
+	float: right;
+}
+
+.body tbody th{
+	font-weight: normal;
+	color: #5b5b5b;
+}
+
+.body {
+	min-height:500px;
+}

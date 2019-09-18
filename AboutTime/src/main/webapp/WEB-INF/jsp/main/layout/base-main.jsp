@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/resources/bootstrap/css/kfonts2.css">
 <link rel="stylesheet" href="/resources/static/css/header.css">
 <link rel="stylesheet" href="/resources/static/css/footer.css">
+<link rel="stylesheet" href="/resources/static/css/main/main-body.css">
 <style>
 </style>
 </head>
@@ -21,7 +22,7 @@
 	<header>
 		<tiles:insertAttribute name='header' />
 	</header>
-	<div>
+	<div class='body'>
 		<tiles:insertAttribute name='body' />
 	</div>
 	<footer>
