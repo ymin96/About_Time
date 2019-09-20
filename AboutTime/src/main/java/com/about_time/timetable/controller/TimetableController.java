@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,10 +32,11 @@ public class TimetableController {
 		return mv;
 	}
 	
-	@RequestMapping("/subject/update/{idx}")
-	public ModelAndView update(@PathVariable("idx")int idx, @ModelAttribute("subjectList") List<Subject> subjectList) throws Exception{
+	@RequestMapping("/subject/update.do")
+	public ModelAndView update(@RequestParam("idx")int idx, @ModelAttribute("subjectList") List<Subject> subjectList) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		Subject subject = subjectList.get(idx);
+		mv.addObject("idx", idx);
 		mv.addObject("subject", subject);
 		mv.setViewName("updateForm");
 		return mv;

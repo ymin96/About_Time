@@ -320,100 +320,6 @@
 	</div>
 </body>
 <script>
-	function daytoObjects(time){
-		switch (time){
-			case "Monday1":
-				return {day:"월",time:1};
-			case "Monday2":
-				return {day:"월",time:2};
-			case "Monday3":
-				return {day:"월",time:3};
-			case "Monday4":
-				return {day:"월",time:4};
-			case "Monday5":
-				return {day:"월",time:5};
-			case "Monday6":
-				return {day:"월",time:6};
-			case "Monday7":
-				return {day:"월",time:7};
-			case "Monday8":
-				return {day:"월",time:8};
-			case "Monday9":
-				return {day:"월",time:9};
-			case "Tuesday1":
-				return {day:"화",time:1};
-			case "Tuesday2":
-				return {day:"화",time:2};
-			case "Tuesday3":
-				return {day:"화",time:3};
-			case "Tuesday4":
-				return {day:"화",time:4};
-			case "Tuesday5":
-				return {day:"화",time:5};
-			case "Tuesday6":
-				return {day:"화",time:6};
-			case "Tuesday7":
-				return {day:"화",time:7};
-			case "Tuesday8":
-				return {day:"화",time:8};
-			case "Tuesday9":
-				return {day:"화",time:9};
-			case "Wednesday1":
-				return {day:"수",time:1};
-			case "Wednesday2":
-				return {day:"수",time:2};
-			case "Wednesday3":
-				return {day:"수",time:3};
-			case "Wednesday4":
-				return {day:"수",time:4};
-			case "Wednesday5":
-				return {day:"수",time:5};
-			case "Wednesday6":
-				return {day:"수",time:6};
-			case "Wednesday7":
-				return {day:"수",time:7};
-			case "Wednesday8":
-				return {day:"수",time:8};
-			case "Wednesday9":
-				return {day:"수",time:9};
-			case "Thursday1":
-				return {day:"목",time:1};
-			case "Thursday2":
-				return {day:"목",time:2};
-			case "Thursday3":
-				return {day:"목",time:3};
-			case "Thursday4":
-				return {day:"목",time:4};
-			case "Thursday5":
-				return {day:"목",time:5};
-			case "Thursday6":
-				return {day:"목",time:6};
-			case "Thursday7":
-				return {day:"목",time:7};
-			case "Thursday8":
-				return {day:"목",time:8};
-			case "Thursday9":
-				return {day:"목",time:9};
-			case "Friday1":
-				return {day:"금",time:1};
-			case "Friday2":
-				return {day:"금",time:2};
-			case "Friday3":
-				return {day:"금",time:3};
-			case "Friday4":
-				return {day:"금",time:4};
-			case "Friday5":
-				return {day:"금",time:5};
-			case "Friday6":
-				return {day:"금",time:6};
-			case "Friday7":
-				return {day:"금",time:7};
-			case "Friday8":
-				return {day:"금",time:8};
-			case "Friday9":
-				return {day:"금",time:9};
-		}
-	};
 	$(document).ready(function(){
 		<!-- 스크린 사이즈에 따른 height값 변화 -->
 		var cw = $('.toggle-box').width();
@@ -448,7 +354,7 @@
 				lectureTime:[]
 			};
 			$('.toggle-button-on').each(function(index, item){
-				subject.lectureTime.push(daytoObjects($(this).attr('id')));
+				subject.lectureTime.push(dayToObjects($(this).attr('id')));
 			});
 			$.ajax({
 				type:"POST",

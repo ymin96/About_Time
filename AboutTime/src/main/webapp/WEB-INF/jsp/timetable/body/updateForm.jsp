@@ -343,9 +343,19 @@ $(document).ready(function(){
 		}
 	});
 	
+	<!--Form에 subject 값 세팅-->
 	$('input:radio[name=optionsRadios]:input[value="${subject.major}"]').attr("checked", true);
 	$('#inputCredit').val("${subject.credit}");
 	$('#inputDivision').val("${subject.division}");
+	var list = new Array();
+	<c:forEach var="lectureTime" items="${subject.lectureTime}" varStatus="status">
+		list.push({day:"${lectureTime.day}",time:${lectureTime.time}});
+	</c:forEach>
+	for(var i=0;i<list.length;i++){
+		var id = objectToDay(list[i]);
+		$('#'+id).addClass("toggle-button-on");
+		$('#'+id).removeClass("toggle-button-off");
+	}
 	
 	<!--Register 버튼 클릭 이벤트-->
 	$("#register").click(function(){
@@ -357,11 +367,11 @@ $(document).ready(function(){
 			lectureTime:[]
 		};
 		$('.toggle-button-on').each(function(index, item){
-			subject.lectureTime.push(daytoObjects($(this).attr('id')));
+			subject.lectureTime.push(dayToObjects($(this).attr('id')));
 		});
 		$.ajax({
-			type:"POST",
-			url:"${contextPath}/timetable/subjects",
+			type:"PUT",
+			url:"${contextPath}/timetable/subjects/${idx}",
 			data:JSON.stringify(subject),
 			contentType : "application/json; charset=UTF-8",
 			success:function(){

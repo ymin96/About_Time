@@ -23,7 +23,7 @@
 			<c:forEach var="subject" items="${subjectList}" varStatus="status">
 				<tr class='subject-row'>
 					<th>${status.count}</th>
-					<th><a href="/timetable/subject/update/${status.index}">${subject.title}</a></th>
+					<th><a href="/timetable/subject/update.do?idx=${status.index}">${subject.title}</a></th>
 					<th>${subject.major}</th>
 					<th>${subject.credit}</th>
 					<th>${subject.division}</th>

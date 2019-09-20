@@ -38,4 +38,11 @@ public class TimetableRestController {
 		model.addAttribute("subjectList", subjectList);
 		return true;
 	}
+	
+	@RequestMapping(value="/subjects/{idx}", method=RequestMethod.PUT)
+	public boolean updateSubject(@PathVariable("idx")int idx,@RequestBody Subject subject ,Model model, @ModelAttribute("subjectList")List<Subject> subjectList) {
+		subjectList.set(idx, subject);
+		model.addAttribute("subjectList", subjectList);
+		return true;
+	}
 }

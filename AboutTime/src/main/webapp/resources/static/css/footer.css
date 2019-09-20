@@ -1,6 +1,9 @@
 footer{
 	background-color:#252525;
 	border-top:6px solid #5B5B5B;
+	position:absolute;
+	bottom:0;
+	width:100%;
 }
 
 footer .row{
