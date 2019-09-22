@@ -41,4 +41,9 @@ public class TimetableController {
 		mv.setViewName("updateForm");
 		return mv;
 	}
+	
+	@RequestMapping("schedule/list.do")
+	public String scheduleList() {
+		return "schedule";
+	}
 }

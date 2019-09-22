@@ -5,7 +5,7 @@
 <body>
 	<ul class="nav nav-pills nav-stacked">
 		<li role="presentation" id="subjectSideBar"><a href="/timetable/subject/list.do">과목 목록</a></li>
-		<li role="presentation"><a href="#">시간표 목록</a></li>
+		<li role="presentation" id="scheduleSideBar"><a href="/timetable/schedule/list.do">시간표 목록</a></li>
 		<li role="presentation"><a href="#">시간표 비교</a></li>
 	</ul>
 </body>
@@ -13,6 +13,9 @@
 	$(document).ready(function(){
 		if(location.pathname === "/timetable/subject/list.do"){
 			$('#subjectSideBar').addClass("active");
+		}
+		else if(location.pathname === "/timetable/schedule/list.do"){
+			$('#scheduleSideBar').addClass("active");
 		}
 	});
 </script>
