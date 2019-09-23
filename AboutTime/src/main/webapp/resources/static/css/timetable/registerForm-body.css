@@ -42,5 +42,23 @@
 }
 
 .registerForm #register{
-	margin-bottom: 15px;
+	margin-bottom: 30px;
+	margin-top:30px;
+}
+
+.registerForm .reg-header{
+	color: #555;
+    text-align: center;
+    margin-bottom: 35px;
+    border-bottom: solid 1px #eee;
+}
+
+.registerForm .reg-header h2{
+	font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.registerForm .combination-box{
+	padding-right:40px;
+	padding-left:40px;
 }

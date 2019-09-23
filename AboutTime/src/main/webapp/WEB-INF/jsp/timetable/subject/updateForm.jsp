@@ -6,6 +6,9 @@
 <body class="registerForm">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3 col-sm-12  register-box">
+		<div class="reg-header">
+				<h2>과목 수정</h2>
+			</div>
 			<form>
 				<div class="form-group">
 					<label>과목명</label> <input id="title" type="text"

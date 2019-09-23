@@ -36,7 +36,11 @@
    		<put-attribute name="body" value="/WEB-INF/jsp/timetable/subject/updateForm.jsp"/>
    </definition>
    
-   <definition name="schedule" extends="timetable-layout">
+   <definition name="scheduleForm" extends="timetable-layout">
    		<put-attribute name="body" value="/WEB-INF/jsp/timetable/schedule/main.jsp"/>
+   </definition>
+   
+   <definition name="scheduleList" extends="timetable-layout">
+   		<put-attribute name="body" value="/WEB-INF/jsp/timetable/schedule/list.jsp"/>
    </definition>
 </tiles-definitions>

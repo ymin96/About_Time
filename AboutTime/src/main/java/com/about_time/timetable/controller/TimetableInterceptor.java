@@ -25,6 +25,7 @@ public class TimetableInterceptor extends HandlerInterceptorAdapter{
 		if(session.isNew()) {
 			List<Subject> subjectList = new ArrayList<Subject>();
 			session.setAttribute("subjectList", subjectList);
+			session.setAttribute("scheduleCheck", "no");
 		}
 		
 		return true;
