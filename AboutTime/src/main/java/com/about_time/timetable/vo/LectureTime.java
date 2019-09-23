@@ -7,6 +7,8 @@ public class LectureTime {
 	private String day;         //강의 요일
     private int time;           //강의 교시
     
+    
+    
     public int getDaytoInt(){
         if(this.day.equals("월"))
             return 1;
@@ -20,4 +22,18 @@ public class LectureTime {
             return 5;
         return -1;
     }
+
+
+    
+    
+	public LectureTime(String day, int time) {
+		super();
+		this.day = day;
+		this.time = time;
+	}
+
+
+	public LectureTime() {
+		super();
+	}
 }

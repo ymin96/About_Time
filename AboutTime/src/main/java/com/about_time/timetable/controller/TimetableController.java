@@ -61,6 +61,6 @@ public class TimetableController {
 		List<Schedule> scheduleList = new ArrayList<>();
 		Combination combination = new Combination(scheduleList, subjectList);
 		model.addAttribute("scheduleList", combination.run(credit, major, liberal));
-		return null;
+		return "scheduleList";
 	}
 }

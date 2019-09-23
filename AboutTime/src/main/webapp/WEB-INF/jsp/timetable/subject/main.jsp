@@ -8,7 +8,7 @@
 		<a class="btn btn-primary" href="/timetable/subject/addForm.do" role="button" >과목추가 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 	</div>
 	<div>
-	<table class="table">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>No</th>
