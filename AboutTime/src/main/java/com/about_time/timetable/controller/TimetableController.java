@@ -48,19 +48,28 @@ public class TimetableController {
 		return mv;
 	}
 
+	
 	@RequestMapping(value = "schedule/list.do", method = RequestMethod.GET)
 	public String combinationForm(@ModelAttribute("scheduleCheck")String scheduleCheck) {
-		if(scheduleCheck.equals("no"))
+		if(scheduleCheck.equals("no")) {
 			return "scheduleForm";
-		return "main";
+		}
+		else
+			return "scheduleList";
 	}
 
+	
 	@RequestMapping(value = "schedule/list.do", method = RequestMethod.POST)
 	public String combination(Model model, @RequestParam("credit") int credit, @RequestParam("major") int major,
-			@RequestParam("liberalArt") int liberal,  @ModelAttribute("subjectList") List<Subject> subjectList) {
+			@RequestParam("liberalArt") int liberal,  @ModelAttribute("subjectList") List<Subject> subjectList,
+			@ModelAttribute("scheduleCheck")String scheduleCheck) {
+		
 		List<Schedule> scheduleList = new ArrayList<>();
 		Combination combination = new Combination(scheduleList, subjectList);
 		model.addAttribute("scheduleList", combination.run(credit, major, liberal));
-		return "scheduleList";
+		
+		scheduleCheck = "yes";
+		model.addAttribute("scheduleCheck", scheduleCheck);
+		return "redirect:/timetable/schedule/list.do";
 	}
 }
