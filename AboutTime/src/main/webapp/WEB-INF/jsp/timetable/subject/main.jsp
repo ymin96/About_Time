@@ -4,7 +4,7 @@
 
 
 <body class="list">
-	<div class="add-subject">
+	<div id="add-subject">
 		<a class="btn btn-primary" href="/timetable/subject/addForm.do" role="button" >과목추가 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 	</div>
 	<div>

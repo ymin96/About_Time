@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <body class="list">
-	<div class="add-subject">
-		<a class="btn btn-primary" href="/timetable/subject/addForm.do"
-			role="button">과목추가 <span class="glyphicon glyphicon-plus"
+	<div id="reset-schedule">
+		<a class="btn btn-primary" href="/timetable/schedule/reset.do" role="button" >초기화 <span class="glyphicon glyphicon-refresh"
 			aria-hidden="true"></span></a>
 	</div>
 	<div>
@@ -22,9 +21,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="schedule" items="${scheduleList}" varStatus="status">
-					<tr class='subject-row'>
-						<th>${status.count}</th>
+				<c:forEach var="schedule" items="${schedules}" varStatus="status">
+					<tr class="subject-row <c:out value="${fn:length(schedule.hollyDay) != 0? 'success':'' }"/>">
+						<th>${status.count + pagination.startList}</th>
 						<th>${schedule.sumCredit}점</th>
 						<th>${schedule.sumMajor }점</th>
 						<th>${schedule.sumLibralArts }점</th>
@@ -35,4 +34,63 @@
 			</tbody>
 		</table>
 	</div>
+	<!-- pagination{s} -->
+	<div id="paginationBox">
+		<ul class="pagination">
+			<c:if test="${pagination.prev}">
+				<li class="page-item"><a class="page-link" href="#"
+					onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+			</c:if>
+			<c:forEach begin="${pagination.startPage}"
+				end="${pagination.endPage}" var="idx">
+				<li
+					class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+					class="page-link" href="#"
+					onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+						${idx} </a></li>
+			</c:forEach>
+			<c:if test="${pagination.next}">
+				<li class="page-item"><a class="page-link" href="#"
+					onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+			</c:if>
+		</ul>
+	</div>
+	<!-- pagination{e} -->
 </body>
+<script>
+//이전 버튼 이벤트
+function fn_prev(page, range, rangeSize) {
+		var page = ((range - 2) * rangeSize) + 1;
+		var range = range - 1;
+
+		var url = "${pageContext.request.contextPath}/timetable/schedule/list.do";
+
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+
+		location.href = url;
+	}
+
+  //페이지 번호 클릭
+	function fn_pagination(page, range, rangeSize, searchType, keyword) {
+		var url = "${pageContext.request.contextPath}/timetable/schedule/list.do";
+		
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+
+		location.href = url;	
+	}
+
+	//다음 버튼 이벤트
+	function fn_next(page, range, rangeSize) {
+		var page = parseInt((range * rangeSize)) + 1;
+		var range = parseInt(range) + 1;
+
+		var url = "${pageContext.request.contextPath}/timetable/schedule/list.do";
+		
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+
+		location.href = url;
+	}
+</script>

@@ -3,6 +3,7 @@ package com.about_time.timetable.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,16 +11,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.about_time.common.Pagination;
 import com.about_time.timetable.combination.Combination;
 import com.about_time.timetable.vo.Schedule;
 import com.about_time.timetable.vo.Subject;
 
 @Controller
 @RequestMapping("/timetable")
-@SessionAttributes({"subjectList","scheduleList","scheduleCheck"})
+@SessionAttributes({ "subjectList", "scheduleList", "scheduleCheck" })
 public class TimetableController {
 
 	@RequestMapping("/subject/list.do")
@@ -48,27 +51,51 @@ public class TimetableController {
 		return mv;
 	}
 
-	
 	@RequestMapping(value = "schedule/list.do", method = RequestMethod.GET)
-	public String combinationForm(@ModelAttribute("scheduleCheck")String scheduleCheck) {
-		if(scheduleCheck.equals("no")) {
+	public String combinationForm(@ModelAttribute("scheduleCheck") String scheduleCheck,
+			@SessionAttribute(value = "scheduleList", required = false) List<Schedule> scheduleList,
+			@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range, Model model) {
+		if (scheduleCheck.equals("no")) {
 			return "scheduleForm";
-		}
-		else
+		} else {
+			int listCnt = scheduleList.size();
+
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(page, range, listCnt);
+			model.addAttribute("pagination", pagination);
+
+			List<Schedule> schedules = new ArrayList<Schedule>();
+			for(int i=0 ;i<pagination.getListSize();i++) {
+				if(i+pagination.getStartList() < scheduleList.size())
+					schedules.add(scheduleList.get(i+pagination.getStartList()));
+				else
+					break;
+			}
+			
+			model.addAttribute("schedules", schedules);
+			
 			return "scheduleList";
+		}
 	}
 
-	
 	@RequestMapping(value = "schedule/list.do", method = RequestMethod.POST)
 	public String combination(Model model, @RequestParam("credit") int credit, @RequestParam("major") int major,
-			@RequestParam("liberalArt") int liberal,  @ModelAttribute("subjectList") List<Subject> subjectList,
-			@ModelAttribute("scheduleCheck")String scheduleCheck) {
-		
+			@RequestParam("liberalArt") int liberal, @ModelAttribute("subjectList") List<Subject> subjectList,
+			@ModelAttribute("scheduleCheck") String scheduleCheck) {
+
 		List<Schedule> scheduleList = new ArrayList<>();
 		Combination combination = new Combination(scheduleList, subjectList);
 		model.addAttribute("scheduleList", combination.run(credit, major, liberal));
-		
+
 		scheduleCheck = "yes";
+		model.addAttribute("scheduleCheck", scheduleCheck);
+		return "redirect:/timetable/schedule/list.do";
+	}
+	
+	@RequestMapping(value="/schedule/reset.do", method=RequestMethod.GET)
+	public String resetSchedule(@ModelAttribute("scheduleCheck")String scheduleCheck, Model model) {
+		scheduleCheck = "no";
 		model.addAttribute("scheduleCheck", scheduleCheck);
 		return "redirect:/timetable/schedule/list.do";
 	}

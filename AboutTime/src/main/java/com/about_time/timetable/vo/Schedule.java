@@ -57,4 +57,6 @@ public class Schedule {
     public void addHollyDay(String hollyDay){
         this.hollyDay.add(hollyDay);
     }
+    
+    
 }
