@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <body class="list">
 	<div id="reset-schedule">
-		<a class="btn btn-primary" href="/timetable/schedule/reset.do" role="button" >초기화 <span class="glyphicon glyphicon-refresh"
+		<a class="btn btn-primary" href="/timetable/schedule/reset.do"
+			role="button">초기화 <span class="glyphicon glyphicon-refresh"
 			aria-hidden="true"></span></a>
+		<button id="convertSchedule" class="btn" type="button"></button>
 	</div>
 	<div>
 		<table class="table table-striped">
@@ -22,7 +24,8 @@
 			</thead>
 			<tbody>
 				<c:forEach var="schedule" items="${schedules}" varStatus="status">
-					<tr class="subject-row <c:out value="${fn:length(schedule.hollyDay) != 0? 'success':'' }"/>">
+					<tr
+						class="subject-row <c:out value="${fn:length(schedule.hollyDay) != 0? 'success':'' }"/>">
 						<th>${status.count + pagination.startList}</th>
 						<th>${schedule.sumCredit}점</th>
 						<th>${schedule.sumMajor }점</th>
@@ -58,8 +61,8 @@
 	<!-- pagination{e} -->
 </body>
 <script>
-//이전 버튼 이벤트
-function fn_prev(page, range, rangeSize) {
+	//이전 버튼 이벤트
+	function fn_prev(page, range, rangeSize) {
 		var page = ((range - 2) * rangeSize) + 1;
 		var range = range - 1;
 
@@ -67,18 +70,20 @@ function fn_prev(page, range, rangeSize) {
 
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
-
+		url = url + "&convert=" + "${convert}";
+		
 		location.href = url;
 	}
 
-  //페이지 번호 클릭
+	//페이지 번호 클릭
 	function fn_pagination(page, range, rangeSize, searchType, keyword) {
 		var url = "${pageContext.request.contextPath}/timetable/schedule/list.do";
-		
+
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
+		url = url + "&convert=" + "${convert}";
 
-		location.href = url;	
+		location.href = url;
 	}
 
 	//다음 버튼 이벤트
@@ -87,10 +92,33 @@ function fn_prev(page, range, rangeSize) {
 		var range = parseInt(range) + 1;
 
 		var url = "${pageContext.request.contextPath}/timetable/schedule/list.do";
-		
+
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
+		url = url + "&convert=" + "${convert}";
 
 		location.href = url;
 	}
+	
+	$(document).ready(function(){
+		
+		if("${convert}" === "all")
+			$('#convertSchedule').addClass('btn-primary').html('공강만 보기');
+		else
+			$('#convertSchedule').addClass('btn-default').html('전체 보기');
+
+		
+		$('#convertSchedule').click(function(){
+			if($(this).hasClass('btn-primary')){
+				var url = "/timetable/schedule/list.do";
+				url = url + "?convert=" + "only";
+				location.href=url;
+			}
+			else{
+				var url = "/timetable/schedule/list.do";
+				url = url + "?convert=" + "all";
+				location.href=url;
+			}
+		});
+	});
 </script>

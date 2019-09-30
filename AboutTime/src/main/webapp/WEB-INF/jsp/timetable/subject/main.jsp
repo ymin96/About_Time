@@ -27,7 +27,7 @@
 					<th>${subject.major}</th>
 					<th>${subject.credit}</th>
 					<th>${subject.division}</th>
-					<th><a href="javascript:void(0);" onclick="callRemove(this)" value="${status.index}">삭제</a></th>
+					<th><a href="javascript:void(0);" onclick="callRemove(this);return false;" value="${status.index}">삭제</a></th>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -52,7 +52,6 @@
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		    }
 		});
-		
 		
 	}
 </script>

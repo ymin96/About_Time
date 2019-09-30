@@ -1,6 +1,7 @@
 package com.about_time.timetable.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Required;
@@ -53,28 +54,43 @@ public class TimetableController {
 
 	@RequestMapping(value = "schedule/list.do", method = RequestMethod.GET)
 	public String combinationForm(@ModelAttribute("scheduleCheck") String scheduleCheck,
-			@SessionAttribute(value = "scheduleList", required = false) List<Schedule> scheduleList,
+			@SessionAttribute(value = "scheduleList", required = false) ArrayList<Schedule> scheduleList,
 			@RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "1") int range, Model model) {
+			@RequestParam(required = false, defaultValue = "1") int range,
+			@RequestParam(required = false, defaultValue = "all") String convert, 
+			Model model) {
 		if (scheduleCheck.equals("no")) {
 			return "scheduleForm";
 		} else {
-			int listCnt = scheduleList.size();
-
+			ArrayList<Schedule> scheduleListClone = (ArrayList<Schedule>)scheduleList.clone();
+			
+			if (convert.equals("only")) {
+				for (Iterator<Schedule> it = scheduleListClone.iterator(); it.hasNext();) {
+					Schedule value = it.next();
+					if (value.getHollyDay().size() == 0) {
+						it.remove();
+					}
+				}
+				model.addAttribute("convert", "only");
+			}
+			else
+				model.addAttribute("convert", "all");
+			
+			int listCnt = scheduleListClone.size();
 			Pagination pagination = new Pagination();
 			pagination.pageInfo(page, range, listCnt);
 			model.addAttribute("pagination", pagination);
 
 			List<Schedule> schedules = new ArrayList<Schedule>();
-			for(int i=0 ;i<pagination.getListSize();i++) {
-				if(i+pagination.getStartList() < scheduleList.size())
-					schedules.add(scheduleList.get(i+pagination.getStartList()));
+			for (int i = 0; i < pagination.getListSize(); i++) {
+				if (i + pagination.getStartList() < scheduleListClone.size())
+					schedules.add(scheduleListClone.get(i + pagination.getStartList()));
 				else
 					break;
 			}
-			
+
 			model.addAttribute("schedules", schedules);
-			
+
 			return "scheduleList";
 		}
 	}
@@ -92,9 +108,9 @@ public class TimetableController {
 		model.addAttribute("scheduleCheck", scheduleCheck);
 		return "redirect:/timetable/schedule/list.do";
 	}
-	
-	@RequestMapping(value="/schedule/reset.do", method=RequestMethod.GET)
-	public String resetSchedule(@ModelAttribute("scheduleCheck")String scheduleCheck, Model model) {
+
+	@RequestMapping(value = "/schedule/reset.do", method = RequestMethod.GET)
+	public String resetSchedule(@ModelAttribute("scheduleCheck") String scheduleCheck, Model model) {
 		scheduleCheck = "no";
 		model.addAttribute("scheduleCheck", scheduleCheck);
 		return "redirect:/timetable/schedule/list.do";
