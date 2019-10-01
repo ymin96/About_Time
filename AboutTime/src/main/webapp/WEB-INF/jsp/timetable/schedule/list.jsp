@@ -31,7 +31,7 @@
 						<th>${schedule.sumMajor }점</th>
 						<th>${schedule.sumLibralArts }점</th>
 						<th><c:forEach var="day" items="${schedule.hollyDay}">${day} </c:forEach></th>
-						<th>보기</th>
+						<th><a href="/timetable/schedule/list/info.do?idx=${schedule.num}">보기</a></th>
 					</tr>
 				</c:forEach>
 			</tbody>

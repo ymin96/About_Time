@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="/resources/static/css/sidebar.css">
 <link rel="stylesheet"
 	href="/resources/static/css/timetable/registerForm-body.css">
+<link rel="stylesheet"
+	href="/resources/static/css/timetable/scheduleInfo.css">
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 </style>

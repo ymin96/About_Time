@@ -1,0 +1,17 @@
+.scheduleInfo .info-box{
+	text-align: center;
+	vertical-align: middle;
+	background-color: #86dcff;
+}
+
+.scheduleInfo #first-row{
+	margin:0 10px;
+}
+
+.scheduleInfo .info-box-row{
+	margin:0 10px;
+}
+
+.scheduleInfo .info-box-row > div{
+	padding:0;
+}

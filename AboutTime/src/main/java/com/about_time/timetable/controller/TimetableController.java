@@ -25,22 +25,21 @@ import com.about_time.timetable.vo.Subject;
 @RequestMapping("/timetable")
 @SessionAttributes({ "subjectList", "scheduleList", "scheduleCheck" })
 public class TimetableController {
-
+	
+	//수강 과목 리스트 화면
 	@RequestMapping("/subject/list.do")
-	public ModelAndView time(@ModelAttribute("subjectList") List<Subject> subjectList) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("subjectList", subjectList);
-		mv.setViewName("timetable");
-		return mv;
+	public String time(Model model,@ModelAttribute("subjectList") List<Subject> subjectList) throws Exception {
+		model.addAttribute("subjectList", subjectList);
+		return "timetable";
 	}
 
+	//과목 입력 화면
 	@RequestMapping("/subject/addForm.do")
-	public ModelAndView add() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("addForm");
-		return mv;
+	public String add() throws Exception {
+		return "addForm";
 	}
 
+	//과목 수정 화면
 	@RequestMapping("/subject/update.do")
 	public ModelAndView update(@RequestParam("idx") int idx, @ModelAttribute("subjectList") List<Subject> subjectList)
 			throws Exception {
@@ -52,6 +51,7 @@ public class TimetableController {
 		return mv;
 	}
 
+	//시간표 리스트 화면
 	@RequestMapping(value = "schedule/list.do", method = RequestMethod.GET)
 	public String combinationForm(@ModelAttribute("scheduleCheck") String scheduleCheck,
 			@SessionAttribute(value = "scheduleList", required = false) ArrayList<Schedule> scheduleList,
@@ -59,12 +59,16 @@ public class TimetableController {
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "all") String convert, 
 			Model model) {
-		if (scheduleCheck.equals("no")) {
+		//조합된 시간표가 있는지 확인
+		if (scheduleCheck.equals("false")) {
+			//조합된 시간표가 없으면 조합 화면으로
 			return "scheduleForm";
 		} else {
 			ArrayList<Schedule> scheduleListClone = (ArrayList<Schedule>)scheduleList.clone();
 			
+			//공강만 보여줄지 전체 다 보여줄지 선택
 			if (convert.equals("only")) {
+				//시간표 리스트에서 공강이 있는 시간표만 뽑아냄
 				for (Iterator<Schedule> it = scheduleListClone.iterator(); it.hasNext();) {
 					Schedule value = it.next();
 					if (value.getHollyDay().size() == 0) {
@@ -76,6 +80,7 @@ public class TimetableController {
 			else
 				model.addAttribute("convert", "all");
 			
+			//페이지 네이션
 			int listCnt = scheduleListClone.size();
 			Pagination pagination = new Pagination();
 			pagination.pageInfo(page, range, listCnt);
@@ -95,6 +100,7 @@ public class TimetableController {
 		}
 	}
 
+	//시간표 조합
 	@RequestMapping(value = "schedule/list.do", method = RequestMethod.POST)
 	public String combination(Model model, @RequestParam("credit") int credit, @RequestParam("major") int major,
 			@RequestParam("liberalArt") int liberal, @ModelAttribute("subjectList") List<Subject> subjectList,
@@ -103,16 +109,23 @@ public class TimetableController {
 		List<Schedule> scheduleList = new ArrayList<>();
 		Combination combination = new Combination(scheduleList, subjectList);
 		model.addAttribute("scheduleList", combination.run(credit, major, liberal));
-
-		scheduleCheck = "yes";
+		
+		scheduleCheck = "true"; //조합 했으므로 true로 변경
+		model.addAttribute("scheduleCheck", scheduleCheck);
+		return "redirect:/timetable/schedule/list.do";	//다시 시간표 리스트로 리다이렉션
+	}
+	
+	//시간표 리스트 리셋
+	@RequestMapping(value = "/schedule/reset.do", method = RequestMethod.GET)
+	public String resetSchedule(@ModelAttribute("scheduleCheck") String scheduleCheck, Model model) {
+		scheduleCheck = "false"; 
 		model.addAttribute("scheduleCheck", scheduleCheck);
 		return "redirect:/timetable/schedule/list.do";
 	}
-
-	@RequestMapping(value = "/schedule/reset.do", method = RequestMethod.GET)
-	public String resetSchedule(@ModelAttribute("scheduleCheck") String scheduleCheck, Model model) {
-		scheduleCheck = "no";
-		model.addAttribute("scheduleCheck", scheduleCheck);
-		return "redirect:/timetable/schedule/list.do";
+	
+	@RequestMapping(value="/schedule/list/info.do")
+	public String scheduleInfo(Model model,@RequestParam("idx")int idx,@ModelAttribute("scheduleList")ArrayList<Schedule> scheduleList) {
+		model.addAttribute("subjectList", scheduleList.get(idx).getSubjectList());
+		return "scheduleInfo";
 	}
 }

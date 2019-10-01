@@ -43,4 +43,9 @@
    <definition name="scheduleList" extends="timetable-layout">
    		<put-attribute name="body" value="/WEB-INF/jsp/timetable/schedule/list.jsp"/>
    </definition>
+   
+   <definition name="scheduleInfo" extends="timetable-layout">
+   		<put-attribute name="body" value="/WEB-INF/jsp/timetable/schedule/info.jsp"/>
+   </definition>
+   
 </tiles-definitions>
