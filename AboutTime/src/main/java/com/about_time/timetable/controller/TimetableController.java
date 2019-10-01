@@ -125,7 +125,7 @@ public class TimetableController {
 	
 	@RequestMapping(value="/schedule/list/info.do")
 	public String scheduleInfo(Model model,@RequestParam("idx")int idx,@ModelAttribute("scheduleList")ArrayList<Schedule> scheduleList) {
-		model.addAttribute("subjectList", scheduleList.get(idx).getSubjectList());
+		model.addAttribute("subjects", scheduleList.get(idx-1).getSubjectList());
 		return "scheduleInfo";
 	}
 }

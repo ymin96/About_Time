@@ -1,7 +1,11 @@
 .scheduleInfo .info-box{
 	text-align: center;
 	vertical-align: middle;
-	background-color: #86dcff;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: white;
+	font-size: small;
 }
 
 .scheduleInfo #first-row{
@@ -14,4 +18,8 @@
 
 .scheduleInfo .info-box-row > div{
 	padding:0;
+}
+
+.scheduleInfo .info-box-row .divide{
+	color:black;
 }

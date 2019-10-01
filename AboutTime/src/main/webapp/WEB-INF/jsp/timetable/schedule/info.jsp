@@ -29,7 +29,7 @@
 			</div>
 			<div class="row info-box-row">
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<div class="info-box">
+					<div class="info-box divide">
 						<p>1교시</p>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 			</div>
 			<div class="row info-box-row">
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<div class="info-box">
+					<div class="info-box divide">
 						<p>2교시</p>
 					</div>
 				</div>
@@ -73,7 +73,7 @@
 			</div>
 			<div class="row info-box-row">
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<div class="info-box">
+					<div class="info-box divide">
 						<p>3교시</p>
 					</div>
 				</div>
@@ -95,7 +95,7 @@
 			</div>
 			<div class="row info-box-row">
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<div class="info-box">
+					<div class="info-box divide">
 						<p>4교시</p>
 					</div>
 				</div>
@@ -117,7 +117,7 @@
 			</div>
 			<div class="row info-box-row">
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<div class="info-box">
+					<div class="info-box divide">
 						<p>5교시</p>
 					</div>
 				</div>
@@ -139,7 +139,7 @@
 			</div>
 			<div class="row info-box-row">
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<div class="info-box">
+					<div class="info-box divide">
 						<p>6교시</p>
 					</div>
 				</div>
@@ -161,7 +161,7 @@
 			</div>
 			<div class="row info-box-row">
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<div class="info-box">
+					<div class="info-box divide">
 						<p>7교시</p>
 					</div>
 				</div>
@@ -183,7 +183,7 @@
 			</div>
 			<div class="row info-box-row">
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<div class="info-box">
+					<div class="info-box divide">
 						<p>8교시</p>
 					</div>
 				</div>
@@ -205,7 +205,7 @@
 			</div>
 			<div class="row info-box-row">
 				<div class="col-md-2 col-sm-2 col-xs-2">
-					<div class="info-box">
+					<div class="info-box divide">
 						<p>9교시</p>
 					</div>
 				</div>
@@ -238,7 +238,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="subject" items="${subjectList}" varStatus="status">
+					<c:forEach var="subject" items="${subjects}" varStatus="status">
 						<tr class='subject-row'>
 							<th>${status.count}</th>
 							<th>${subject.title}</th>
@@ -253,20 +253,31 @@
 	</div>
 </body>
 <script>
+var colorList = new Array();
+colorList.push("#FF4343");
+colorList.push("#7C43FF");
+colorList.push("#FF43A1");
+colorList.push("#5050FF");
+colorList.push("#FA43FF");
+colorList.push("#4DE643");
+colorList.push("#A5E643");
+colorList.push("#BB43FF");
+colorList.push("#508AFF");
+colorList.push("#D6DB4B");
 	$(document).ready(function(){
 		<!-- 스크린 사이즈에 따른 height값 변화 -->
 		var cw = $('.info-box').width();
-		$('.info-box').css({'height':cw+'px'});
-		$('.info-box').css({'line-height':cw+'px'});
+		$('.info-box').css({'height':(cw/2)+'px'});
+		$('.info-box').css({'line-height':(cw/2)+'px'});
 		
 		$( window ).resize( function() {
 			var cw = $('.info-box').width();
-			$('.info-box').css({'height':cw+'px'});
-			$('.info-box').css({'line-height':cw+'px'});
+			$('.info-box').css({'height':(cw/2)+'px'});
+			$('.info-box').css({'line-height':(cw/2)+'px'});
 		});
 		
 		<!-- 시간표 테이블 처리 -->
-		<c:forEach var="subject" items="${subjectList}" varStatus="status">
+		<c:forEach var="subject" items="${subjects}" varStatus="status">
 			var list = new Array();
 			<c:forEach var="lectureTime" items="${subject.lectureTime}">
 				list.push({day:"${lectureTime.day}",time:${lectureTime.time}});
@@ -274,6 +285,7 @@
 			for(var i=0;i<list.length;i++){
 				var id = objectToDay(list[i]);
 				$('#'+id).html("${subject.title}");
+				$('#'+id).css('background-color',colorList[${status.index}]);
 			}
 		</c:forEach>
 	});
