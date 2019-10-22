@@ -48,4 +48,15 @@
    		<put-attribute name="body" value="/WEB-INF/jsp/timetable/schedule/info.jsp"/>
    </definition>
    
+   <!-- carte -->
+   
+   <definition name="carte-layout" template="/WEB-INF/jsp/carte/layout/base-carte.jsp">
+       <put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp" />
+       <put-attribute name="body" value="" />
+       <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp" />
+   </definition>
+   
+   <definition name="carteInfo" extends="main-layout">
+   		<put-attribute name="body" value="/WEB-INF/jsp/carte/carteInfo.jsp"/>
+   </definition>
 </tiles-definitions>
