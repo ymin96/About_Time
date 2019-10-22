@@ -12,7 +12,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
  
 @Configuration
-@MapperScan(basePackages="com.about_time.member.mapper")
+@MapperScan({"com.about_time.member.mapper","com.about_time.carte.mapper"})
 @EnableTransactionManagement
 public class DatabaseConfig {
  
