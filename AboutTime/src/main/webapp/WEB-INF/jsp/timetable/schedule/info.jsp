@@ -8,6 +8,7 @@
 			<div class="reg-header">
 				<h2>시간표</h2>
 			</div>
+			
 			<!-- 시간표 테이블 -->
 			<div class="row" id="first-row">
 				<div

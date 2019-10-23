@@ -14,22 +14,25 @@
 <link rel="stylesheet" href="/resources/static/css/layout.css">
 <link rel="stylesheet" href="/resources/static/css/header.css">
 <link rel="stylesheet" href="/resources/static/css/footer.css">
+<link rel="stylesheet" href="/resources/static/css/carte/registerForm.css">
 <style>
 </style>
 </head>
 <title>어바웃 타임</title>
 <body>
-	<header>
-		<tiles:insertAttribute name='header' />
-	</header>
-	<div class='body'>
-		<tiles:insertAttribute name='body' />
+	<div class="wrap">
+		<header>
+			<tiles:insertAttribute name='header' />
+		</header>
+		<div>
+			<tiles:insertAttribute name='body' />
+		</div>
+		<footer>
+			<tiles:insertAttribute name='footer' />
+		</footer>
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 	</div>
-	<footer>
-		<tiles:insertAttribute name='footer' />
-	</footer>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

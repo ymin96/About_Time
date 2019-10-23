@@ -13,9 +13,9 @@ public class CarteService {
 	CarteMapper carteMapper;
 	
 	public University getUniversity(String title) {
-		University kunsan = new University();
-		kunsan.setTitle(title);
-		kunsan.setCarteList(carteMapper.getCarte(title));
-		return kunsan;
+		University university = new University();
+		university.setTitle(title);
+		university.setCarteList(carteMapper.getCarte(title));
+		return university;
 	}
 }
