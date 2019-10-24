@@ -49,7 +49,6 @@
    </definition>
    
    <!-- carte -->
-   
    <definition name="carte-layout" template="/WEB-INF/jsp/carte/layout/base-carte.jsp">
        <put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp" />
        <put-attribute name="body" value="" />
@@ -58,5 +57,9 @@
    
    <definition name="carteInfo" extends="carte-layout">
    		<put-attribute name="body" value="/WEB-INF/jsp/carte/carteInfo.jsp"/>
+   </definition>
+   
+   <definition name="universityList" extends="carte-layout">
+   		<put-attribute name="body" value="/WEB-INF/jsp/carte/universityList.jsp"/>
    </definition>
 </tiles-definitions>

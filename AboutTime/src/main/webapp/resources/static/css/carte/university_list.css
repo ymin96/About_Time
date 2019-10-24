@@ -1,0 +1,41 @@
+.university_list h1{
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    border-bottom: 2px solid #0076C0;
+    padding-bottom: 5px;
+    margin:0 0 -2px 0;
+}
+
+.university_list .headline{
+    display:block;
+    margin: 10px 0 25px 0;
+    border-bottom: 1px dotted #e4e9f0;
+}
+
+.university_list a{
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0.3px 0.3px 0.3px gray;
+}
+
+.university_list .university{
+    padding: 0 15px;
+}
+
+.university_list .btn:hover{
+    animation-name: btn-animation;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes btn-animation{
+    from{
+        color: #000000;
+        background-color: #ffffff;
+    }
+    to{
+        color: #ffffff;
+        background-color: rgb(107, 107, 107);
+    }
+}

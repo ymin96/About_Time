@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="/resources/static/css/header.css">
 <link rel="stylesheet" href="/resources/static/css/footer.css">
 <link rel="stylesheet" href="/resources/static/css/carte/registerForm.css">
+<link rel="stylesheet" href="/resources/static/css/carte/university_list.css">
 <style>
 </style>
 </head>

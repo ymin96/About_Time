@@ -21,7 +21,7 @@ public class CarteController {
 	@RequestMapping("/carte/info.do")
 	public String getUni(@RequestParam("title") String title, Model model) {
 		University university = carteService.getUniversity(title);
-		System.out.println(university.getTitle());
+
 		ArrayList<Carte> carteList = (ArrayList<Carte>) university.getCarteList();
 		
 		for (int i = 0; i < carteList.size(); i++) {
@@ -34,5 +34,10 @@ public class CarteController {
 
 		model.addAttribute("university", university);
 		return "carteInfo";
+	}
+	
+	@RequestMapping("/carte/list.do")
+	public String universityList() {
+		return "universityList";
 	}
 }

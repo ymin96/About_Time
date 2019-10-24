@@ -28,7 +28,7 @@
 				id="navbar-1-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="/timetable/subject/list.do">시간표</a></li>
-					<li><a href="#">식단표</a></li>
+					<li><a href="/carte/list.do">식단표</a></li>
 					<li><a href="#">게시판</a></li>
 					<li><a href="#">점심내기</a></li>
 				</ul>
