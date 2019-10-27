@@ -21,17 +21,6 @@ public class CarteController {
 	@RequestMapping("/carte/info.do")
 	public String getUni(@RequestParam("title") String title, Model model) {
 		University university = carteService.getUniversity(title);
-
-		ArrayList<Carte> carteList = (ArrayList<Carte>) university.getCarteList();
-		
-		for (int i = 0; i < carteList.size(); i++) {
-			Carte carte = carteList.get(i);
-			carte.setBreakfast(carte.getBreakfast().replace(",", "<br>"));
-			carte.setLunch(carte.getLunch().replace(",", "<br>"));
-			carte.setSupper(carte.getSupper().replace(",", "<br>"));
-			carteList.set(i, carte);
-		}
-
 		model.addAttribute("university", university);
 		return "carteInfo";
 	}

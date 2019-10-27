@@ -13,6 +13,7 @@
 					</div>
 					<div class="university">
 						<a class="btn btn-default btn-block" href="/carte/info.do?title=군산대학교" role="button">군산대학교</a>
+						<a class="btn btn-default btn-block" href="/carte/info.do?title=전주대학교" role="button">전주대학교</a>
 					</div>
 				</div>
 				<div class="col-md-4 text-center">
