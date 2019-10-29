@@ -19,22 +19,6 @@
 						<a class="btn btn-default btn-block" href="/carte/info.do?title=원광대학교" role="button">원광대학교</a>
 					</div>
 				</div>
-				<div class="col-md-4 text-center">
-					<div class="headline">
-						<h1>전라북도</h1>
-					</div>
-					<div class="university">
-						<a class="btn btn-default btn-block" href="#" role="button">군산대학교</a>
-					</div>
-				</div>
-				<div class="col-md-4 text-center">
-					<div class="headline">
-						<h1>전라북도</h1>
-					</div>
-					<div class="university">
-						<a class="btn btn-default btn-block" href="#" role="button">군산대학교</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>
