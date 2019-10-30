@@ -1,12 +1,18 @@
 package com.about_time.member.vo;
 
+import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
 public class Member {
-	private String id;
-	private String pwd;
-	private String email;
-	private String name;
+	private long id;
+	private String uid;
+	private String upw;
+	private String uemail;
+	private Date regDate;
+	private Date updateDate;
+	private List<MemberRole> roles;
 	
 }
