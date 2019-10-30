@@ -1,9 +1,13 @@
 package com.about_time.member.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import com.about_time.member.vo.SecurityMember;
 
 public class CustomUserDetailsService implements UserDetailsService{
 
@@ -13,7 +17,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		return null;
+		return Optional.ofNullable(memberService.findByUid(username))
+				.filter(m -> m!=null)
+				.map(m -> new SecurityMember(m)).get();
 	}
 
 }

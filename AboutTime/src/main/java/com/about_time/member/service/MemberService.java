@@ -16,4 +16,8 @@ public class MemberService {
 	public List<Member> getAll() throws Exception{
 		return memberMapper.getAll();
 	}
+	
+	public Member findByUid(String uid) {
+		return null;
+	}
 }
