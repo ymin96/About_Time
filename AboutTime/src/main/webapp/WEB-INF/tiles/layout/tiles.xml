@@ -62,4 +62,9 @@
    <definition name="universityList" extends="carte-layout">
    		<put-attribute name="body" value="/WEB-INF/jsp/carte/universityList.jsp"/>
    </definition>
+   
+   <!-- account page -->
+   <definition name = "member-layout" template="">
+   
+   </definition>
 </tiles-definitions>

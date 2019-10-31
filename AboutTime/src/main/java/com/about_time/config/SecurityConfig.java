@@ -1,17 +1,24 @@
 package com.about_time.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import com.about_time.member.service.CustomUserDetailsService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
-
+	
+	@Autowired
+	CustomUserDetailsService customUserDetailsService;
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// TODO Auto-generated method stub
@@ -24,7 +31,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			.antMatchers("/admin/**").hasRole("ADMIN")
 			.antMatchers("/**").permitAll().anyRequest().authenticated()
+			.and().formLogin()
+			.loginPage("/login")
+			.loginProcessingUrl("/login")
+			.defaultSuccessUrl("/main.do")
+			.failureUrl("/login").and().logout()
 			.and().csrf().disable();
 	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		// TODO Auto-generated method stub
+		auth.userDetailsService(customUserDetailsService);
+	}
+	
 	
 }

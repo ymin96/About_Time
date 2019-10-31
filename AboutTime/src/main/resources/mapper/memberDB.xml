@@ -7,4 +7,11 @@
         SELECT * FROM t_member
     </select>
     
+    <select id="findMemberByUid" resultType="com.about_time.member.vo.Member">
+    	SELECT * FROM about_time.Member WHERE uid = #{uid}
+    </select>
+    
+    <select id="findMemberRoleByUid" resultType="com.about_time.member.vo.MemberRole">
+    	SELECT * FROM about_time.MemberRole WHERE uid = #{uid}
+    </select>
 </mapper>

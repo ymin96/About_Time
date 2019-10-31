@@ -18,6 +18,14 @@ public class MemberService {
 	}
 	
 	public Member findByUid(String uid) {
-		return null;
+		Member member = null;
+		try {
+			member = memberMapper.findMemberByUid(uid);
+			member.setRoles(memberMapper.findMemberRoleByUid(uid));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return member;
 	}
 }
