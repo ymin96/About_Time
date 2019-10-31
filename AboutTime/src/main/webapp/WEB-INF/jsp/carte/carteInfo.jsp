@@ -14,7 +14,7 @@
 						<tr>
 							<th></th>
 							<c:forEach var="carte" items="${university.carteList}">
-								<th>${carte.day}</th>
+								<th class="text-center">${carte.day}</th>
 							</c:forEach>
 						</tr>
 					</thead>
@@ -22,20 +22,20 @@
 						<tr>
 							<th>아침</th>
 							<c:forEach var="carte" items="${university.carteList}">
-								<th>${carte.breakfast}</th>
+								<th class="text-center">${carte.breakfast}</th>
 							</c:forEach>
 						</tr>
 						<tr>
 							<th>점심</th>
 							<c:forEach var="carte" items="${university.carteList}">
-								<th>${carte.lunch}</th>
+								<th class="text-center">${carte.lunch}</th>
 							</c:forEach>
 						</tr>
 
 						<tr>
 							<th>저녁</th>
 							<c:forEach var="carte" items="${university.carteList}">
-								<th>${carte.supper}</th>
+								<th class="text-center">${carte.supper}</th>
 							</c:forEach>
 						</tr>
 					</tbody>
