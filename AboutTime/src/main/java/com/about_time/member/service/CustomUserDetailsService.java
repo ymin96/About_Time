@@ -23,5 +23,4 @@ public class CustomUserDetailsService implements UserDetailsService{
 				.filter(m -> m!=null)
 				.map(m -> new SecurityMember(m)).get();
 	}
-
 }

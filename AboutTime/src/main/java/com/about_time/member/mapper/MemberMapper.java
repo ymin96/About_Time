@@ -14,5 +14,6 @@ public interface MemberMapper {
 	public List<Member> getAll() throws Exception;
 	public Member findMemberByUid(String uid) throws Exception;
 	public List<MemberRole> findMemberRoleByUid(String uid) throws Exception;
-	
+	public void insertMember(Member member) throws Exception;
+	public void insertMemberRole(MemberRole memberRole) throws Exception;
 }

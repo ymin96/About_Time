@@ -28,4 +28,20 @@ public class MemberService {
 		}
 		return member;
 	}
+	
+	public void addMember(Member member) {
+		try {
+			memberMapper.insertMember(member);
+			member.getRoles().forEach( e -> {
+				try {
+					memberMapper.insertMemberRole(e);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			});
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

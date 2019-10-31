@@ -64,7 +64,14 @@
    </definition>
    
    <!-- account page -->
-   <definition name = "member-layout" template="">
-   
+   <definition name = "member-layout" template="/WEB-INF/jsp/member/layout/base-member.jsp">
+        <put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp"/>
    </definition>
+
+	<definition name = "login" extends="member-layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/login.jsp"/>
+	</definition>
+	
 </tiles-definitions>
