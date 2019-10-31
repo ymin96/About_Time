@@ -11,23 +11,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/bootstrap/css/kfonts2.css">
-<link rel="stylesheet" href="/resources/static/css/layout.css">
-<link rel="stylesheet" href="/resources/static/css/header.css">
-<link rel="stylesheet" href="/resources/static/css/footer.css">
-<link rel="stylesheet"
-	href="/resources/static/css/timetable/timetable-body.css">
-<link rel="stylesheet" href="/resources/static/css/sidebar.css">
-<link rel="stylesheet"
-	href="/resources/static/css/timetable/registerForm-body.css">
-<link rel="stylesheet"
-	href="/resources/static/css/timetable/scheduleInfo.css">
+<link rel="stylesheet" href="/resources/static/css/common/layout.css">
+<link rel="stylesheet" href="/resources/static/css/common/header.css">
+<link rel="stylesheet" href="/resources/static/css/common/footer.css">
+<link rel="stylesheet" href="/resources/static/css/common/content-edge.css">
+<link rel="stylesheet" href="/resources/static/css/common/sidebar.css">
+<link rel="stylesheet" href="/resources/static/css/timetable/timetable-body.css">
+<link rel="stylesheet" href="/resources/static/css/timetable/registerForm-body.css">
+<link rel="stylesheet" href="/resources/static/css/timetable/scheduleInfo.css">
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 </style>
 </head>
 <title>어바웃 타임</title>
 <body>
-	<div class="wrap">
+<div class="wrap">
 		<header>
 			<tiles:insertAttribute name='header' />
 		</header>

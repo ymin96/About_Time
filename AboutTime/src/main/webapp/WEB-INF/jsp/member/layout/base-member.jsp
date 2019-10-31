@@ -11,9 +11,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/bootstrap/css/kfonts2.css">
-<link rel="stylesheet" href="/resources/static/css/layout.css">
-<link rel="stylesheet" href="/resources/static/css/header.css">
-<link rel="stylesheet" href="/resources/static/css/footer.css">
+<link rel="stylesheet" href="/resources/static/css/common/layout.css">
+<link rel="stylesheet" href="/resources/static/css/common/header.css">
+<link rel="stylesheet" href="/resources/static/css/common/footer.css">
+<link rel="stylesheet" href="/resources/static/css/common/content-box.css">
 <style>
 </style>
 </head>

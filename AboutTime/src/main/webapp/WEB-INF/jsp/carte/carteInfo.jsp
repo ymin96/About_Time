@@ -3,9 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
 <body>
-	<div class="container registerForm">
+	<div class="container">
 		<div class="row">
-			<div class="col-md-12 register-box">
+			<div class="col-md-12 content-box">
 				<div class="reg-header">
 					<h2>${university.title}</h2>
 				</div>

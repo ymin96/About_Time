@@ -1,0 +1,77 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+
+header{
+	font-family: 'Source Sans Pro', 'sans-serif';
+}
+
+.navbar{
+    background-color: #ffffff;
+    border:none;
+    font-weight:500;
+    font-size:18px;
+    height:62px;
+    text-transform: capitalize;
+    border-bottom:2px solid #AAAAAA;
+}
+
+.navbar-toggle{
+    position:relative;
+    margin-top:20px;
+    top:2px;
+}
+
+.navbar-nav{
+    margin-top:10px;
+    background-color:#ffffff;
+}
+
+.navbar > .container{
+	position:relative;
+}
+
+
+.navbar-nav li a{
+	padding:25px 35px 5px 35px;
+	border-bottom:2px solid #AAAAAA;
+}
+
+header .navbar-brand{
+	position:relative;
+	top:-25px;
+}
+
+header .topbar{
+	position:relative;
+}
+
+header .navbar-nav li a:hover{
+	animation-name: header-animation;
+	animation-duration: 500ms;
+	animation-fill-mode: forwards;
+}
+
+@keyframes header-animation{
+	from{
+		color: #AAAAAA;
+		border-bottom:2px solid #AAAAAA
+	}
+	to{
+		color: #0076C0;
+		border-bottom:2px solid #0076C0
+	}
+}
+
+.login-bar{
+	float:right!important;
+	margin:0px;
+}
+
+.login-bar li{
+	list-style-type:none;
+	display:inline;
+	margin-right:5px;
+}
+
+.login-bar li a{
+	font-size:11px;
+}

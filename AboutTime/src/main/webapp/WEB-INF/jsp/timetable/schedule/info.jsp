@@ -4,7 +4,7 @@
 
 <body class="registerForm scheduleInfo">
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3 col-sm-12  register-box">
+		<div class="col-md-6 col-md-offset-3 col-sm-12  register-box content-box">
 			<div class="reg-header">
 				<h2>시간표</h2>
 			</div>
