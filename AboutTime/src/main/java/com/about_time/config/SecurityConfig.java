@@ -33,13 +33,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// TODO Auto-generated method stub
 		http.authorizeRequests()
 			.antMatchers("/admin/**").hasRole("ADMIN")
-			.antMatchers("/**").permitAll().anyRequest().authenticated()
+			.antMatchers("/main.do").permitAll()
+			.antMatchers("/timetable/**").hasRole("ADMIN")
+			.antMatchers("/carte/**").permitAll()
 			.and().formLogin()
 			.loginPage("/login")
 			.loginProcessingUrl("/login")
 			.defaultSuccessUrl("/main.do")
-			.failureUrl("/login").and().logout()
-			.and().csrf().disable();
+			.failureUrl("/login").and().logout();
 	}
 	
 	@Override

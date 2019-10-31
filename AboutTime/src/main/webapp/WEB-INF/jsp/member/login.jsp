@@ -7,6 +7,7 @@
 		<div class="row">
 			<div class="col-md-12 register-box">
 				<form class="login-form" method="POST">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<div class="row">
 						<div class="input-field col s12">
 							<input id="id" type="text" name="username" class="validate" />
