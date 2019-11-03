@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="/resources/static/css/common/layout.css">
 <link rel="stylesheet" href="/resources/static/css/common/header.css">
 <link rel="stylesheet" href="/resources/static/css/common/footer.css">
-<link rel="stylesheet" href="/resources/static/css/common/content-box.css">
+<link rel="stylesheet" href="/resources/static/css/common/content-edge.css">
 <style>
 </style>
 </head>
@@ -33,6 +33,7 @@
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/resources/static/js/header.js"></script>
 	</div>
 </body>
 </html>

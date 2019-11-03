@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<input type="hidden" name="${_csrf.parameterName}"
-	value="${_csrf.token}" />
+
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4 col-xs-12">
+			<div class="col-md-4 col-md-offset-4 col-xs-12 content-box">
+				<div class="reg-header">
+					<h2>로그인</h2>
+				</div>
 				<form method="POST">
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
@@ -26,7 +28,7 @@
 								name="password" aria-describedby="upw" placeholder="비밀번호" />
 						</div>
 					</div>
-					<input class="btn btn-primary" type="submit" value="로그인" />
+					<input class="btn btn-primary submit" type="submit" value="로그인" />
 				</form>
 			</div>
 		</div>

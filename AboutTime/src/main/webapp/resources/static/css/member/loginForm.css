@@ -1,0 +1,10 @@
+.content-box{
+	border: 1px solid #EEE;
+	box-shadow:0 0 3px #EEE;
+	padding: 15px 50px 30px 50px;
+	margin-bottom:10px;
+}
+
+.submit {
+    float: right;
+}

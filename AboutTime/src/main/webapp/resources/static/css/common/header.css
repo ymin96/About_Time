@@ -44,7 +44,12 @@ header .topbar{
 	position:relative;
 }
 
-header .navbar-nav li a:hover{
+header .navbar-nav li .active{
+	color: #0076C0;
+	border-bottom: 2px solid #0076C0;
+}
+
+header .navbar-nav li .disable:hover{
 	animation-name: header-animation;
 	animation-duration: 500ms;
 	animation-fill-mode: forwards;
