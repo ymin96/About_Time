@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="/resources/static/css/common/header.css">
 <link rel="stylesheet" href="/resources/static/css/common/footer.css">
 <link rel="stylesheet" href="/resources/static/css/common/content-edge.css">
+<link rel="stylesheet" href="/resources/static/css/member/loginForm.css">
 <style>
 </style>
 </head>

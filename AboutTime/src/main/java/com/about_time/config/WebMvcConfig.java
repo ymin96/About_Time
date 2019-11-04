@@ -12,12 +12,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	
 	@Autowired
 	@Qualifier(value="timetableInterceptor")
-	private HandlerInterceptor interceptor;
+	private HandlerInterceptor timetableinterceptor;
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// TODO Auto-generated method stub
-		registry.addInterceptor(interceptor).addPathPatterns("/**");
+		registry.addInterceptor(timetableinterceptor).addPathPatterns("/**");
 	}
 	
 	

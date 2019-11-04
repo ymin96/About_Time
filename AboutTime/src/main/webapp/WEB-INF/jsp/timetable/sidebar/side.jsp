@@ -11,10 +11,11 @@
 </body>
 <script>
 	$(document).ready(function(){
-		if(location.pathname === "/timetable/subject/list.do"){
+		var target = location.pathname.split("/")[2]
+		if(target === "subject"){
 			$('#subjectSideBar').addClass("active");
 		}
-		else if(location.pathname === "/timetable/schedule/list.do"){
+		else if(target === "schedule"){
 			$('#scheduleSideBar').addClass("active");
 		}
 	});

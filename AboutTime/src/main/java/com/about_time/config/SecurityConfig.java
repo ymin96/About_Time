@@ -32,15 +32,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests()
-			.antMatchers("/admin/**").hasRole("ADMIN")
-			.antMatchers("/**").permitAll()
-			.and()
-				.formLogin()
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/**").permitAll()
+				.and()
+			.formLogin()
 				.loginPage("/login")
 				.loginProcessingUrl("/login")
 				.defaultSuccessUrl("/main.do")
 				.failureUrl("/login").
-				and().logout();
+				and()
+			.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/main.do")
+				.permitAll()
+				.and()
+			.sessionManagement()
+				.invalidSessionUrl("/main.do");
 		http.csrf().ignoringAntMatchers("/timetable/**");
 	}
 	

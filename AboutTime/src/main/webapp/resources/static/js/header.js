@@ -1,10 +1,11 @@
 $(document).ready(function () {
-    if(location.pathname === "/timetable/subject/list.do"){
+	var target = location.pathname.split("/")[1]
+    if(target === "timetable"){
         $("#timetable").removeClass("disable");
-        $("#timetable").addClass("active");
+        $("#timetable").addClass("target");
     }
-    else if(location.pathname === "/carte/list.do"){
+    else if(target === "carte"){
         $("#carte").removeClass("disable");
-        $("#carte").addClass("active");
+        $("#carte").addClass("target");
     }
 });

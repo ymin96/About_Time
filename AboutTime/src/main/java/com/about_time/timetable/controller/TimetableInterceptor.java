@@ -23,7 +23,7 @@ public class TimetableInterceptor extends HandlerInterceptorAdapter{
 		
 		HttpSession session = request.getSession();
 		
-		if(session.isNew()) {
+		if(session.getAttribute("subjectList") == null) {
 			List<Subject> subjectList = new ArrayList<Subject>();
 			List<LectureTime> lectureTimes;
 			LectureTime lectureTime;

@@ -1,17 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
 <body>
 	<div class="container">
 		<div class="topbar">
 			<ul class="login-bar">
-				<li><a href="/login">로그인</a></li>
-				<li><a href="#">회원가입</a></li>
+				<c:choose>
+					<c:when test="${sessionScope.ID == null}">
+						<li><a href="/login">로그인</a></li>
+						<li><a href="#">회원가입</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="#">${ID}</a></li>
+						<li><a href="/logout">로그아웃</a></li>
+					</c:otherwise>
+				</c:choose>
+
 			</ul>
 		</div>
 	</div>
 
-	<nav class="navbar navbar-default navbar-static-top" role="navigation" id="navbar-scroll">
+	<nav class="navbar navbar-default navbar-static-top" role="navigation"
+		id="navbar-scroll">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -27,8 +38,9 @@
 			<div class="collapse navbar-collapse navbar-right"
 				id="navbar-1-collapse">
 				<ul class="nav navbar-nav">
-					<li id="timetable" class="disable"><a href="/timetable/subject/list.do">시간표</a></li>
-					<li id="cate" class="disable"><a href="/carte/list.do">식단표</a></li>
+					<li id="timetable" class="disable"><a
+						href="/timetable/subject/list.do">시간표</a></li>
+					<li id="carte" class="disable"><a href="/carte/list.do">식단표</a></li>
 					<li class="disable"><a href="#">게시판</a></li>
 					<li class="disable"><a href="#">점심내기</a></li>
 				</ul>
