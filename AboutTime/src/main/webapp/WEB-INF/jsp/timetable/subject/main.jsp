@@ -46,7 +46,7 @@
 				$('.subject-row').each(function(index,item){
 					$(item).find('th:first').text(index+1);
 					$(item).find('a').attr('value',index);
-				});			
+				});
 			},
 			error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

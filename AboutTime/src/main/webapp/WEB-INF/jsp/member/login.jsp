@@ -30,6 +30,7 @@
 					</div>
 					<input class="btn btn-primary submit" type="submit" value="로그인" />
 				</form>
+				<p>아이디가 없으신가요? <span><a href="/register">회원가입</a></span></p>
 			</div>
 		</div>
 	</div>

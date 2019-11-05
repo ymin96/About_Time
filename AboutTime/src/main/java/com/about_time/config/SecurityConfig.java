@@ -48,7 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.and()
 			.sessionManagement()
 				.invalidSessionUrl("/main.do");
-		http.csrf().ignoringAntMatchers("/timetable/**");
+		http.csrf().ignoringAntMatchers("/timetable/**")
+				.ignoringAntMatchers("/register/**");
 	}
 	
 	@Override

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html>
 <html lang="ko-kr">
 <head>
@@ -35,6 +35,7 @@
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 		<script src="/resources/static/js/header.js"></script>
+		<script src="/resources/static/js/member/register.js"></script>
 	</div>
 </body>
 </html>

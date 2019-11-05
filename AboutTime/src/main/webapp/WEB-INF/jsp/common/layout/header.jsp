@@ -9,7 +9,7 @@
 				<c:choose>
 					<c:when test="${sessionScope.ID == null}">
 						<li><a href="/login">로그인</a></li>
-						<li><a href="#">회원가입</a></li>
+						<li><a href="/register">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
 						<li><a href="#">${ID}</a></li>

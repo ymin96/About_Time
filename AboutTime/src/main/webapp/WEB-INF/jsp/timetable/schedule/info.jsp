@@ -273,7 +273,7 @@ colorList.push("#D6DB4B");
 		
 		$( window ).resize( function() {
 			var cw = $('.info-box').width();
-			$('.info-box').css({'height':(cw/2)+'px'});
+			$('.info-box').css({'height':(cw/1.7)+'px'});
 			$('.info-box').css({'line-height':(cw/2)+'px'});
 		});
 		
