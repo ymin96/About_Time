@@ -54,8 +54,9 @@ public class MemberController {
 	@RequestMapping(value="/register/uid", method=RequestMethod.POST)
 	public @ResponseBody Map<String,String> register_post(@RequestBody Map<String,String> map) {
 		String uid = map.get("userid");
+		String check = memberService.existsByUid(uid);
 		Map<String, String> msg = new HashMap<>();
-		msg.put("check", "True");
+		msg.put("check", check);
 		return msg;
 	}
 	

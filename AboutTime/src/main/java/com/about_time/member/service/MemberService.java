@@ -44,4 +44,9 @@ public class MemberService {
 			e.printStackTrace();
 		}
 	}
+
+	public String existsByUid(String uid) {
+		int success = memberMapper.existsByUid(uid);
+		return success == 1 ? "True" : "False";
+	}
 }

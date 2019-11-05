@@ -21,7 +21,13 @@ $(document).ready(function () {
                 contentType : "application/json; charset=UTF-8",
                 data: JSON.stringify(msg),
                 success: function (data) {
-                    console.log(data)
+                    if(data.check === "False"){
+                    	$("#uid-group").addClass("has-success");
+                    }
+                    else{
+                    	$("#uid-group").addClass("has-error");
+                    	$("#uid").after('<span id="help-uid" class="help-block">이미 존재하는 아이디 입니다.</span>');
+                    }
                 },
                 error:function(request,status,error){
     		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
