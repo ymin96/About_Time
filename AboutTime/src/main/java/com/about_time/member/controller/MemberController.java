@@ -51,11 +51,22 @@ public class MemberController {
 		return "register";
 	}
 	
+	//ID 중복 체크
 	@RequestMapping(value="/register/uid", method=RequestMethod.POST)
-	public @ResponseBody Map<String,String> register_post(@RequestBody Map<String,String> map) {
-		String uid = map.get("userid");
+	public @ResponseBody Map<String,String> userID (@RequestBody Map<String,String> map) {
+		String uid = map.get("userID");
 		String check = memberService.existsByUid(uid);
 		Map<String, String> msg = new HashMap<>();
+		msg.put("check", check);
+		return msg;
+	}
+	
+	//닉네임 중복 체크
+	@RequestMapping(value = "/register/uname", method = RequestMethod.POST)
+	public @ResponseBody Map<String, String> userName(@RequestBody Map<String,String> map){
+		String uname = map.get("userName");
+		String check = memberService.existsByUname(uname);
+		Map<String, String> msg = new HashMap<String, String>();
 		msg.put("check", check);
 		return msg;
 	}

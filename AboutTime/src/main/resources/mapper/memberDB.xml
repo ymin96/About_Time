@@ -26,4 +26,8 @@
     <select id="existsByUid" resultType="Integer">
 		select EXISTS (select uid from Member where uid=#{uid}) as success
     </select>
+    
+    <select id="existsByUname" resultType="Integer">
+		select EXISTS (select uname from Member where uname=#{uname}) as success    
+    </select>
 </mapper>

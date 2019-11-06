@@ -44,9 +44,16 @@ public class MemberService {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//ID중복 검사
 	public String existsByUid(String uid) {
 		int success = memberMapper.existsByUid(uid);
+		return success == 1 ? "True" : "False";
+	}
+	
+	//닉네임 중복 검사
+	public String existsByUname(String uname) {
+		int success = memberMapper.existsByUname(uname);
 		return success == 1 ? "True" : "False";
 	}
 }

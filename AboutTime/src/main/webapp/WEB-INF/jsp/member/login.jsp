@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 
 <body>
-	<div class="container">
+	<div class="container login">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4 col-xs-12 content-box">
 				<div class="reg-header">

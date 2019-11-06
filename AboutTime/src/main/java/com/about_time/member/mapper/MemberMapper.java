@@ -17,4 +17,5 @@ public interface MemberMapper {
 	public void insertMember(Member member) throws Exception;
 	public void insertMemberRole(MemberRole memberRole) throws Exception;
 	public int existsByUid(String uid);
+	public int existsByUname(String uname);
 }
