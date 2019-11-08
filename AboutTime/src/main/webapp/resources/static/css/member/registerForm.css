@@ -1,3 +1,12 @@
+.register .content-box{
+	margin: 0 20px;
+    border: 1px solid #EEE;
+	box-shadow:0 0 3px #EEE;
+	padding:20px 30px;
+    margin-bottom:10px;
+    overflow: hidden;
+}
+
 .register .submit{
     float: right;
 }

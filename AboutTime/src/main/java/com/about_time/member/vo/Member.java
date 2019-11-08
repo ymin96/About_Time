@@ -9,6 +9,7 @@ import lombok.Data;
 public class Member {
 	private long id;
 	private String uid;
+	private String uname;
 	private String upw;
 	private String email;
 	private Date regDate;

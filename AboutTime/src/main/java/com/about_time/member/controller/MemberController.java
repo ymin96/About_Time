@@ -26,63 +26,75 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
-	
+
 	@RequestMapping("/main.do")
-	public ModelAndView query() throws Exception{
+	public ModelAndView query() throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("main");
 		return mv;
 	}
-	
+
 	@RequestMapping("/login")
 	public String login() {
 		return "login";
 	}
-	
+
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("ID");
 		return "main";
 	}
-	
-	@RequestMapping(value="/register", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register_get() {
 		return "register";
 	}
-	
-	//ID 중복 체크
-	@RequestMapping(value="/register/uid", method=RequestMethod.POST)
-	public @ResponseBody Map<String,String> userID (@RequestBody Map<String,String> map) {
+
+	// 회원가입 처리
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public @ResponseBody void register_post(@RequestBody Member member) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		member.setUpw(passwordEncoder.encode(member.getUpw()));
+		MemberRole memberRole = new MemberRole();
+		memberRole.setUid(member.getUid());
+		memberRole.setRoleName("MEMBER");
+		member.setRoles(Arrays.asList(memberRole));
+		memberService.addMember(member);
+	}
+
+	// ID 중복 체크
+	@RequestMapping(value = "/register/uid", method = RequestMethod.POST)
+	public @ResponseBody Map<String, String> userID(@RequestBody Map<String, String> map) {
 		String uid = map.get("userID");
 		String check = memberService.existsByUid(uid);
 		Map<String, String> msg = new HashMap<>();
 		msg.put("check", check);
 		return msg;
 	}
-	
-	//닉네임 중복 체크
+
+	// 닉네임 중복 체크
 	@RequestMapping(value = "/register/uname", method = RequestMethod.POST)
-	public @ResponseBody Map<String, String> userName(@RequestBody Map<String,String> map){
+	public @ResponseBody Map<String, String> userName(@RequestBody Map<String, String> map) {
 		String uname = map.get("userName");
 		String check = memberService.existsByUname(uname);
 		Map<String, String> msg = new HashMap<String, String>();
 		msg.put("check", check);
 		return msg;
 	}
-	
+
 	@RequestMapping("/test")
 	public String test() {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		 Member member = new Member();
-		 member.setUid("admin");
-		 member.setUpw(passwordEncoder.encode("admin"));
-		 member.setEmail("admin@test.com");
-		 MemberRole memberRole = new MemberRole();
-		 memberRole.setUid("admin");
-		 memberRole.setRoleName("ADMIN");
-		 member.setRoles(Arrays.asList(memberRole));
-		 memberService.addMember(member);
+		Member member = new Member();
+		member.setUid("admin");
+		member.setUpw(passwordEncoder.encode("admin"));
+		member.setEmail("admin@test.com");
+		MemberRole memberRole = new MemberRole();
+		memberRole.setUid("admin");
+		memberRole.setRoleName("ADMIN");
+		member.setRoles(Arrays.asList(memberRole));
+		memberService.addMember(member);
 		return "main";
 	}
 }

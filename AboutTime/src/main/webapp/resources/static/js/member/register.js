@@ -119,7 +119,23 @@ $(document).ready(function () {
             alert("비밀번호가 일치하지 않습니다.");
             return;
         }
-
-
+        else if ($("#email").val() === ""){
+            alert("이메일을 확인해 주세요.");
+            return;
+        }
+        else{
+            $.ajax({
+                type: "POST",
+                url: "/register",
+                data: JSON.stringify(member),
+                contentType: "application/json; charset=UTF-8",
+                success: function (response) {
+                    location.href="/login";
+                },
+                error: function (request, status, error) {
+                    alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+                }
+            });
+        }
     });
 });

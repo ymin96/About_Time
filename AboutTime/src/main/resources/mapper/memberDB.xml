@@ -16,7 +16,7 @@
     </select>
     
     <insert id="insertMember" parameterType="com.about_time.member.vo.Member">
-    	INSERT INTO about_time.Member(uid,upw,email,regDate,updateDate) VALUES (#{uid},#{upw},#{email},now(),now())
+    	INSERT INTO about_time.Member(uid,uname,upw,email,regDate,updateDate) VALUES (#{uid},#{uname},#{upw},#{email},now(),now())
     </insert>
     
     <insert id="insertMemberRole" parameterType="com.about_time.member.vo.MemberRole">
