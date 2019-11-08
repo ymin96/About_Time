@@ -97,4 +97,9 @@ public class MemberController {
 		memberService.addMember(member);
 		return "main";
 	}
+	
+	@RequestMapping(value = "/modify/info", method = RequestMethod.GET)
+	public String modifyInfo() {
+		return "modifyInfo";
+	}
 }

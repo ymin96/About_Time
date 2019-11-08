@@ -69,12 +69,23 @@
         <put-attribute name="body" value=""/>
         <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp"/>
    </definition>
-
+	
 	<definition name = "login" extends="member-layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/login.jsp"/>
 	</definition>
 	
 	<definition name="register" extends="member-layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/register.jsp"/>
+	</definition>
+	
+	<definition name="modify-layout" template="/WEB-INF/jsp/member/layout/base-modify.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp"/>
+		<put-attribute name="sidebar" value="/WEB-INF/jsp/member/sidebar/side.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp"/>
+	</definition>
+	
+	<definition name="modifyInfo" extends="modify-layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/modify/info.jsp"/>
 	</definition>
 </tiles-definitions>
