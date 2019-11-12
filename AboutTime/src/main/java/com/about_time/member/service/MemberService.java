@@ -1,6 +1,8 @@
 package com.about_time.member.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +14,11 @@ import com.about_time.member.vo.Member;
 public class MemberService {
 	@Autowired
 	MemberMapper memberMapper;
-	
-	public List<Member> getAll() throws Exception{
+
+	public List<Member> getAll() throws Exception {
 		return memberMapper.getAll();
 	}
-	
+
 	public Member findByUid(String uid) {
 		Member member = null;
 		try {
@@ -28,11 +30,11 @@ public class MemberService {
 		}
 		return member;
 	}
-	
+
 	public void addMember(Member member) {
 		try {
 			memberMapper.insertMember(member);
-			member.getRoles().forEach( e -> {
+			member.getRoles().forEach(e -> {
 				try {
 					memberMapper.insertMemberRole(e);
 				} catch (Exception e1) {
@@ -40,20 +42,35 @@ public class MemberService {
 					e1.printStackTrace();
 				}
 			});
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	//ID중복 검사
+
+	// ID존재 여부 검사
 	public String existsByUid(String uid) {
 		int success = memberMapper.existsByUid(uid);
 		return success == 1 ? "True" : "False";
 	}
-	
-	//닉네임 중복 검사
+
+	// 닉네임 존재 여부 검사
 	public String existsByUname(String uname) {
 		int success = memberMapper.existsByUname(uname);
 		return success == 1 ? "True" : "False";
+	}
+
+	// PW일치 검사
+	public String isAccord(String uid, String upw) {
+		int success = memberMapper.isAccord(uid, upw);
+		return success == 1 ? "True" : "False";
+	}
+	
+	//회원 정보 업데이트
+	public void updateMemberInfo(String uid, String uname, String email) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("uid", uid);
+		map.put("uname", uname);
+		map.put("email", email);
+		memberMapper.updateMemberInfo(map);
 	}
 }
