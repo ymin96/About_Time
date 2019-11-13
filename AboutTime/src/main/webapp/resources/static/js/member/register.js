@@ -1,4 +1,4 @@
-function checkID() {
+function checkID(check) {
     var uid = $("#uid").val();
     $("#uid-group").removeClass("has-error");
     $("#uid-group").removeClass("has-success");
@@ -14,6 +14,7 @@ function checkID() {
         $.ajax({
             type: "POST",
             url: "/register/uid",
+            async: check,
             contentType: "application/json; charset=UTF-8",
             data: JSON.stringify(msg),
             success: function (data) {
@@ -33,7 +34,7 @@ function checkID() {
     }
 }
 
-function checkName(uname) {
+function checkName(check) {
     var uname = $("#uname").val();
     $("#uname-group").removeClass("has-error");
     $("#uname-group").removeClass("has-success");
@@ -49,6 +50,7 @@ function checkName(uname) {
         $.ajax({
             type: "POST",
             url: "/register/uname",
+            async: check,
             contentType: "application/json; charset=UTF-8",
             data: JSON.stringify(msg),
             success: function (data) {
@@ -71,12 +73,12 @@ function checkName(uname) {
 $(document).ready(function () {
     //ID 유효성 검사
     $("#uid").keyup(function (e) {
-        checkID();
+        checkID(true);
     });
 
     //닉네임 유효성 검사
     $("#uname").keyup(function (e) {
-        checkName();
+        checkName(true);
     });
 
     //비밀번호 유효성 검사
@@ -101,8 +103,8 @@ $(document).ready(function () {
             upw_check: $("#upw-check").val(),
             email: $("#email").val()
         };
-        checkID();
-        checkName();
+        checkID(false);
+        checkName(false);
         if ($("#uid-group").attr("class").indexOf("has-error") !== -1) {
             alert("ID를 확인해주세요.");
             return;
@@ -128,6 +130,7 @@ $(document).ready(function () {
                 type: "POST",
                 url: "/register",
                 data: JSON.stringify(member),
+                async: false,
                 contentType: "application/json; charset=UTF-8",
                 success: function (response) {
                     location.href="/login";

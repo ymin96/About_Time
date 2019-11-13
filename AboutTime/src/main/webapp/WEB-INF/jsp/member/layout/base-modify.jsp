@@ -18,6 +18,7 @@
 	href="/resources/static/css/common/content-edge.css">
 <link rel="stylesheet" href="/resources/static/css/member/modify.css">
 <link rel="stylesheet" href="/resources/static/css/member/sidebar.css">
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <style>
 </style>
 </head>

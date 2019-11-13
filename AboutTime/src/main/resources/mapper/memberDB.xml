@@ -30,4 +30,12 @@
     <select id="existsByUname" resultType="Integer">
 		select EXISTS (select uname from Member where uname=#{uname}) as success    
     </select>
+    
+    <select id="isAccord" resultType="Integer">
+    	select EXISTS (select uid from Member where upw=#{upw} and uid=#{uid}) as success
+    </select>
+    
+    <update id="updateMemberInfo" parameterType="java.util.Map">
+    	update Member set uname=#{uname} , email=#{email} where uid=#{uid}
+    </update>
 </mapper>

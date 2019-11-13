@@ -1,6 +1,7 @@
 package com.about_time.member.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -18,4 +19,6 @@ public interface MemberMapper {
 	public void insertMemberRole(MemberRole memberRole) throws Exception;
 	public int existsByUid(String uid);
 	public int existsByUname(String uname);
+	public int isAccord(String uid, String upw);
+	public void updateMemberInfo(Map<String,String> map);
 }

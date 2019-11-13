@@ -1,8 +1,8 @@
 package com.about_time.member.controller;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -98,8 +99,36 @@ public class MemberController {
 		return "main";
 	}
 	
+	//회원 정보 수정 페이지
 	@RequestMapping(value = "/modify/info", method = RequestMethod.GET)
-	public String modifyInfo() {
+	public String modifyInfo_get(Model model, Principal principal) {
+		Member member = memberService.findByUid(principal.getName());
+		model.addAttribute("member", member);
 		return "modifyInfo";
+	}
+	
+	//회원 정보 수정 요청 처리
+	@RequestMapping(value = "/modify/info", method = RequestMethod.POST)
+	public @ResponseBody Map<String,String> modifyInfo_post( @RequestBody Map<String, String> map, Principal principal) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String uid = principal.getName();
+		String uname = map.get("uname");
+		String email = map.get("email");
+		String upw = passwordEncoder.encode(map.get("upw"));
+		
+		Map<String, String> msg = new HashMap<String, String>();
+		
+		//ID,PW일치하는지 검사 
+		String accord = memberService.isAccord(uid, upw);
+		//일치한다면 회원정보 수정후 수정 성공 매세지 추가
+		if(accord.equals("True")) {
+			memberService.updateMemberInfo(uid, uname, email);
+			msg.put("check", "success");
+		}
+		//일치하지 않는다면 실패 매세지 추가
+		else {
+			msg.put("check", "fail");
+		}
+		return msg;
 	}
 }
