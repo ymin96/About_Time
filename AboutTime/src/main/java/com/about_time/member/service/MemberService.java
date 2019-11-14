@@ -61,7 +61,10 @@ public class MemberService {
 
 	// PW일치 검사
 	public String isAccord(String uid, String upw) {
-		int success = memberMapper.isAccord(uid, upw);
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("uid", uid);
+		map.put("upw",upw);
+		int success = memberMapper.isAccord(map);
 		return success == 1 ? "True" : "False";
 	}
 	
@@ -72,5 +75,10 @@ public class MemberService {
 		map.put("uname", uname);
 		map.put("email", email);
 		memberMapper.updateMemberInfo(map);
+	}
+	
+	//인코딩된 비밀번호 추출
+	public String getEncodeUpw(String uid) {
+		return memberMapper.getEncodeUpw(uid);
 	}
 }

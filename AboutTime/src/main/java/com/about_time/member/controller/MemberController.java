@@ -100,7 +100,7 @@ public class MemberController {
 	}
 	
 	//회원 정보 수정 페이지
-	@RequestMapping(value = "/modify/info", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/modifyInfo", method = RequestMethod.GET)
 	public String modifyInfo_get(Model model, Principal principal) {
 		Member member = memberService.findByUid(principal.getName());
 		model.addAttribute("member", member);
@@ -108,20 +108,20 @@ public class MemberController {
 	}
 	
 	//회원 정보 수정 요청 처리
-	@RequestMapping(value = "/modify/info", method = RequestMethod.POST)
+	@RequestMapping(value = "/member/modifyInfo", method = RequestMethod.POST)
 	public @ResponseBody Map<String,String> modifyInfo_post( @RequestBody Map<String, String> map, Principal principal) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String uid = principal.getName();
 		String uname = map.get("uname");
 		String email = map.get("email");
-		String upw = passwordEncoder.encode(map.get("upw"));
-		
+		String upw = map.get("upw");	//암호화되지 않은 비밀번호
+		String encode_upw = memberService.getEncodeUpw(uid);	//암호화된 비밀번호
 		Map<String, String> msg = new HashMap<String, String>();
 		
-		//ID,PW일치하는지 검사 
-		String accord = memberService.isAccord(uid, upw);
+		//PW일치하는지 검사 
+		Boolean accord = passwordEncoder.matches(upw, encode_upw); 
 		//일치한다면 회원정보 수정후 수정 성공 매세지 추가
-		if(accord.equals("True")) {
+		if(accord == true) {
 			memberService.updateMemberInfo(uid, uname, email);
 			msg.put("check", "success");
 		}
@@ -130,5 +130,10 @@ public class MemberController {
 			msg.put("check", "fail");
 		}
 		return msg;
+	}
+	
+	@RequestMapping(value = "/member/modifyPW", method = RequestMethod.GET)
+	public String modifyPW_get() {
+		return "modifyPW";
 	}
 }
