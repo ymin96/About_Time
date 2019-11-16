@@ -19,6 +19,7 @@ public interface MemberMapper {
 	public void insertMemberRole(MemberRole memberRole) throws Exception;
 	public int existsByUid(String uid);
 	public int existsByUname(String uname);
-	public int isAccord(String uid, String upw);
+	public int isAccord(Map<String,String> map);
 	public void updateMemberInfo(Map<String,String> map);
+	public String getEncodeUpw(String uid);
 }

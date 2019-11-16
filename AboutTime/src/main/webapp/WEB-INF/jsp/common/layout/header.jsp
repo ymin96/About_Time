@@ -12,7 +12,7 @@
 						<li><a href="/register">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
-						<li><a href="/modify/info">내 정보</a></li>
+						<li><a href="/member/modifyInfo">내 정보</a></li>
 						<li><a href="/logout">로그아웃</a></li>
 					</c:otherwise>
 				</c:choose>

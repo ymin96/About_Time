@@ -31,9 +31,14 @@ function checkName(check) {
 
 $(document).ready(function () {
     checkName(true);
-    var successAlert = "<div class='alert alert-success alert-dismissible' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span'aria-hidden='true'>&times;</span></button><strong>성공!</strong> </div>";
-
-    $("#infoBox").prepend(successAlert);
+    var successAlert = "<div class='alert alert-success alert-dismissible' id='alert' role='alert'>" +
+        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span'aria-hidden='true'>&times;</span></button>" +
+        "<strong>성공!</strong>회원 정보를 수정했습니다." +
+        "</div>";
+    var failAlert = "<div class='alert alert-danger alert-dismissible' id='alert' role='alert'>" +
+        "<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span'aria-hidden='true'>&times;</span></button>" +
+        "<strong>실패!</strong>회원 정보 수정에 실패했습니다." +
+        "</div>";
 
     //닉네임 유효성 검사
     $("#uname").keyup(function (e) {
@@ -50,23 +55,23 @@ $(document).ready(function () {
             alert("이메일을 다시 확인해주세요.");
             return;
         } else {
+            $("#alert").remove();
             var msg = {
                 uname: $("#uname").val(),
                 upw: $("#upw").val(),
                 email: $("#email").val()
             }
-
             $.ajax({
                 type: "POST",
-                url: "/modify/info",
+                url: "/member/modifyInfo",
                 async: true,
                 contentType: "application/json; charset=UTF-8",
                 data: JSON.stringify(msg),
                 success: function (data) {
                     if (data.check === "success") {
-
+                        $("#infoBox").prepend(successAlert);
                     } else {
-
+                        $("#infoBox").prepend(failAlert);
                     }
                 },
                 error: function (request, status, error) {

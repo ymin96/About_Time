@@ -88,4 +88,8 @@
 	<definition name="modifyInfo" extends="modify-layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/member/modify/info.jsp"/>
 	</definition>
+	
+	<definition name="modifyPW" extends="modify-layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/member/modify/password.jsp"/>
+	</definition>
 </tiles-definitions>

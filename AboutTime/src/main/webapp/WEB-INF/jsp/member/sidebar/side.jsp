@@ -5,8 +5,8 @@
 <body>
 	<div class="sidebar">
 		<ul>
-			<li class="list-group-item active"><a href="#">회원 정보 수정</a></li>
-			<li class="list-group-item"><a href="#">비밀번호 수정</a></li>
+			<li class="list-group-item active"><a href="/member/modifyInfo">회원 정보 수정</a></li>
+			<li class="list-group-item"><a href="/member/modifyPW">비밀번호 수정</a></li>
 			<li class="list-group-item"><a href="#">시간표 수정</a></li>
 		</ul>
 	</div>
