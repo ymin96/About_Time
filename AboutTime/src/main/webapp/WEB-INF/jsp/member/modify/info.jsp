@@ -39,7 +39,7 @@
 						</div>
 					</form>
 					<div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-3">
-						<button class="btn btn-primary submit" id="register" type="buttom">수정</button>
+						<button class="btn btn-primary submit" id="register" type="button">수정</button>
 					</div>
 				</div>
 			</div>

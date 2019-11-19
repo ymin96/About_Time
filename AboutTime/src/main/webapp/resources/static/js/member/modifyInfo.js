@@ -64,7 +64,7 @@ $(document).ready(function () {
             $.ajax({
                 type: "POST",
                 url: "/member/modifyInfo",
-                async: true,
+                async: false,
                 contentType: "application/json; charset=UTF-8",
                 data: JSON.stringify(msg),
                 success: function (data) {

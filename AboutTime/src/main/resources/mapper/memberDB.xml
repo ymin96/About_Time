@@ -42,4 +42,8 @@
     <update id="updateMemberInfo" parameterType="java.util.Map">
     	update Member set uname=#{uname} , email=#{email} where uid=#{uid}
     </update>
+    
+    <update id="updateMemberUpw" parameterType="java.util.Map">
+    	update Member set upw = #{upw} where uid = #{uid}
+    </update>
 </mapper>

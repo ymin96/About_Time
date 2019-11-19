@@ -136,4 +136,27 @@ public class MemberController {
 	public String modifyPW_get() {
 		return "modifyPW";
 	}
+	
+	@RequestMapping(value = "/member/modifyPW", method = RequestMethod.POST)
+	public @ResponseBody Map<String,String> modifyPW_post(@RequestBody Map<String,String> map, Principal principal) {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String uid = principal.getName();
+		String currentUpw = map.get("currentUpw");
+		String newUpw = map.get("newUpw");
+		String encodeUpw = memberService.getEncodeUpw(uid);
+		//pw일치하는지 검사
+		boolean accord = passwordEncoder.matches(currentUpw, encodeUpw);
+		
+		Map<String, String> msg = new HashMap<String, String>();
+		//일치한다면 비밀번호 변경
+		if(accord == true) {
+			memberService.updateMemberUpw(uid,passwordEncoder.encode(newUpw));
+			msg.put("check", "success");
+		}
+		//일치하지 않는다면 실패 매세지 추가
+		else {
+			msg.put("check", "fail");
+		}
+		return msg;
+	}
 }

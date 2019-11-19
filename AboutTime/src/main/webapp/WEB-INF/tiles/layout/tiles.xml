@@ -2,94 +2,137 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
-       
+
 <tiles-definitions>
 
-   <!-- main -->
-   <definition name="main-layout" template="/WEB-INF/jsp/main/layout/base-main.jsp">
-       <put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp" />
-       <put-attribute name="body" value="" />
-       <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp" />
-   </definition>
-   
-   <definition name="main" extends="main-layout">
-       <put-attribute name="body" value="/WEB-INF/jsp/main/body/main.jsp" />
-   </definition>
-   
-   <!-- timetable -->
-   <definition name="timetable-layout" template="/WEB-INF/jsp/timetable/layout/base-timetable.jsp">
-   	   <put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp" />
-   	   <put-attribute name="sidebar" value="/WEB-INF/jsp/timetable/sidebar/side.jsp"/>
-       <put-attribute name="body" value="" />
-       <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp" />
-   </definition>
-   
-   <definition name="timetable" extends="timetable-layout">
-       <put-attribute name="body" value="/WEB-INF/jsp/timetable/subject/main.jsp" />
-   </definition>
-   
-   <definition name="addForm" extends="timetable-layout">
-       <put-attribute name="body" value="/WEB-INF/jsp/timetable/subject/addForm.jsp" />
-   </definition>
-   
-   <definition name="updateForm" extends="timetable-layout">
-   		<put-attribute name="body" value="/WEB-INF/jsp/timetable/subject/updateForm.jsp"/>
-   </definition>
-   
-   <definition name="scheduleForm" extends="timetable-layout">
-   		<put-attribute name="body" value="/WEB-INF/jsp/timetable/schedule/main.jsp"/>
-   </definition>
-   
-   <definition name="scheduleList" extends="timetable-layout">
-   		<put-attribute name="body" value="/WEB-INF/jsp/timetable/schedule/list.jsp"/>
-   </definition>
-   
-   <definition name="scheduleInfo" extends="timetable-layout">
-   		<put-attribute name="body" value="/WEB-INF/jsp/timetable/schedule/info.jsp"/>
-   </definition>
-   
-   <!-- carte -->
-   <definition name="carte-layout" template="/WEB-INF/jsp/carte/layout/base-carte.jsp">
-       <put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp" />
-       <put-attribute name="body" value="" />
-       <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp" />
-   </definition>
-   
-   <definition name="carteInfo" extends="carte-layout">
-   		<put-attribute name="body" value="/WEB-INF/jsp/carte/carteInfo.jsp"/>
-   </definition>
-   
-   <definition name="universityList" extends="carte-layout">
-   		<put-attribute name="body" value="/WEB-INF/jsp/carte/universityList.jsp"/>
-   </definition>
-   
-   <!-- account page -->
-   <definition name = "member-layout" template="/WEB-INF/jsp/member/layout/base-member.jsp">
-        <put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp"/>
-        <put-attribute name="body" value=""/>
-        <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp"/>
-   </definition>
-	
-	<definition name = "login" extends="member-layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/member/login.jsp"/>
+	<!-- main -->
+	<definition name="main-layout"
+		template="/WEB-INF/jsp/main/layout/base-main.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/common/layout/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/common/layout/footer.jsp" />
 	</definition>
-	
+
+	<definition name="main" extends="main-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/main/body/main.jsp" />
+	</definition>
+
+	<!-- timetable -->
+	<definition name="timetable-layout"
+		template="/WEB-INF/jsp/timetable/layout/base-timetable.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/common/layout/header.jsp" />
+		<put-attribute name="sidebar"
+			value="/WEB-INF/jsp/timetable/sidebar/side.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/common/layout/footer.jsp" />
+	</definition>
+
+	<definition name="timetable" extends="timetable-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/timetable/subject/main.jsp" />
+	</definition>
+
+	<definition name="addForm" extends="timetable-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/timetable/subject/addForm.jsp" />
+	</definition>
+
+	<definition name="updateForm" extends="timetable-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/timetable/subject/updateForm.jsp" />
+	</definition>
+
+	<definition name="scheduleForm" extends="timetable-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/timetable/schedule/main.jsp" />
+	</definition>
+
+	<definition name="scheduleList" extends="timetable-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/timetable/schedule/list.jsp" />
+	</definition>
+
+	<definition name="scheduleInfo" extends="timetable-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/timetable/schedule/info.jsp" />
+	</definition>
+
+	<!-- carte -->
+	<definition name="carte-layout"
+		template="/WEB-INF/jsp/carte/layout/base-carte.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/common/layout/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/common/layout/footer.jsp" />
+	</definition>
+
+	<definition name="carteInfo" extends="carte-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/carte/carteInfo.jsp" />
+	</definition>
+
+	<definition name="carte_universityList" extends="carte-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/carte/universityList.jsp" />
+	</definition>
+
+	<!-- account page -->
+	<definition name="member-layout"
+		template="/WEB-INF/jsp/member/layout/base-member.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/common/layout/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/common/layout/footer.jsp" />
+	</definition>
+
+	<definition name="login" extends="member-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/login.jsp" />
+	</definition>
+
 	<definition name="register" extends="member-layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/member/register.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/register.jsp" />
 	</definition>
-	
-	<definition name="modify-layout" template="/WEB-INF/jsp/member/layout/base-modify.jsp">
-		<put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp"/>
-		<put-attribute name="sidebar" value="/WEB-INF/jsp/member/sidebar/side.jsp"/>
-        <put-attribute name="body" value=""/>
-        <put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp"/>
+
+	<definition name="modify-layout"
+		template="/WEB-INF/jsp/member/layout/base-modify.jsp">
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/common/layout/header.jsp" />
+		<put-attribute name="sidebar"
+			value="/WEB-INF/jsp/member/sidebar/side.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/common/layout/footer.jsp" />
 	</definition>
-	
+
 	<definition name="modifyInfo" extends="modify-layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/member/modify/info.jsp"/>
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/modify/info.jsp" />
+	</definition>
+
+	<definition name="modifyPW" extends="modify-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/member/modify/password.jsp" />
+	</definition>
+
+	<!--board page -->
+	<definition name="universityList-layout" template="/WEB-INF/jsp/board/layout/base-universityList.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp" />
 	</definition>
 	
-	<definition name="modifyPW" extends="modify-layout">
-		<put-attribute name="body" value="/WEB-INF/jsp/member/modify/password.jsp"/>
+	<definition name="board_universityList" extends="universityList-layout">
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/board/universityList.jsp" />
 	</definition>
+	
 </tiles-definitions>
