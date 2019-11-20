@@ -123,16 +123,16 @@
 			value="/WEB-INF/jsp/member/modify/password.jsp" />
 	</definition>
 
-	<!--board page -->
-	<definition name="universityList-layout" template="/WEB-INF/jsp/board/layout/base-universityList.jsp">
+	<!--community page -->
+	<definition name="universityList-layout" template="/WEB-INF/jsp/community/layout/base-universityList.jsp">
 		<put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp" />
 	</definition>
 	
-	<definition name="board_universityList" extends="universityList-layout">
+	<definition name="community_universityList" extends="universityList-layout">
 		<put-attribute name="body"
-			value="/WEB-INF/jsp/board/universityList.jsp" />
+			value="/WEB-INF/jsp/community/universityList.jsp" />
 	</definition>
 	
 </tiles-definitions>

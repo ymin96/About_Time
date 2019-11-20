@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/resources/static/css/common/header.css">
 <link rel="stylesheet" href="/resources/static/css/common/footer.css">
 <link rel="stylesheet" href="/resources/static/css/common/content-edge.css">
-<link rel="stylesheet" href="/resources/static/css/board/university_list.css">
+<link rel="stylesheet" href="/resources/static/css/community/university-list.css">
 <style>
 </style>
 </head>
