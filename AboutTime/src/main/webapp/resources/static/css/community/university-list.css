@@ -3,17 +3,31 @@
     font-weight: bold;
     display: inline-block;
     border-bottom: 2px solid #0076C0;
+    border-top: 2px solid #0076C0;
     padding-bottom: 5px;
+    padding-top:5px;
     margin:0 0 -2px 0;
 }
 
 .university_list .headline{
     display:block;
-    margin: 10px 0 25px 0;
+    margin: 10px 0 40px 0;
     border-bottom: 1px dotted #e4e9f0;
+    border-top: 1px dotted #e4e9f0;
 }
 
-.university_list a{
+.university_list .headline:hover{
+    animation-name: headline-animation;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+}
+
+.university_list .reg-header a{
+    text-decoration: none;
+    color: black;
+}
+
+.university_list .university a{
     font-size: 14px;
     font-weight: bold;
     text-shadow: 0.3px 0.3px 0.3px gray;
@@ -21,9 +35,10 @@
 
 .university_list .university{
     padding: 0 15px;
+    margin-bottom: 25px;
 }
 
-.university_list .btn:hover{
+.university_list .university .btn:hover{
     animation-name: btn-animation;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
@@ -37,5 +52,14 @@
     to{
         color: #ffffff;
         background-color: rgb(107, 107, 107);
+    }
+}
+
+@keyframes headline-animation{
+    from{
+        background-color: white;
+    }
+    to{
+        background-color: #f4f4f4;
     }
 }

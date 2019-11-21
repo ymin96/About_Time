@@ -8,18 +8,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.about_time.community.service.CommunityService;
 
 @Controller
 public class CommunityController {
-	
+
 	@Autowired
 	CommunityService communityService;
-	
+
 	@RequestMapping(value = "/community", method = RequestMethod.GET)
-	public String universityList_get(Model model) {
-		Map<String, List<String>> universityMap = communityService.getAllUniversity();
+	public String universityList_get(Model model, @RequestParam(required = false, name = "title") String title) {
+		Map<String, List<String>> universityMap;
+		if (title == null) {
+			universityMap = communityService.getAllUniversity();
+		}
+		else {
+			universityMap = communityService.getUniversityByTitle(title);
+		}
+		
 		model.addAttribute("universityMap", universityMap);
 		return "community_universityList";
 	}

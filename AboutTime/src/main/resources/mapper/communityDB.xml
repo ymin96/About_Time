@@ -13,4 +13,8 @@
 	<select id="getTitleByLocation" parameterType="String" resultType="String">
 		select title from University where location = #{location}
 	</select>
+	
+	<select id="searchTitle" parameterType="String" resultType="String">
+		select title from University where title like "%${title}%" and location = #{location}
+	</select>
 </mapper>

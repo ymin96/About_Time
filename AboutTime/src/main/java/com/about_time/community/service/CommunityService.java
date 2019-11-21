@@ -29,4 +29,15 @@ public class CommunityService {
 
 		return universityMap;
 	}
+	
+	public Map<String, List<String>> getUniversityByTitle(String title){
+		List<String> locations = communityMapper.getAllLocation();
+		Map<String, List<String>> universityMap = new HashMap<String, List<String>>();
+		
+		for(int i=0 ;i<locations.size();i++) {
+			List<String> titles = communityMapper.searchTitle(title, locations.get(i));
+			universityMap.put(locations.get(i), titles);
+		}
+		return universityMap;
+	}
 }
