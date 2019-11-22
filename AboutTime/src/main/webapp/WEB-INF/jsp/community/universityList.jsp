@@ -4,6 +4,11 @@
 
 <body>
 	<div class="university_list">
+		<div class="breadcrumbs">
+			<div class="container">
+				<h2>대학교 목록</h2>
+			</div>
+		</div>
 		<div class="container">
 			<div class="row" style="margin-bottom: 10px">
 				<div
@@ -12,7 +17,8 @@
 						<input class="form-control text-center" type="text" id="title"
 							placeholder="학교명 입력">
 						<div class="input-group-addon" style="font-weight: bold">
-							<a href="javascript:void(0);" onclick="callSearch(this);return false;"
+							<a href="javascript:void(0);"
+								onclick="callSearch(this);return false;"
 								style="text-decoration: none; color: rgb(87, 85, 85);">검색</a>
 						</div>
 					</div>

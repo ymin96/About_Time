@@ -1,4 +1,17 @@
-.university_list h1{
+.navbar{
+    margin-bottom: 0px;
+}
+
+.university_list h2{
+    color:#666;
+}
+
+.university_list .breadcrumbs{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #AAAAAA;
+}
+
+.university_list .reg-header h1{
     font-size: 18px;
     font-weight: bold;
     display: inline-block;

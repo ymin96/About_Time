@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.about_time.community.mapper.CommunityMapper;
-import com.about_time.community.vo.OrganizedUniversity;
 import com.about_time.community.vo.University;
 
 @Service
