@@ -135,4 +135,14 @@
 			value="/WEB-INF/jsp/community/universityList.jsp" />
 	</definition>
 	
+	<definition name="community-layout" template="/WEB-INF/jsp/community/layout/base-community.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp"/>
+		<put-attribute name="sidemenu" value="/WEB-INF/jsp/community/sidemenu/sidemenu.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp"/>
+	</definition>
+	
+	<definition name="universityMain" extends="community-layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/community/universityMain.jsp"/>	
+	</definition>
 </tiles-definitions>
