@@ -1,0 +1,18 @@
+.navbar{
+    margin-bottom: 0px;
+}
+
+.sidemenu h2{
+    color:#666;
+    margin: 15px 0px;
+}
+
+.sidemenu .breadcrumbs{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #AAAAAA;
+}
+
+.sidemenu .breadcrumbs ul{
+    margin-top: 11px;
+    margin-bottom: 10px;
+}

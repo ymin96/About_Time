@@ -1,0 +1,17 @@
+.university-main .headline a{
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    border-bottom: 2px solid #0076C0;
+    padding-bottom: 5px;
+    padding-top:5px;
+    margin:0 0 -2px 0;
+    text-decoration: none;
+    color: black;
+}
+
+.university-main .headline{
+    display:block;
+    margin: 10px 0 0 0;
+    border-bottom: 1px dotted #e4e9f0;
+}

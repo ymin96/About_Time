@@ -18,7 +18,7 @@
 										class="control-label col-sm-2 col-md-2 col-xs-3">현재
 										비밀번호</label>
 									<div class="col-md-5 col-sm-6 col-xs-9">
-										<input type="text" id="currentUpw" class="form-control">
+										<input type="password" id="currentUpw" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
@@ -26,7 +26,7 @@
 										class="control-label col-sm-2 col-md-2 col-xs-3">새
 										비밀번호</label>
 									<div class="col-md-5 col-sm-6 col-xs-9">
-										<input type="text" id="newUpw" class="form-control">
+										<input type="password" id="newUpw" class="form-control">
 									</div>
 								</div>
 								<div class="form-group">
@@ -38,7 +38,7 @@
 									</div>
 								</div>
 								<div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-3">
-									<button type="submit" class="btn btn-primary">수정</button>
+									<button type="button" id="register" class="btn btn-primary">수정</button>
 								</div>
 							</form>
 						</div>

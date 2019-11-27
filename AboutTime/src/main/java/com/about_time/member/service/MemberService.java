@@ -77,6 +77,14 @@ public class MemberService {
 		memberMapper.updateMemberInfo(map);
 	}
 	
+	//회원 비밀번호 업데이트
+	public void updateMemberUpw(String uid, String upw) {
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("uid", uid);
+		map.put("upw", upw);
+		memberMapper.updateMemberUpw(map);
+	}
+	
 	//인코딩된 비밀번호 추출
 	public String getEncodeUpw(String uid) {
 		return memberMapper.getEncodeUpw(uid);

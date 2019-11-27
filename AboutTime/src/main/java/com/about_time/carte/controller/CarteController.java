@@ -27,6 +27,6 @@ public class CarteController {
 	
 	@RequestMapping("/carte/list.do")
 	public String universityList() {
-		return "universityList";
+		return "carte_universityList";
 	}
 }

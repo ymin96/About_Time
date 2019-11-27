@@ -45,4 +45,4 @@ public class TimetableRestController {
 		model.addAttribute("subjectList", subjectList);
 		return true;
 	}
-}
+} 

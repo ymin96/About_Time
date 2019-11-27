@@ -22,4 +22,5 @@ public interface MemberMapper {
 	public int isAccord(Map<String,String> map);
 	public void updateMemberInfo(Map<String,String> map);
 	public String getEncodeUpw(String uid);
+	public void updateMemberUpw(Map<String,String> map);
 }
