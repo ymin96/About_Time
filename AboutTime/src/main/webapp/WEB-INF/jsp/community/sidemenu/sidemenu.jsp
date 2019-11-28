@@ -12,7 +12,7 @@
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<ul class="nav nav-pills" style="float:right;">
-					<li role="presentation" class="active"><a href="#">전체</a></li>
+					<li role="presentation" class="active"><a href="/community/${title}/list">전체</a></li>
 					<li role="presentation"><a href="#">정보</a></li>
 					<li role="presentation"><a href="#">잡담</a></li>
 					<li role="presentation"><a href="#">유머</a></li>

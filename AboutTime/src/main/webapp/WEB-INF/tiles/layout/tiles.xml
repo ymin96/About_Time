@@ -145,4 +145,8 @@
 	<definition name="universityMain" extends="community-layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/community/universityMain.jsp"/>	
 	</definition>
+	
+	<definition name="boardList" extends="community-layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/community/board/boardList.jsp"/>
+	</definition>
 </tiles-definitions>
