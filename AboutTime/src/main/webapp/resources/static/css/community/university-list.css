@@ -11,6 +11,20 @@
     border-bottom: 1px solid #AAAAAA;
 }
 
+.university_list .breadcrumbs #title-box{
+    font-size: 30px;
+    margin: 12px 0px;
+}
+
+.university_list .breadcrumbs #title-box a{
+    text-decoration: none;
+    color:#666;
+}
+
+.university_list .breadcrumbs .input-group{
+    margin: 15px 0;
+}
+
 .university_list .reg-header h1{
     font-size: 18px;
     font-weight: bold;

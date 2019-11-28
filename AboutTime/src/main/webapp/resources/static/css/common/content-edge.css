@@ -1,9 +1,8 @@
 .content-box{
 	border: 1px solid #EEE;
 	box-shadow:0 0 3px #EEE;
-	padding-top:10px;
-	padding-bottom:10px;
 	margin-bottom:10px;
+	padding: 10px 15px;
 }
 
 .content-box .reg-header{

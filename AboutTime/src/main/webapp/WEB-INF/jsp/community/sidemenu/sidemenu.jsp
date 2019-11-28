@@ -6,11 +6,12 @@
 	<div class="breadcrumbs">
 		<div class="container">
 			<div class="col-md-6 col-sm-6 col-xs-12">
-				<h2>${title}</h2>
+				<div id="title">
+					<a href="#">${title}</a>
+				</div>
 			</div>
-			<div
-				class="col-md-6 col-sm-6 col-xs-12">
-				<ul class="nav nav-pills">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<ul class="nav nav-pills" style="float:right;">
 					<li role="presentation" class="active"><a href="#">전체</a></li>
 					<li role="presentation"><a href="#">정보</a></li>
 					<li role="presentation"><a href="#">잡담</a></li>
