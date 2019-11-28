@@ -44,9 +44,7 @@
 }
 
 .university_list .headline:hover{
-    animation-name: headline-animation;
-    animation-duration: 1000ms;
-    animation-fill-mode: forwards;
+    background-color: #f4f4f4;
 }
 
 .university_list .reg-header a{
@@ -79,14 +77,5 @@
     to{
         color: #ffffff;
         background-color: rgb(107, 107, 107);
-    }
-}
-
-@keyframes headline-animation{
-    from{
-        background-color: white;
-    }
-    to{
-        background-color: #f4f4f4;
     }
 }

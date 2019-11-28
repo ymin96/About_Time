@@ -11,12 +11,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="/resources/bootstrap/css/kfonts2.css">
+<link rel="stylesheet" href="/resources/note/dist/summernote.css">
 <link rel="stylesheet" href="/resources/static/css/common/layout.css">
 <link rel="stylesheet" href="/resources/static/css/common/header.css">
 <link rel="stylesheet" href="/resources/static/css/common/footer.css">
-<link rel="stylesheet" href="/resources/static/css/common/content-edge.css">
-<link rel="stylesheet" href="/resources/static/css/community/sidemenu.css">
-<link rel="stylesheet" href="/resources/static/css/community/university-main.css">
+<link rel="stylesheet"
+	href="/resources/static/css/common/content-edge.css">
+<link rel="stylesheet"
+	href="/resources/static/css/community/sidemenu.css">
+<link rel="stylesheet"
+	href="/resources/static/css/community/university-main.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <style>
 </style>
 </head>
@@ -27,7 +34,7 @@
 			<tiles:insertAttribute name='header' />
 		</header>
 		<div class="sidemenu">
-			<tiles:insertAttribute name="sidemenu"/>
+			<tiles:insertAttribute name="sidemenu" />
 		</div>
 		<div>
 			<tiles:insertAttribute name='body' />
@@ -35,9 +42,7 @@
 		<footer>
 			<tiles:insertAttribute name='footer' />
 		</footer>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+
 		<script src="/resources/static/js/header.js"></script>
 	</div>
 </body>

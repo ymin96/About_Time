@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div id="title">
-					<a href="#">${title}</a>
+					<a href="/community/${title}">${title}</a>
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
