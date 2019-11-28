@@ -2,9 +2,14 @@
     margin-bottom: 0px;
 }
 
-.sidemenu h2{
+.sidemenu #title{
+    font-size: 30px;
+    margin: 12px 0px;
+}
+
+.sidemenu #title a{
+    text-decoration: none;
     color:#666;
-    margin: 15px 0px;
 }
 
 .sidemenu .breadcrumbs{
