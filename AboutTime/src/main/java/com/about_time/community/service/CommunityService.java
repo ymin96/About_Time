@@ -16,7 +16,8 @@ public class CommunityService {
 
 	@Autowired
 	CommunityMapper communityMapper;
-
+	
+	//모든 대학교 리스트 get
 	public Map<String, List<String>> getAllUniversity() {
 		List<String> locations = communityMapper.getAllLocation();
 		Map<String, List<String>> universityMap = new HashMap<String, List<String>>();
@@ -29,6 +30,7 @@ public class CommunityService {
 		return universityMap;
 	}
 	
+	//학교 이름으로 해당 대학 정보 get
 	public Map<String, List<String>> getUniversityByTitle(String title){
 		List<String> locations = communityMapper.getAllLocation();
 		Map<String, List<String>> universityMap = new HashMap<String, List<String>>();
