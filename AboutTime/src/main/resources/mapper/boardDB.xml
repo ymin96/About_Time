@@ -3,4 +3,9 @@
 
 <mapper namespace="com.about_time.community.mapper.BoardMapper">
 	
+	<insert id="insertBoard" parameterType="com.about_time.community.vo.Board">
+		insert into Board(title,writer,category,contents,university,regDate,updateDate) 
+		values (#{title},#{writer},#{category},#{contents},#{university},now(),now())
+	</insert>
+	
 </mapper>
