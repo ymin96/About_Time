@@ -47,10 +47,10 @@
 							<div class="form-group" style="margin-right: 10px;">
 								<div
 									class="col-md-offset-10 col-md-1 col-sm-offset-10 col-sm-1 col-xs-3 col-xs-offset-6">
-									<button class="btn btn-default">취소</button>
+									<a href="${prev}" class="btn btn-default" id="cancel">취소</a>
 								</div>
 								<div class="col-md-1 col-sm-1 col-xs-3">
-									<button class="btn btn-primary">등록</button>
+									<a class="btn btn-primary" id="register">등록</a>
 								</div>
 							</div>
 						</form>
