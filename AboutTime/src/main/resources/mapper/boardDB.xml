@@ -8,4 +8,12 @@
 		values (#{title},#{writer},#{category},#{contents},#{university},now(),now())
 	</insert>
 	
+	<select id="selectBoardList" resultType="com.about_time.community.vo.Board" parameterType="String">
+		select * from Board where university=#{university} order by updateDate
+	</select>
+	
+	<select id="selectBoardListByCategory" resultType="com.about_time.community.vo.Board" parameterType="String">
+		select * from Board where university=#{university} and category=#{category} order by updateDate
+	</select>
+	
 </mapper>

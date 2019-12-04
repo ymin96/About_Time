@@ -89,4 +89,9 @@ public class MemberService {
 	public String getEncodeUpw(String uid) {
 		return memberMapper.getEncodeUpw(uid);
 	}
+	
+	//ID로 닉네임 추출
+	public String getUnameByUid(String uid) {
+		return memberMapper.getUnameByUid(uid);
+	}
 }

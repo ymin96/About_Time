@@ -7,18 +7,19 @@
 		<div class="container">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<div id="title">
-					<a href="/community/${title}">${title}</a>
+					<a href="/community/${university}">${university}</a>
 				</div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<ul class="nav nav-pills" style="float:right;">
-					<li role="presentation" class="active"><a href="/community/${title}/list">전체</a></li>
-					<li role="presentation"><a href="#">정보</a></li>
-					<li role="presentation"><a href="#">잡담</a></li>
-					<li role="presentation"><a href="#">유머</a></li>
-					<li role="presentation"><a href="#">질문</a></li>
+					<li role="presentation" id="all"><a href="/community/${university}/list">전체</a></li>
+					<li role="presentation" id="info"><a href="/community/${university}/list?cate=info">정보</a></li>
+					<li role="presentation" id="other"><a href="/community/${university}/list?cate=other">잡담</a></li>
+					<li role="presentation" id="humor"><a href="/community/${university}/list?cate=humer">유머</a></li>
+					<li role="presentation" id="quest"><a href="/community/${university}/list?cate=quest">질문</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 </body>
+<script src="/resources/static/js/community/sideMenu.js"></script>

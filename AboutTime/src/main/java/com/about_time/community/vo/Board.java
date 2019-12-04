@@ -7,14 +7,14 @@ import lombok.Data;
 
 @Data
 public class Board {
-	private int num;
-	private String title;
-	private String contents;
-	private String university;
-	private Date regDate;
-	private Date updateDate;
-	private String writer;
-	private int hits;
-	private String category;
-	private int commentNum;
+	private int num;	//게시글 번호
+	private String title;	//제목
+	private String contents;	//내용
+	private String university;	//학교
+	private Date regDate;	//글 작성 시간
+	private Date updateDate;	//글 최종 수정 시간
+	private String writer;	//작성자
+	private int hits;	//조회수
+	private String category;	//분류
+	private int commentNum;	//댓글수 
 }

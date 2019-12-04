@@ -46,4 +46,8 @@
     <update id="updateMemberUpw" parameterType="java.util.Map">
     	update Member set upw = #{upw} where uid = #{uid}
     </update>
+    
+    <select id="getUnameByUid" parameterType="String" resultType="String">
+    	select uname from member where uid = #{uid}
+    </select>
 </mapper>

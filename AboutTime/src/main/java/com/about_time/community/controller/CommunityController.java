@@ -34,9 +34,9 @@ public class CommunityController {
 		return "community_universityList";
 	}
 	
-	@RequestMapping(value = "/community/{title}")
-	public String UniversityMainPage(@PathVariable("title")String title, Model model) {
-		model.addAttribute("title", title);
+	@RequestMapping(value = "/community/{university}")
+	public String UniversityMainPage(@PathVariable("university")String university, Model model) {
+		model.addAttribute("university", university);
 		return "universityMain";
 	}
 }

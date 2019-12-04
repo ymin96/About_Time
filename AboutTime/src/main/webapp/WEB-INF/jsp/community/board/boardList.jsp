@@ -6,23 +6,35 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<table class="table">
+				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>번호</th>
+							<th>No</th>
 							<th>분류</th>
 							<th>제목</th>
 							<th>작성자</th>
-							<th>추천</th>
+							<th>댓글</th>
 							<th>조회</th>
 						</tr>
 					</thead>
+					<tbody>
+						<c:forEach var="board" items="${boardList}" varStatus="status">
+							<tr>
+								<th>${status.count}</th>
+								<td>${board.category}</td>
+								<td><a href="/community/${university}/read/${board.num}">${board.title}</a></td>
+								<td>${board.writer}</td>
+								<td>${board.commentNum}</td>
+								<td>${board.hits}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-2 col-sm-2 col-xs-3">
-				<a href="/community/${title}/edit" class="btn btn-primary">글쓰기</a>
+				<a href="/community/${university}/edit" class="btn btn-primary">글쓰기</a>
 			</div>
 			<div
 				class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-9">
@@ -46,20 +58,79 @@
 			</div>
 			<div
 				class="col-md-4 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-12">
-				<ul class="pagination" style="margin: 0; float: right;">
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">&laquo;</span>
-					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">&raquo;</span>
-					</a></li>
-				</ul>
+				<!-- pagination{s} -->
+				<div id="paginationBox">
+					<ul class="pagination" style="margin: 0; float: right;">
+						<c:if test="${pagination.prev}">
+							<li class="page-item"><a class="page-link" href="#"
+								onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+						</c:if>
+						<c:forEach begin="${pagination.startPage}"
+							end="${pagination.endPage}" var="idx">
+							<li
+								class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+								class="page-link" href="#"
+								onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+									${idx} </a></li>
+						</c:forEach>
+						<c:if test="${pagination.next}">
+							<li class="page-item"><a class="page-link" href="#"
+								onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<!-- pagination{e} -->
 			</div>
 		</div>
 	</div>
 </body>
+<script>
+//이전 버튼 이벤트
+function fn_prev(page, range, rangeSize) {
+    var page = ((range - 2) * rangeSize) + 1;
+    var range = range - 1;
+
+    var url = "/community/${university}/list";
+
+    url = url + "?page=" + page;
+    url = url + "&range=" + range;
+    var parameters = divideParameter();
+    for(var i=0 ; i<parameters.length; i++){
+        url = url + "&" + parameters[i];
+    }
+    
+    location.href = url;
+}
+
+//페이지 번호 클릭
+function fn_pagination(page, range, rangeSize, searchType, keyword) {
+    var url = "/community/${university}/list";
+
+    url = url + "?page=" + page;
+    url = url + "&range=" + range;
+    var parameters = divideParameter();
+    for(var i=0 ; i<parameters.length; i++){
+        url = url + "&" + parameters[i];
+    }
+
+    location.href = url;
+}
+
+//다음 버튼 이벤트
+function fn_next(page, range, rangeSize) {
+    var page = parseInt((range * rangeSize)) + 1;
+    var range = parseInt(range) + 1;
+
+    var url = "/community/${university}/list";
+
+    url = url + "?page=" + page;
+    url = url + "&range=" + range;
+    var parameters = divideParameter();
+    for(var i=0 ; i<parameters.length; i++){
+        url = url + "&" + parameters[i];
+    }
+
+    location.href = url;
+}
+
+</script>

@@ -24,7 +24,7 @@
 									class="col-sm-1 col-md-1 col-xs-4 control-label">학교</label>
 								<div class="col-sm-4 col-md-4 col-xs-12">
 									<input type="text" class="form-control" id="inputUniversity"
-										value="${title}" readonly>
+										value="${university}" readonly>
 								</div>
 							</div>
 							<div class="form-group">
