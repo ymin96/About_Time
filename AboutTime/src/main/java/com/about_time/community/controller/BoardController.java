@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.about_time.common.Pagination;
 import com.about_time.community.service.BoardService;
@@ -87,7 +89,8 @@ public class BoardController {
 		model.addAttribute("prev", request.getHeader("Referer"));
 		return "boardEdit";
 	}
-
+	
+	//게시글 등록
 	@RequestMapping(value = "/community/{university}/edit", method = RequestMethod.POST)
 	public @ResponseBody void boardEdit_post(@RequestBody Board board, @PathVariable("university") String university,
 			Principal principal) {
@@ -95,5 +98,14 @@ public class BoardController {
 		String uid = principal.getName();
 		board.setWriter(memberService.getUnameByUid(uid));
 		boardService.insertBoard(board);
+	}
+
+	@RequestMapping(value = "/image", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<?> handleFileUpload(@RequestParam("file")MultipartFile file){
+		try {
+			return null;
+		}catch(Exception e) {
+			return null;
+		}
 	}
 }

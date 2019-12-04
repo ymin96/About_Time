@@ -5,9 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.about_time.community.mapper.BoardMapper;
+import com.about_time.community.util.UploadFileUtils;
 import com.about_time.community.vo.Board;
+import com.about_time.community.vo.UploadFile;
 
 @Service
 public class BoardService {
@@ -28,4 +31,5 @@ public class BoardService {
 		ArrayList<Board> boardList = (ArrayList<Board>) boardMapper.selectBoardListByCategory(university, category);
 		return boardList;
 	}
+	
 }
