@@ -15,7 +15,7 @@
 					<li role="presentation" id="all"><a href="/community/${university}/list">전체</a></li>
 					<li role="presentation" id="info"><a href="/community/${university}/list?cate=info">정보</a></li>
 					<li role="presentation" id="other"><a href="/community/${university}/list?cate=other">잡담</a></li>
-					<li role="presentation" id="humor"><a href="/community/${university}/list?cate=humer">유머</a></li>
+					<li role="presentation" id="humor"><a href="/community/${university}/list?cate=humor">유머</a></li>
 					<li role="presentation" id="quest"><a href="/community/${university}/list?cate=quest">질문</a></li>
 				</ul>
 			</div>

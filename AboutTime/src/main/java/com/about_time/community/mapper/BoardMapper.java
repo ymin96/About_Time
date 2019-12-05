@@ -1,6 +1,7 @@
 package com.about_time.community.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -12,6 +13,7 @@ import com.about_time.community.vo.Board;
 @Repository
 public interface BoardMapper {
 	public void insertBoard(Board board);
-	List<Board> selectBoardList(String university);
-	List<Board> selectBoardListByCategory(@Param("university")String university, @Param("category")String category);
+	public List<Board> selectBoardList(String university);
+	public List<Board> selectBoardListByCategory(@Param("university")String university, @Param("category")String category);
+	public Board selectBoard(Map<String,Object> map);
 }

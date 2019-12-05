@@ -51,7 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.csrf().ignoringAntMatchers("/timetable/**")
 				.ignoringAntMatchers("/register/**")
 				.ignoringAntMatchers("/member/**")
-				.ignoringAntMatchers("/community/**");
+				.ignoringAntMatchers("/community/**")
+				.ignoringAntMatchers("/image");
 	}
 	
 	@Override

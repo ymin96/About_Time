@@ -16,4 +16,8 @@
 		select * from Board where university=#{university} and category=#{category} order by updateDate
 	</select>
 	
+	<select id="selectBoard" resultType="com.about_time.community.vo.Board" parameterType="HashMap">
+		select * from Board where university=#{university} and num=#{num}
+	</select>
+	
 </mapper>

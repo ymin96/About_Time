@@ -8,4 +8,8 @@ $(document).ready(function () {
         $("#carte").removeClass("disable");
         $("#carte").addClass("target");
     }
+    else if(target === "community"){
+    	$("#community").removeClass("disable");
+        $("#community").addClass("target");
+    }
 });

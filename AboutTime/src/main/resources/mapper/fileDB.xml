@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.about_time.common.mapper.FileMapper">
+	
+	<insert id="insertImage" parameterType="com.about_time.community.vo.UploadFile">
+		insert into UploadFile(fileName,saveFileName,filePath,contentType,size,regDate) 
+		values(#{fileName},#{saveFileName},#{filePath},#{contentType},#{size},#{regDate})
+	</insert>
+	
+	<select id="selectByName" parameterType="String" resultType="com.about_time.community.vo.UploadFile">
+		select * from UploadFile where saveFileName=#{saveFileName}
+	</select>
+	
+	<select id="selectById" parameterType="Integer" resultType="com.about_time.community.vo.UploadFile">
+		select * from UploadFile where id = #{fileId}
+	</select>
+	
+</mapper>

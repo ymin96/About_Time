@@ -1,7 +1,9 @@
 package com.about_time.community.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,13 @@ public class BoardService {
 	public ArrayList<Board> selectBoardList(String university, String category){
 		ArrayList<Board> boardList = (ArrayList<Board>) boardMapper.selectBoardListByCategory(university, category);
 		return boardList;
+	}
+	
+	public Board selectBoard(String university, int num) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("university", university);
+		map.put("num", num);
+		return boardMapper.selectBoard(map);
 	}
 	
 }

@@ -21,6 +21,8 @@
 	href="/resources/static/css/community/sidemenu.css">
 <link rel="stylesheet"
 	href="/resources/static/css/community/university-main.css">
+<link rel="stylesheet"
+	href="/resource/static/css/community/board-view.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>

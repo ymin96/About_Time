@@ -48,6 +48,6 @@
     </update>
     
     <select id="getUnameByUid" parameterType="String" resultType="String">
-    	select uname from member where uid = #{uid}
+    	select uname from Member where uid = #{uid}
     </select>
 </mapper>

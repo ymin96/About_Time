@@ -36,7 +36,7 @@ public class UploadFileUtils {
 		
 		String originalfileName = file.getOriginalFilename();
 		String fileExtension = getExtension(originalfileName);
-		String saveFileName = genId + "," + fileExtension;
+		String saveFileName = genId + "." + fileExtension;
 		
 		String savePath = calcPath(uploadPath);
 		

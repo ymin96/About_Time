@@ -1,0 +1,28 @@
+.board-view .board-title h3{
+    margin: 15px 0;
+}
+
+.board-view .comment-box{
+    margin-bottom: 15px;
+}
+
+.board-view .comment-box .comment-header{
+    border: 1px solid rgb(211, 211, 211);
+    padding-left: 15px;
+    background-color: #EEE;
+    color: #555555;
+}
+
+.board-view .comment{
+    padding: 15px 15px 5px 15px;
+    border: 1px solid rgb(211, 211, 211);
+}
+
+.board-view .comment .comment-sub{
+    margin: 10px 0 0 0;
+    font-size: 12px;
+}
+
+.board-view .comment .comment-sub span{
+    color: rgb(156, 156, 156);
+}

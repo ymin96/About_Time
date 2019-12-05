@@ -7,6 +7,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +24,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.about_time.common.Pagination;
 import com.about_time.community.service.BoardService;
 import com.about_time.community.service.CommunityService;
+import com.about_time.community.service.ImageService;
+import com.about_time.community.util.MediaUtils;
 import com.about_time.community.vo.Board;
+import com.about_time.community.vo.UploadFile;
 import com.about_time.member.service.MemberService;
 
 @Controller
@@ -35,6 +41,9 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardService;
+	
+	@Autowired
+	ImageService imageService;
 	
 	//게시글 리스트 페이지
 	@RequestMapping(value = "/community/{university}/list", method = RequestMethod.GET)
@@ -99,13 +108,47 @@ public class BoardController {
 		board.setWriter(memberService.getUnameByUid(uid));
 		boardService.insertBoard(board);
 	}
-
+	
+	//이미지 등록
 	@RequestMapping(value = "/image", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<?> handleFileUpload(@RequestParam("file")MultipartFile file){
 		try {
-			return null;
+			UploadFile uploadFile = imageService.store(file);
+			return ResponseEntity.ok().body("/image/"+uploadFile.getId());
 		}catch(Exception e) {
-			return null;
+			e.printStackTrace();
+			return ResponseEntity.badRequest().build();
 		}
+	}
+	
+	//이미지 디스크에서 추출
+	@RequestMapping(value = "/image/{fileId}", method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<?> saveFile(@PathVariable("fileId")int fileId){
+		try {
+			UploadFile uploadedFile = imageService.load(fileId);
+			HttpHeaders headers = new HttpHeaders();
+			
+			Resource resource = imageService.loadAsResource(uploadedFile.getSaveFileName());
+			String fileName = uploadedFile.getFileName();
+			headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\"" + new String(fileName.getBytes("UTF-8"),"ISO-8859-1")+"\"");
+			
+			if(MediaUtils.containsImageMediaType(uploadedFile.getContentType())) {
+				headers.setContentType(MediaType.valueOf(uploadedFile.getContentType()));
+			}else {
+				headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+			}
+			
+			return ResponseEntity.ok().headers(headers).body(resource);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	
+	@RequestMapping(value = "/community/{university}/read/{num}", method = RequestMethod.GET)
+	public String getBoard(@PathVariable("num")int num,@PathVariable("university")String university,Model model) {
+		Board board = boardService.selectBoard(university, num);
+		model.addAttribute("board", board);
+		return "boardView";
 	}
 }

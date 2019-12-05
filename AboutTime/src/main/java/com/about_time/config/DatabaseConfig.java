@@ -10,25 +10,26 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
- 
+
 @Configuration
-@MapperScan({"com.about_time.member.mapper","com.about_time.carte.mapper","com.about_time.community.mapper","com.about_time.board.mapper"})
+@MapperScan({ "com.about_time.member.mapper", "com.about_time.carte.mapper", "com.about_time.community.mapper",
+		"com.about_time.board.mapper", "com.about_time.common.mapper" })
 @EnableTransactionManagement
 public class DatabaseConfig {
- 
-    @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-        final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource);
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sessionFactory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
-        return sessionFactory.getObject();
-    }
-    
-    @Bean
-    public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) throws Exception {
-      final SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory);
-      return sqlSessionTemplate;
-    }
- 
+
+	@Bean
+	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
+		final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
+		sessionFactory.setDataSource(dataSource);
+		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+		sessionFactory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
+		return sessionFactory.getObject();
+	}
+
+	@Bean
+	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) throws Exception {
+		final SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory);
+		return sqlSessionTemplate;
+	}
+
 }
