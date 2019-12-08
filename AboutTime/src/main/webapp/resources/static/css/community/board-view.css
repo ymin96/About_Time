@@ -26,3 +26,43 @@
 .board-view .comment .comment-sub span{
     color: rgb(156, 156, 156);
 }
+
+.board-view .comment .comment-main button{
+    font-size: 12px;
+    color: #337ab7;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    margin-left: 5px;
+    background: none;
+}
+
+.board-view .recomment .target{
+    color: rgb(156, 156, 156);
+    font-size: 12px;
+}
+
+.board-view .recomment {
+    background-color: #EEE;
+    padding: 5px 15px 5px 30px;
+}
+
+.board-view .recommentEdit{
+    margin: 5px 0px;
+}
+
+.board-view .recommentEdit a{
+    text-decoration: none;
+    color: #555;
+}
+
+.board-view .commentEdit{
+    margin-bottom: 20px;
+}
+
+.board-view .commentEdit a{
+    text-decoration: none;
+    color:white;
+}
