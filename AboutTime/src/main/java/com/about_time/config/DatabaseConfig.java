@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @MapperScan({ "com.about_time.member.mapper", "com.about_time.carte.mapper", "com.about_time.community.mapper",
-		"com.about_time.board.mapper", "com.about_time.common.mapper" })
+		"com.about_time.board.mapper", "com.about_time.common.mapper"})
 @EnableTransactionManagement
 public class DatabaseConfig {
 

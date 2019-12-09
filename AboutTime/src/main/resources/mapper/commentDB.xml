@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.about_time.community.mapper.CommentMapper">
+	
+	<insert id="insertComment" parameterType="com.about_time.community.vo.Comment">
+		insert BoardComment(board_num,writer,contents,grp) 
+		values (#{board_num},#{writer},#{contents},
+		(select if(isnull(max(grp)),1,max(grp)+1) as grp from about_time.BoardComment ALIAS_FOR_SUBQUERY where board_num = #{board_num}))
+	</insert>
+	
+	<insert id="insertRecomment" parameterType="com.about_time.community.vo.Comment">
+		insert BoardComment(board_num,writer,contents,target,grp,seq) 
+		values (#{board_num},#{writer},#{contents},${target},
+		(select if(isnull(max(grp)),1,max(grp)+1) as grp from BoardComment ALIAS_FOR_SUBQUERY where board_num = #{board_num}),
+		(select if(isnull(max(seq)),1,max(seq)+1) as seq from BoardComment ALIAS_FOR_SUBQUERY where board_num = #{board_num} and grp = #{grp}));
+	</insert>
+	
+	<select id="selectCommentList" parameterType="Integer" resultType="com.about_time.community.vo.Comment">
+		select * from BoardComment where board_num=#{board_num} order by grp asc, seq asc
+	</select>
+	
+</mapper>

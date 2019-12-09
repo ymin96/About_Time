@@ -3,6 +3,7 @@ package com.about_time.community.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,10 +24,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.about_time.common.Pagination;
 import com.about_time.community.service.BoardService;
+import com.about_time.community.service.CommentService;
 import com.about_time.community.service.CommunityService;
 import com.about_time.community.service.ImageService;
 import com.about_time.community.util.MediaUtils;
 import com.about_time.community.vo.Board;
+import com.about_time.community.vo.Comment;
 import com.about_time.community.vo.UploadFile;
 import com.about_time.member.service.MemberService;
 
@@ -44,6 +47,9 @@ public class BoardController {
 	
 	@Autowired
 	ImageService imageService;
+	
+	@Autowired
+	CommentService commentService;
 	
 	//게시글 리스트 페이지
 	@RequestMapping(value = "/community/{university}/list", method = RequestMethod.GET)
@@ -145,10 +151,58 @@ public class BoardController {
 		}
 	}
 	
+	//게시물 확인
 	@RequestMapping(value = "/community/{university}/read/{num}", method = RequestMethod.GET)
 	public String getBoard(@PathVariable("num")int num,@PathVariable("university")String university,Model model) {
 		Board board = boardService.selectBoard(university, num);
+		List<Comment> commentList = commentService.selectCommentList(num);
 		model.addAttribute("board", board);
+		model.addAttribute("commentList", commentList);
 		return "boardView";
+	}
+	
+	//댓글 등록
+	@RequestMapping(value = "/community/board/comment",method = RequestMethod.POST)
+	public @ResponseBody List<Comment> insertComment(@RequestBody Map<String,Object> param,Principal principal){
+		String contents = (String)param.get("contents");
+		int board_num = Integer.parseInt((String) param.get("num"));
+		String writer = memberService.getUnameByUid(principal.getName());
+		//댓글 객체 생성
+		Comment comment = new Comment();
+		comment.setBoard_num(board_num);
+		comment.setContents(contents);
+		comment.setWriter(writer);
+		
+		//댓글 DB에 저장
+		commentService.insertComment(comment);
+		
+		//지정된 게시물의 댓글 목록 가져오기
+		List<Comment> commentList = commentService.selectCommentList(board_num);
+		
+		return commentList;
+	}
+	
+	//대댓글 등록
+	@RequestMapping(value = "/community/board/recomment", method = RequestMethod.POST)
+	public @ResponseBody List<Comment> insertRecomment(@RequestBody Map<String, Object> param, Principal principal){
+		String contents = (String)param.get("contents");
+		int board_num = Integer.parseInt((String) param.get("num"));
+		String writer = memberService.getUnameByUid(principal.getName());
+		int grp = (int)param.get("grp");
+		String target = (String)param.get("target");
+		//댓글 객체 생성
+		Comment comment = new Comment();
+		comment.setBoard_num(board_num);
+		comment.setContents(contents);
+		comment.setWriter(writer);
+		comment.setGrp(grp);
+		comment.setTarget(target);
+		//댓글 DB에 저장
+		commentService.insertRecomment(comment);
+		
+		//지정된 게시물의 댓글 목록 가져오기
+		List<Comment> commentList = commentService.selectCommentList(board_num);
+		
+		return commentList;
 	}
 }
