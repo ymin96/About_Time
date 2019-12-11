@@ -11,8 +11,7 @@
 	
 	<insert id="insertRecomment" parameterType="com.about_time.community.vo.Comment">
 		insert BoardComment(board_num,writer,contents,target,grp,seq) 
-		values (#{board_num},#{writer},#{contents},${target},
-		(select if(isnull(max(grp)),1,max(grp)+1) as grp from BoardComment ALIAS_FOR_SUBQUERY where board_num = #{board_num}),
+		values (#{board_num},#{writer},#{contents},#{target},#{grp},
 		(select if(isnull(max(seq)),1,max(seq)+1) as seq from BoardComment ALIAS_FOR_SUBQUERY where board_num = #{board_num} and grp = #{grp}));
 	</insert>
 	

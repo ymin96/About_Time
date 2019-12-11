@@ -34,20 +34,6 @@
 						<div class="comment-header">
 							<h5 style="font-weight: bold;">댓글(${fn:length(commentList)})</h5>
 						</div>
-						<c:forEach var="comment" items="${commentList}">
-							<div class="comment" target="${comment.target}">
-								<p class="comment-main">
-									${comment.contents}
-									<button onclick="recomment(this, ${comment.grp},${comment.writer})">
-										<span class="glyphicon glyphicon-share-alt recomment-button"
-											aria-hidden="true">답글</span>
-									</button>
-								</p>
-								<p class="comment-sub">
-									${comment.writer}[ <span>${comment.regDate}</span> ]
-								</p>
-							</div>
-						</c:forEach>
 					</div>
 					<div class="commentEdit" style="margin-bottom: 20px;">
 						<div class="input-group">
