@@ -16,4 +16,5 @@ public interface BoardMapper {
 	public List<Board> selectBoardList(String university);
 	public List<Board> selectBoardListByCategory(@Param("university")String university, @Param("category")String category);
 	public Board selectBoard(Map<String,Object> map);
+	public void deleteBoard(Map<String,Object> map);
 }

@@ -4,20 +4,23 @@
 <mapper namespace="com.about_time.community.mapper.BoardMapper">
 	
 	<insert id="insertBoard" parameterType="com.about_time.community.vo.Board">
-		insert into Board(title,writer,category,contents,university,regDate,updateDate) 
-		values (#{title},#{writer},#{category},#{contents},#{university},now(),now())
+		insert into Board(title,writer,uid,category,contents,university,regDate,updateDate) 
+		values (#{title},#{writer},#{uid},#{category},#{contents},#{university},now(),now())
 	</insert>
 	
 	<select id="selectBoardList" resultType="com.about_time.community.vo.Board" parameterType="String">
-		select * from Board where university=#{university} order by updateDate
+		select * from Board where university=#{university} order by updateDate DESC
 	</select>
 	
 	<select id="selectBoardListByCategory" resultType="com.about_time.community.vo.Board" parameterType="String">
-		select * from Board where university=#{university} and category=#{category} order by updateDate
+		select * from Board where university=#{university} and category=#{category} order by updateDate DESC
 	</select>
 	
 	<select id="selectBoard" resultType="com.about_time.community.vo.Board" parameterType="HashMap">
 		select * from Board where university=#{university} and num=#{num}
 	</select>
 	
+	<delete id="deleteBoard" parameterType="HashMap">
+		delete from Board where university=#{university} and num=#{num}
+	</delete>
 </mapper>

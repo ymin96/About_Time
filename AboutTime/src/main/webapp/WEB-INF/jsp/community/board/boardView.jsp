@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <body>
 	<div class="board-view">
@@ -22,13 +22,24 @@
 											<span class="glyphicon glyphicon-user" aria-hidden="true">${board.writer}</span>
 										</p>
 										<p>
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true">${board.updateDate}</span>
+											<span class="glyphicon glyphicon-calendar" aria-hidden="true">${board.simpleUpdateDate}</span>
 										</p>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="contents">${board.contents}</div>
+						<c:if test="${ID == userID}">
+							<div class="row" style="margin:0;">
+								<div
+									class="col-md-offset-10 col-md-1 col-sm-offset-10 col-sm-1 col-xs-3 col-xs-offset-6">
+									<a href="#" class="btn btn-default" id="update">수정</a>
+								</div>
+								<div class="col-md-1 col-sm-1 col-xs-3">
+									<a href="/community/${university}/delete/${board.num}" class="btn btn-primary" id="remove">삭제</a>
+								</div>
+							</div>
+						</c:if>
 					</div>
 					<div class="comment-box">
 						<div class="comment-header">

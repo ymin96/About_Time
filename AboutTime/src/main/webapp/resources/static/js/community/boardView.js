@@ -79,7 +79,7 @@ function insertHtml(comment) {
         '</button>' +
         '</p>' +
         '<p class="comment-sub">' +
-        comment.writer + '[ <span>' + comment.regDate + '</span> ]' +
+        comment.writer + '[ <span>' + comment.simpleRegDate + '</span> ]' +
         '</p>' +
         '</div>';
     $(".comment-box").append(inHtml);

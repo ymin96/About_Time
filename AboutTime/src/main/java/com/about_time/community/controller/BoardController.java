@@ -1,5 +1,7 @@
 package com.about_time.community.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tiles.autotag.core.runtime.annotation.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -113,6 +116,7 @@ public class BoardController {
 		board.setUniversity(university);
 		String uid = principal.getName();
 		board.setWriter(memberService.getUnameByUid(uid));
+		board.setUid(uid);
 		boardService.insertBoard(board);
 	}
 
@@ -155,17 +159,18 @@ public class BoardController {
 
 	// 게시물 확인
 	@RequestMapping(value = "/community/{university}/read/{num}", method = RequestMethod.GET)
-	public String getBoard(@PathVariable("num") int num, @PathVariable("university") String university, Model model) {
+	public String getBoard(@PathVariable("num") int num, @PathVariable("university") String university, Model model,
+			Principal principal, HttpServletRequest request) {
 		Board board = boardService.selectBoard(university, num);
-		List<Comment> commentList = commentService.selectCommentList(num);
 		model.addAttribute("board", board);
-		model.addAttribute("commentList", commentList);
+		model.addAttribute("university", university);
+		model.addAttribute("userID", principal.getName());
 		return "boardView";
 	}
 
 	// 댓글 확인
 	@RequestMapping(value = "/community/board/comment/{num}", method = RequestMethod.GET)
-	public @ResponseBody List<Comment> getComment(@PathVariable("num")int num) {
+	public @ResponseBody List<Comment> getComment(@PathVariable("num") int num) {
 		// 지정된 게시물의 댓글 목록 가져오기
 		List<Comment> commentList = commentService.selectCommentList(num);
 
@@ -215,5 +220,25 @@ public class BoardController {
 		List<Comment> commentList = commentService.selectCommentList(board_num);
 
 		return commentList;
+	}
+
+	// 게시글 삭제
+	@RequestMapping(value = "/community/{university}/delete/{num}", method = RequestMethod.GET)
+	public String deleteBoard(Model model, @PathVariable("university") String university, @PathVariable("num") int num,
+			Principal principal) {
+		Board board = boardService.selectBoard(university, num);
+		// 게시글의 작성자와 로그인 사용자가 다르다면 권한 제한 페이지로 이동
+		if (!board.getUid().equals(principal.getName()))
+			return "authority";
+		// DB에서 게시글 삭제
+		boardService.deleteBoard(university, num);
+		
+		try {
+			university = URLEncoder.encode(university, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/community/"+university+"/list";
 	}
 }

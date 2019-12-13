@@ -41,4 +41,10 @@ public class BoardService {
 		return boardMapper.selectBoard(map);
 	}
 	
+	public void deleteBoard(String university, int num) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("university", university);
+		map.put("num", num);
+		boardMapper.deleteBoard(map);
+	}
 }

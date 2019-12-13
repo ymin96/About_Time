@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <body>
 	<div class="container">
@@ -20,7 +21,7 @@
 					<tbody>
 						<c:forEach var="board" items="${boardList}" varStatus="status">
 							<tr>
-								<th>${status.count}</th>
+								<th>${fn:length(boardList) - status.count + 1}</th>
 								<td>${board.category}</td>
 								<td><a href="/community/${university}/read/${board.num}">${board.title}</a></td>
 								<td>${board.writer}</td>
