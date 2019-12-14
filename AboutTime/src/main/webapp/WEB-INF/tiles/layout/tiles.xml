@@ -160,4 +160,8 @@
 	<definition name="boardView" extends="community-layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/community/board/boardView.jsp"/>	
 	</definition>
+	
+	<definition name="boardUpdate" extends="community-layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/community/board/boardUpdate.jsp"/>	
+	</definition>
 </tiles-definitions>

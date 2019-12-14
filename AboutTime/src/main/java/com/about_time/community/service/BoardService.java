@@ -47,4 +47,8 @@ public class BoardService {
 		map.put("num", num);
 		boardMapper.deleteBoard(map);
 	}
+	
+	public void updateBoard(Map<String,Object> map) {
+		boardMapper.updateBoard(map);
+	}
 }

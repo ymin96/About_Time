@@ -33,7 +33,7 @@
 							<div class="row" style="margin:0;">
 								<div
 									class="col-md-offset-10 col-md-1 col-sm-offset-10 col-sm-1 col-xs-3 col-xs-offset-6">
-									<a href="#" class="btn btn-default" id="update">수정</a>
+									<a href="/community/${university}/update/${board.num}" class="btn btn-default" id="update">수정</a>
 								</div>
 								<div class="col-md-1 col-sm-1 col-xs-3">
 									<a href="/community/${university}/delete/${board.num}" class="btn btn-primary" id="remove">삭제</a>

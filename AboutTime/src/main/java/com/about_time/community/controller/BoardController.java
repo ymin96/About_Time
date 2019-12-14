@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -242,5 +243,30 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		return "redirect:/community/"+university+"/list";
+	}
+	
+	@RequestMapping(value = "/community/{university}/update/{num}", method = RequestMethod.GET)
+	public String updateBoard_get(Model model, @PathVariable("university") String university, @PathVariable("num") int num,
+			Principal principal, HttpServletRequest request) {
+		Board board = boardService.selectBoard(university, num);
+		// 게시글의 작성자와 로그인 사용자가 다르거나 로그인 한 상태가 아니라면 권한 제한 페이지로 이동
+		if(principal == null || !board.getUid().equals(principal.getName()))
+			return "authorityError";
+		
+		model.addAttribute("board", board);
+		model.addAttribute("prev", request.getHeader("Referer"));
+		return "boardUpdate";
+	}
+	
+	@RequestMapping(value = "/community/{university}/update/{num}", method = RequestMethod.POST)
+	public @ResponseBody void updateBoard_post(@RequestBody Board board, @PathVariable("university") String university, @PathVariable("num") int num) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("title", board.getTitle());
+		map.put("category", board.getCategory());
+		map.put("contents", board.getContents());
+		map.put("num", num);
+		map.put("university", university);
+		
+		boardService.updateBoard(map);
 	}
 }

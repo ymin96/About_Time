@@ -23,4 +23,10 @@
 	<delete id="deleteBoard" parameterType="HashMap">
 		delete from Board where university=#{university} and num=#{num}
 	</delete>
+	
+	<update id="updateBoard" parameterType="HashMap">
+		update Board 
+		set title=#{title}, category=#{category}, contents=#{contents}, updateDate=now() 
+		where university=#{university} and num=#{num}
+	</update>
 </mapper>
