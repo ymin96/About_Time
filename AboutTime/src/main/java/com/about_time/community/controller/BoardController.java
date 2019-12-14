@@ -164,7 +164,9 @@ public class BoardController {
 		Board board = boardService.selectBoard(university, num);
 		model.addAttribute("board", board);
 		model.addAttribute("university", university);
-		model.addAttribute("userID", principal.getName());
+		//사용자가 로그인 한 상태라면 ID를 보내줌
+		if(principal != null)
+			model.addAttribute("userID", principal.getName());
 		return "boardView";
 	}
 
@@ -227,9 +229,9 @@ public class BoardController {
 	public String deleteBoard(Model model, @PathVariable("university") String university, @PathVariable("num") int num,
 			Principal principal) {
 		Board board = boardService.selectBoard(university, num);
-		// 게시글의 작성자와 로그인 사용자가 다르다면 권한 제한 페이지로 이동
-		if (!board.getUid().equals(principal.getName()))
-			return "authority";
+		// 게시글의 작성자와 로그인 사용자가 다르거나 로그인 한 상태가 아니라면 권한 제한 페이지로 이동
+		if (principal == null || !board.getUid().equals(principal.getName()))
+			return "authorityError";
 		// DB에서 게시글 삭제
 		boardService.deleteBoard(university, num);
 		

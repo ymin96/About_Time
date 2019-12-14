@@ -29,7 +29,7 @@
 							</div>
 						</div>
 						<div class="contents">${board.contents}</div>
-						<c:if test="${ID == userID}">
+						<c:if test="${board.uid == userID}">
 							<div class="row" style="margin:0;">
 								<div
 									class="col-md-offset-10 col-md-1 col-sm-offset-10 col-sm-1 col-xs-3 col-xs-offset-6">

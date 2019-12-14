@@ -23,7 +23,7 @@ public class Board {
 	
 	public void setUpdateDate(Date date) {
 		this.updateDate = date;
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd(hh:mm:ss a)");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd(hh:mm:ss)");
 		this.simpleUpdateDate = format.format(date);
 	}
 }
