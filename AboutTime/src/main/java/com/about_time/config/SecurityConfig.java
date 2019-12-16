@@ -52,7 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.ignoringAntMatchers("/register/**")
 				.ignoringAntMatchers("/member/**")
 				.ignoringAntMatchers("/community/**")
-				.ignoringAntMatchers("/image");
+				.ignoringAntMatchers("/image")
+				.ignoringAntMatchers("/loginCheck");
 	}
 	
 	@Override
