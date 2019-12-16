@@ -132,11 +132,13 @@ public class MemberController {
 		return msg;
 	}
 	
+	//회원 비밀번호 수정 페이지 
 	@RequestMapping(value = "/member/modifyPW", method = RequestMethod.GET)
 	public String modifyPW_get() {
 		return "modifyPW";
 	}
 	
+	//회원 비밀번호 수정 처리
 	@RequestMapping(value = "/member/modifyPW", method = RequestMethod.POST)
 	public @ResponseBody Map<String,String> modifyPW_post(@RequestBody Map<String,String> map, Principal principal) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
