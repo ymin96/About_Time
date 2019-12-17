@@ -9,7 +9,10 @@
 	</insert>
 	
 	<select id="selectBoardList" resultType="com.about_time.community.vo.Board" parameterType="String">
-		select * from Board where university=#{university} order by updateDate DESC
+		select * 
+		from (select * from Board where university=#{university}) as b 
+		left join (select board_num,count(*) as commentNum from BoardComment group by board_num) as c
+		on b.num = c.board_num order by updateDate DESC;
 	</select>
 	
 	<select id="selectBoardListByCategory" resultType="com.about_time.community.vo.Board" parameterType="String">
@@ -17,7 +20,9 @@
 	</select>
 	
 	<select id="selectBoard" resultType="com.about_time.community.vo.Board" parameterType="HashMap">
-		select * from Board where university=#{university} and num=#{num}
+		select * ,(select count(*) from BoardComment where board_num = #{num}) as commentNum
+		from Board 
+		where university=#{university} and num=#{num}
 	</select>
 	
 	<delete id="deleteBoard" parameterType="HashMap">
