@@ -18,4 +18,5 @@ public interface BoardMapper {
 	public Board selectBoard(Map<String,Object> map);
 	public void deleteBoard(Map<String,Object> map);
 	public void updateBoard(Map<String,Object> map);
+	public int getBoardCount(Map<String,Object> map);
 }

@@ -29,17 +29,26 @@
 							</div>
 						</div>
 						<div class="contents">${board.contents}</div>
-						<c:if test="${board.uid == userID}">
-							<div class="row" style="margin:0;">
-								<div
-									class="col-md-offset-10 col-md-1 col-sm-offset-10 col-sm-1 col-xs-3 col-xs-offset-6">
-									<a href="/community/${university}/update/${board.num}" class="btn btn-default" id="update">수정</a>
-								</div>
-								<div class="col-md-1 col-sm-1 col-xs-3">
-									<a href="/community/${university}/delete/${board.num}" class="btn btn-primary" id="remove">삭제</a>
-								</div>
+						<div class="row" style="margin: 10px 0;">
+							<div
+								class="col-md-2 col-md-offset-5 col-sm-2 col-sm-offset-5 col-xs-5">
+								<a type="button" href="${prev}" class="btn btn-default"> <span
+									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+									목록으로
+								</a>
 							</div>
-						</c:if>
+							<c:if test="${board.uid == userID}">
+								<div
+									class="col-md-offset-3 col-md-1 col-sm-offset-2 col-sm-1 col-xs-2 col-xs-offset-1">
+									<a href="/community/${university}/update/${board.num}"
+										class="btn btn-default" id="update">수정</a>
+								</div>
+								<div class="col-md-1 col-sm-1 col-xs-2">
+									<a href="/community/${university}/delete/${board.num}"
+										class="btn btn-primary" id="remove">삭제</a>
+								</div>
+							</c:if>
+						</div>
 					</div>
 					<div class="comment-box">
 						<div class="comment-header">

@@ -2,7 +2,7 @@ function recomment(arg, grp, writer) {
     var editBox = '<div class="recommentEdit">' +
         '<div class="input-group">' +
         '<textarea class="form-control" rows="2" style="resize: none;"></textarea>' +
-        '<div class="input-group-addon" style="font-weight: bold;"><a href="javascript:void(0);" onclick="recommentRegister(this,' + grp + ',' +"'"+writer+"'"+ ')">등록</a></div>' +
+        '<div class="input-group-addon" style="font-weight: bold;"><a href="javascript:void(0);" onclick="recommentRegister(this,' + grp + ',' + "'" + writer + "'" + ')">등록</a></div>' +
         '</div>' +
         '</div>';
 
@@ -27,12 +27,21 @@ function recommentRegister(arg, group, writer) {
         async: false,
         data: JSON.stringify(data),
         contentType: "application/json; charset=UTF-8",
-        success: function (commentList) {
-            $("div").remove(".comment");
-            $('.comment-header h5').text('댓글(' + commentList.length + ')');
-            for (var i = 0; i < commentList.length; i++) {
-                var comment = commentList[i];
-                insertHtml(comment);
+        success: function (resultMap) {
+            var check = resultMap.check;
+            if (check === "false") {
+                if (confirm("로그인이 필요합니다.\n로그인 화면으로 이동하시겠습니까?") == true)
+                    document.location.href = "/login";
+                else
+                    return;
+            } else {
+                var commentList = resultMap.commentList;
+                $("div").remove(".comment");
+                $('.comment-header h5').text('댓글(' + commentList.length + ')');
+                for (var i = 0; i < commentList.length; i++) {
+                    var comment = commentList[i];
+                    insertHtml(comment);
+                }
             }
         },
         error: function (request, status, error) {
@@ -55,12 +64,21 @@ function commentRegister(arg) {
         async: false,
         data: JSON.stringify(data),
         contentType: "application/json; charset=UTF-8",
-        success: function (commentList) {
-            $("div").remove(".comment");
-            $('.comment-header h5').text('댓글(' + commentList.length + ')');
-            for (var i = 0; i < commentList.length; i++) {
-                var comment = commentList[i];
-                insertHtml(comment);
+        success: function (resultMap) {
+            var check = resultMap.check;
+            if (check === "false") {
+                if (confirm("로그인이 필요합니다.\n로그인 화면으로 이동하시겠습니까?") == true)
+                    document.location.href = "/login";
+                else
+                    return;
+            } else {
+                var commentList = resultMap.commentList;
+                $("div").remove(".comment");
+                $('.comment-header h5').text('댓글(' + commentList.length + ')');
+                for (var i = 0; i < commentList.length; i++) {
+                    var comment = commentList[i];
+                    insertHtml(comment);
+                }
             }
         },
         error: function (request, status, error) {
@@ -71,10 +89,10 @@ function commentRegister(arg) {
 
 function insertHtml(comment) {
     var inHtml = '<div class="comment ' + (comment.target != null ? 'recomment' : '') + '">' +
-        (comment.target != null ? '<p class="target"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true">'+comment.target+'</span></p>' : '') +
+        (comment.target != null ? '<p class="target"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true">' + comment.target + '</span></p>' : '') +
         '<p class="comment-main">' +
         comment.contents +
-        '<button onclick="recomment(this,' + comment.grp + ','+"'"+comment.writer+"'"+')">' +
+        '<button onclick="recomment(this,' + comment.grp + ',' + "'" + comment.writer + "'" + ')">' +
         '<span class="glyphicon glyphicon-share-alt recomment-button" aria-hidden="true">답글</span>' +
         '</button>' +
         '</p>' +
@@ -89,11 +107,11 @@ $(document).ready(function () {
     $("img").css("max-width", $(".contents").css("width"));
 
     var num = parseInt(location.pathname.split('/')[4]);
-    
+
 
     $.ajax({
         type: "GET",
-        url: "/community/board/comment/"+num,
+        url: "/community/board/comment/" + num,
         async: false,
         contentType: "application/json; charset=UTF-8",
         success: function (commentList) {

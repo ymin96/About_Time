@@ -39,7 +39,10 @@ import com.about_time.member.service.MemberService;
 
 @Controller
 public class BoardController {
-
+	
+	private int listSize = 20;
+	private int rangeSize = 5;
+	
 	@Autowired
 	MemberService memberService;
 
@@ -85,8 +88,8 @@ public class BoardController {
 		// 페이지 네이션
 		int listCnt = boardList.size();
 		Pagination pagination = new Pagination();
-		pagination.setListSize(20); // 한 페이지당 보여질 리스트의 개수
-		pagination.setRangeSize(5); // 한 페이지당 보여질 페이지의 개수
+		pagination.setListSize(listSize); // 한 페이지당 보여질 리스트의 개수
+		pagination.setRangeSize(rangeSize); // 한 페이지당 보여질 페이지의 개수
 		pagination.pageInfo(page, range, listCnt);
 		model.addAttribute("pagination", pagination);
 
@@ -165,8 +168,15 @@ public class BoardController {
 		Board board = boardService.selectBoard(university, num);
 		model.addAttribute("board", board);
 		model.addAttribute("university", university);
-		//사용자가 로그인 한 상태라면 ID를 보내줌
-		if(principal != null)
+		
+		//게시글 목록 구하기
+		int boardCount = boardService.getBoardCount(university, num);
+		int list_size = (int)Math.ceil((double)boardCount / listSize);
+		int range_size = (int)Math.ceil((double)list_size / rangeSize);
+		String url = "/community/"+university+"/list?page="+list_size+"&range="+range_size;
+		model.addAttribute("prev", url);
+		// 사용자가 로그인 한 상태라면 ID를 보내줌
+		if (principal != null)
 			model.addAttribute("userID", principal.getName());
 		return "boardView";
 	}
@@ -182,7 +192,17 @@ public class BoardController {
 
 	// 댓글 등록
 	@RequestMapping(value = "/community/board/comment", method = RequestMethod.POST)
-	public @ResponseBody List<Comment> insertComment(@RequestBody Map<String, Object> param, Principal principal) {
+	public @ResponseBody Map<String, Object> insertComment(@RequestBody Map<String, Object> param,
+			Principal principal) {
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		// 로그인이 안되있다면 바로 return
+		if (principal == null) {
+			map.put("check", "false");
+			return map;
+		} else
+			map.put("check", "true");
+
 		String contents = (String) param.get("contents");
 		int board_num = Integer.parseInt((String) param.get("num"));
 		String writer = memberService.getUnameByUid(principal.getName());
@@ -197,13 +217,22 @@ public class BoardController {
 
 		// 지정된 게시물의 댓글 목록 가져오기
 		List<Comment> commentList = commentService.selectCommentList(board_num);
-
-		return commentList;
+		map.put("commentList", commentList);
+		return map;
 	}
 
 	// 대댓글 등록
 	@RequestMapping(value = "/community/board/recomment", method = RequestMethod.POST)
-	public @ResponseBody List<Comment> insertRecomment(@RequestBody Map<String, Object> param, Principal principal) {
+	public @ResponseBody Map<String,Object> insertRecomment(@RequestBody Map<String, Object> param, Principal principal) {
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		// 로그인이 안되있다면 바로 return
+		if (principal == null) {
+			map.put("check", "false");
+			return map;
+		} else
+			map.put("check", "true");
+
 		String contents = (String) param.get("contents");
 		int board_num = Integer.parseInt((String) param.get("num"));
 		String writer = memberService.getUnameByUid(principal.getName());
@@ -221,8 +250,8 @@ public class BoardController {
 
 		// 지정된 게시물의 댓글 목록 가져오기
 		List<Comment> commentList = commentService.selectCommentList(board_num);
-
-		return commentList;
+		map.put("commentList", commentList);
+		return map;
 	}
 
 	// 게시글 삭제
@@ -235,38 +264,41 @@ public class BoardController {
 			return "authorityError";
 		// DB에서 게시글 삭제
 		boardService.deleteBoard(university, num);
-		
+
 		try {
 			university = URLEncoder.encode(university, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/community/"+university+"/list";
+		return "redirect:/community/" + university + "/list";
 	}
-	
+
+	// 게시글 수정 페이지
 	@RequestMapping(value = "/community/{university}/update/{num}", method = RequestMethod.GET)
-	public String updateBoard_get(Model model, @PathVariable("university") String university, @PathVariable("num") int num,
-			Principal principal, HttpServletRequest request) {
+	public String updateBoard_get(Model model, @PathVariable("university") String university,
+			@PathVariable("num") int num, Principal principal, HttpServletRequest request) {
 		Board board = boardService.selectBoard(university, num);
 		// 게시글의 작성자와 로그인 사용자가 다르거나 로그인 한 상태가 아니라면 권한 제한 페이지로 이동
-		if(principal == null || !board.getUid().equals(principal.getName()))
+		if (principal == null || !board.getUid().equals(principal.getName()))
 			return "authorityError";
-		
+
 		model.addAttribute("board", board);
 		model.addAttribute("prev", request.getHeader("Referer"));
 		return "boardUpdate";
 	}
-	
+
+	// 게시글 수정 처리
 	@RequestMapping(value = "/community/{university}/update/{num}", method = RequestMethod.POST)
-	public @ResponseBody void updateBoard_post(@RequestBody Board board, @PathVariable("university") String university, @PathVariable("num") int num) {
-		Map<String,Object> map = new HashMap<String, Object>();
+	public @ResponseBody void updateBoard_post(@RequestBody Board board, @PathVariable("university") String university,
+			@PathVariable("num") int num) {
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("title", board.getTitle());
 		map.put("category", board.getCategory());
 		map.put("contents", board.getContents());
 		map.put("num", num);
 		map.put("university", university);
-		
+
 		boardService.updateBoard(map);
 	}
 }

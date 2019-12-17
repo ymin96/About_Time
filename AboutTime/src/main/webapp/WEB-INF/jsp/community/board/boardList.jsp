@@ -21,7 +21,7 @@
 					<tbody>
 						<c:forEach var="board" items="${boardList}" varStatus="status">
 							<tr>
-								<th>${fn:length(boardList) - status.count + 1}</th>
+								<th>${board.num}</th>
 								<td>${board.category}</td>
 								<td><a href="/community/${university}/read/${board.num}">${board.title}</a></td>
 								<td>${board.writer}</td>

@@ -51,4 +51,11 @@ public class BoardService {
 	public void updateBoard(Map<String,Object> map) {
 		boardMapper.updateBoard(map);
 	}
+	
+	public int getBoardCount(String university, int num) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("university", university);
+		map.put("num", num);
+		return boardMapper.getBoardCount(map);
+	}
 }

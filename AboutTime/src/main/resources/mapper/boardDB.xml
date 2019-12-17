@@ -29,4 +29,13 @@
 		set title=#{title}, category=#{category}, contents=#{contents}, updateDate=now() 
 		where university=#{university} and num=#{num}
 	</update>
+	
+	<select id="getBoardCount" parameterType="HashMap" resultType="Integer">
+		<![CDATA[
+		select count(*) 
+		from (select num ,updateDate from Board where university=#{university} order by updateDate DESC) ALIAS_FOR_SUBQUERY 
+		where num >= (select num from Board where num=#{num})
+		]]>
+	</select>
+	
 </mapper>
