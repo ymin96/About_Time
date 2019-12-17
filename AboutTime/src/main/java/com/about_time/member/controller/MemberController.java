@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.about_time.member.service.MemberService;
 import com.about_time.member.vo.Member;
 import com.about_time.member.vo.MemberRole;
+import com.mysql.cj.Session;
 
 @Controller
 public class MemberController {
@@ -36,7 +37,9 @@ public class MemberController {
 	}
 
 	@RequestMapping("/login")
-	public String login() {
+	public String login(HttpServletRequest request) {
+		String referrer = request.getHeader("Referer");
+		request.getSession().setAttribute("prevPage", referrer);
 		return "login";
 	}
 

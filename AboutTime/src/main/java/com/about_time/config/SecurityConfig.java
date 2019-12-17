@@ -12,16 +12,18 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+import com.about_time.listener.CustomLoginSuccessHandler;
 import com.about_time.member.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
-	
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Autowired
 	CustomUserDetailsService customUserDetailsService;
-	
+
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// TODO Auto-generated method stub
@@ -32,38 +34,45 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
 		http.authorizeRequests()
-				.antMatchers("/admin/**").hasRole("ADMIN")
-				.antMatchers("/**").permitAll()
-				.and()
-			.formLogin()
-				.loginPage("/login")
-				.loginProcessingUrl("/login")
-				.defaultSuccessUrl("/main.do")
-				.failureUrl("/login").
-				and()
-			.logout()
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/main.do")
-				.permitAll()
-				.and()
+			.antMatchers("/admin/**")
+			.hasRole("ADMIN").antMatchers("/**")
+			.permitAll()
+			.and()
+		.formLogin()
+			.loginPage("/login")
+			.loginProcessingUrl("/login")
+			.successHandler(successHandler())
+			.failureUrl("/login")
+			.and()
+		.logout()
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/main.do")
+			.permitAll()
+			.and()
 			.sessionManagement()
-				.invalidSessionUrl("/main.do");
+			.invalidSessionUrl("/main.do");
 		http.csrf().ignoringAntMatchers("/timetable/**")
-				.ignoringAntMatchers("/register/**")
-				.ignoringAntMatchers("/member/**")
-				.ignoringAntMatchers("/community/**")
-				.ignoringAntMatchers("/image")
-				.ignoringAntMatchers("/loginCheck");
+			.ignoringAntMatchers("/register/**")
+			.ignoringAntMatchers("/member/**")
+			.ignoringAntMatchers("/community/**")
+			.ignoringAntMatchers("/image")
+			.ignoringAntMatchers("/loginCheck");
 	}
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// TODO Auto-generated method stub
 		auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder());
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
+	@Bean
+	public AuthenticationSuccessHandler successHandler() {
+		return new CustomLoginSuccessHandler("/main.do");
+	}
+
 }
