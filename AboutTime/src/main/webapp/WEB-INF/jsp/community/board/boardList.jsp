@@ -20,14 +20,23 @@
 					</thead>
 					<tbody>
 						<c:forEach var="board" items="${boardList}" varStatus="status">
-							<tr>
-								<th>${board.num}</th>
-								<td>${board.category}</td>
-								<td><a href="/community/${university}/read/${board.num}">${board.title}<c:if
-											test="${board.commentNum != 0}"><span style="font-weight: bold;">(${board.commentNum})</span></c:if></a></td>
-								<td>${board.writer}</td>
-								<td>${board.hits}</td>
-								<td>${board.simpleListDate}</td>
+							<c:choose>
+								<c:when test="${board.commentNum != 0}">
+									<tr style="border-left: 3px #337ab7 solid">
+								</c:when>
+								<c:otherwise>
+									<tr>
+								</c:otherwise>
+							</c:choose>
+							<th>${board.num}</th>
+							<td>${board.category}</td>
+							<td><a href="/community/${university}/read/${board.num}">${board.title}<c:if
+										test="${board.commentNum != 0}">
+										<span style="font-weight: bold;"> (${board.commentNum})</span>
+									</c:if></a></td>
+							<td>${board.writer}</td>
+							<td>${board.hits}</td>
+							<td>${board.simpleListDate}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

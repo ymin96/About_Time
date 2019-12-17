@@ -30,7 +30,7 @@ public class Board {
 		
 		//게시글 리스트에 보여질 Date 초기화
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
 		String today = dateFormat.format(new Date());
 		if(today.equals(dateFormat.format(date)))
 			this.simpleListDate = timeFormat.format(date);
