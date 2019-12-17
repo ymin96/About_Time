@@ -35,7 +35,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-2 col-sm-2 col-xs-3">
-				<a href="/community/${university}/edit" class="btn btn-primary">글쓰기</a>
+				<a href="javascript:void(0);" onclick="loginCheck('/community/${university}/edit')" class="btn btn-primary">글쓰기</a>
 			</div>
 			<div
 				class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-9">

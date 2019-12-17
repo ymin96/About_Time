@@ -52,6 +52,15 @@ public class MemberController {
 		return "register";
 	}
 
+	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+	public @ResponseBody String loginCheck(Principal principal) {
+		//현재 로그인 한 상태라면 true 아니라면 false반환
+		if(principal == null)
+			return "false";
+		else
+			return "true";
+	}
+	
 	// 회원가입 처리
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public @ResponseBody void register_post(@RequestBody Member member) {
@@ -132,11 +141,13 @@ public class MemberController {
 		return msg;
 	}
 	
+	//회원 비밀번호 수정 페이지 
 	@RequestMapping(value = "/member/modifyPW", method = RequestMethod.GET)
 	public String modifyPW_get() {
 		return "modifyPW";
 	}
 	
+	//회원 비밀번호 수정 처리
 	@RequestMapping(value = "/member/modifyPW", method = RequestMethod.POST)
 	public @ResponseBody Map<String,String> modifyPW_post(@RequestBody Map<String,String> map, Principal principal) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
