@@ -58,4 +58,8 @@ public class BoardService {
 		map.put("num", num);
 		return boardMapper.getBoardCount(map);
 	}
+	
+	public void increasementBoardView(int num) {
+		boardMapper.increasementBoardView(num);
+	}
 }

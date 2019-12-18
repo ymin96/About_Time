@@ -166,6 +166,8 @@ public class BoardController {
 	public String getBoard(@PathVariable("num") int num, @PathVariable("university") String university, Model model,
 			Principal principal, HttpServletRequest request) {
 		Board board = boardService.selectBoard(university, num);
+		//조회수 증가
+		boardService.increasementBoardView(num);
 		model.addAttribute("board", board);
 		model.addAttribute("university", university);
 		
