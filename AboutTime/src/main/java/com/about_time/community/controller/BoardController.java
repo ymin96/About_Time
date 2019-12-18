@@ -63,7 +63,9 @@ public class BoardController {
 	public String boardList_get(@PathVariable("university") String university, Model model,
 			@RequestParam(required = false, defaultValue = "all", value = "cate") String category,
 			@RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "1") int range) {
+			@RequestParam(required = false, defaultValue = "1") int range,
+			@RequestParam(required = false)String searchType,
+			@RequestParam(required = false)String searchKey) {
 		model.addAttribute("university", university);
 		ArrayList<Board> boardList = new ArrayList<Board>();
 		// 분류에 따라 다르게 select

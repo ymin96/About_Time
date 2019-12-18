@@ -29,7 +29,22 @@
 								</c:otherwise>
 							</c:choose>
 							<th>${board.num}</th>
-							<td>${board.category}</td>
+							<td>
+							<c:choose>
+								<c:when test="${board.category == '유머'}">
+									<a href="/community/${university}/list?cate=humor">${board.category}</a>								
+								</c:when>
+								<c:when test="${board.category == '정보'}">
+									<a href="/community/${university}/list?cate=info">${board.category}</a>
+								</c:when>
+								<c:when test="${board.category == '잡담'}">
+									<a href="/community/${university}/list?cate=other">${board.category}</a>
+								</c:when>
+								<c:when test="${board.category == '질문'}">
+									<a href="/community/${university}/list?cate=quest">${board.category}</a>
+								</c:when>
+							</c:choose>
+							</td>
 							<td><a href="/community/${university}/read/${board.num}">${board.title}<c:if
 										test="${board.commentNum != 0}">
 										<span style="font-weight: bold;"> (${board.commentNum})</span>
@@ -49,25 +64,21 @@
 					onclick="loginCheck('/community/${university}/edit')"
 					class="btn btn-primary">글쓰기</a>
 			</div>
-			<div
-				class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-9">
+			<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-9">
 				<div class="input-group" style="margin-bottom: 10px;">
-					<div class="input-group-btn">
-						<button type="button" class="btn btn-default dropdown-toggle"
-							data-toggle="dropdown" aria-expanded="false">
-							제목 <span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">제목</a></li>
-							<li><a href="#">제목+내용</a></li>
-							<li><a href="#">작성자</a></li>
-						</ul>
-					</div>
-					<input class="form-control text-center" type="text" id="search">
-					<div class="input-group-addon" style="font-weight: bold">
-						<a href="#" style="text-decoration: none; color: rgb(87, 85, 85);">검색</a>
-					</div>
-				</div>
+                    <div class="input-group-btn">
+                        <button id="searchType" search='subject' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false">제목 <span class="caret"></span></button>
+                        <ul id="searchList" class="dropdown-menu" role="menu">
+                            <li><a href="javascript:void(0);">제목</a></li>
+                            <li><a href="javascript:void(0);">제목+내용</a></li>
+                            <li><a href="javascript:void(0);">작성자</a></li>
+                         </ul>
+                    </div>
+                    <input id="searchKey" class="form-control text-center" type="text" id="search">
+                    <div id="search_btn" class="input-group-addon" style="font-weight: bold"><a href="javascript:void(0);"
+                            onclick="onSearch()" style="text-decoration: none;color: rgb(87, 85, 85);">검색</a></div>
+                </div>
 			</div>
 			<div
 				class="col-md-4 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-12">
