@@ -57,10 +57,10 @@
 					</div>
 					<div class="commentEdit" style="margin-bottom: 20px;">
 						<div class="input-group">
-							<textarea class="form-control" rows="3" style="resize: none;"></textarea>
+							<textarea id="commentArea" class="form-control" rows="3" style="resize: none;"></textarea>
 							<div class="input-group-addon"
 								style="background-color: #337ab7; border: 1px solid #337ab7;">
-								<a href="javascript:void(0);" onclick="commentRegister(this)">등록</a>
+								<a id="commentReg" href="javascript:void(0);" onclick="commentRegister(this)">등록</a>
 							</div>
 						</div>
 					</div>

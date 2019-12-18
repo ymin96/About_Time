@@ -1,8 +1,9 @@
+//대댓글 창 보이기
 function recomment(arg, grp, writer) {
     var editBox = '<div class="recommentEdit">' +
         '<div class="input-group">' +
-        '<textarea class="form-control" rows="2" style="resize: none;"></textarea>' +
-        '<div class="input-group-addon" style="font-weight: bold;"><a href="javascript:void(0);" onclick="recommentRegister(this,' + grp + ',' + "'" + writer + "'" + ')">등록</a></div>' +
+        '<textarea id="recommentArea" class="form-control" rows="2" style="resize: none;"></textarea>' +
+        '<div class="input-group-addon" style="font-weight: bold;"><a id="recommentReg" href="javascript:void(0);" onclick="recommentRegister(this,' + grp + ',' + "'" + writer + "'" + ')">등록</a></div>' +
         '</div>' +
         '</div>';
 
@@ -10,6 +11,7 @@ function recomment(arg, grp, writer) {
     $(arg).parent().parent().append(editBox);
 }
 
+//대댓글 등록
 function recommentRegister(arg, group, writer) {
     console.log(group);
     var num = location.pathname.split('/')[4];
@@ -50,6 +52,7 @@ function recommentRegister(arg, group, writer) {
     });
 }
 
+//댓글 등록
 function commentRegister(arg) {
     var num = location.pathname.split('/')[4];
     var contents = $(arg).parent().prev().val();
@@ -79,6 +82,7 @@ function commentRegister(arg) {
                     var comment = commentList[i];
                     insertHtml(comment);
                 }
+                $("#commentArea").val('');
             }
         },
         error: function (request, status, error) {
@@ -87,6 +91,7 @@ function commentRegister(arg) {
     });
 }
 
+//댓글 등록 html
 function insertHtml(comment) {
     var inHtml = '<div class="comment ' + (comment.target != null ? 'recomment' : '') + '">' +
         (comment.target != null ? '<p class="target"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true">' + comment.target + '</span></p>' : '') +
@@ -105,10 +110,10 @@ function insertHtml(comment) {
 
 $(document).ready(function () {
     $("img").css("max-width", $(".contents").css("width"));
-
+    //글 번호
     var num = parseInt(location.pathname.split('/')[4]);
 
-
+    //댓글 로딩
     $.ajax({
         type: "GET",
         url: "/community/board/comment/" + num,
@@ -126,8 +131,12 @@ $(document).ready(function () {
             alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
         }
     });
+
+    
 });
 
+//이미지 사이즈 조정
 $(window).resize(function () {
     $("img").css("max-width", $(".contents").css("width"));
 });
+
