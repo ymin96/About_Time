@@ -49,4 +49,20 @@
 		where num = #{num}
 	</update>
 	
+	<select id="searchBoard" resultType="com.about_time.community.vo.Board" parameterType="String">
+		select * 
+		from (select * from Board where university=#{university}) as b 
+		left join (select board_num,count(*) as commentNum from BoardComment group by board_num) as c
+		on b.num = c.board_num 
+		<if test="searchType.equals('subject')">
+		where title like '%${searchKey}%'
+		</if>
+		<if test="searchType.equals('subject_content')">
+		where title like '%${searchKey}%' or contents like '%${searchkey}%'
+		</if>
+		<if test="searchType.equals('writer')">
+		where writer like '%${searchKey}%'
+		</if>
+		order by updateDate DESC;
+	</select>
 </mapper>

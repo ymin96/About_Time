@@ -20,4 +20,5 @@ public interface BoardMapper {
 	public void updateBoard(Map<String,Object> map);
 	public int getBoardCount(Map<String,Object> map);
 	public void increasementBoardView(int num);
+	public List<Board> searchBoard(@Param("university")String university,@Param("searchType") String searchType,@Param("searchKey") String searchKey);
 }

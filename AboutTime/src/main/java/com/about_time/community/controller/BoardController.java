@@ -39,10 +39,10 @@ import com.about_time.member.service.MemberService;
 
 @Controller
 public class BoardController {
-	
+
 	private int listSize = 20;
 	private int rangeSize = 5;
-	
+
 	@Autowired
 	MemberService memberService;
 
@@ -64,27 +64,32 @@ public class BoardController {
 			@RequestParam(required = false, defaultValue = "all", value = "cate") String category,
 			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
-			@RequestParam(required = false)String searchType,
-			@RequestParam(required = false)String searchKey) {
+			@RequestParam(required = false) String searchType, @RequestParam(required = false) String searchKey) {
 		model.addAttribute("university", university);
 		ArrayList<Board> boardList = new ArrayList<Board>();
-		// 분류에 따라 다르게 select
-		switch (category) {
-		case "all":
-			boardList = boardService.selectBoardList(university);
-			break;
-		case "info":
-			boardList = boardService.selectBoardList(university, "정보");
-			break;
-		case "other":
-			boardList = boardService.selectBoardList(university, "잡담");
-			break;
-		case "humor":
-			boardList = boardService.selectBoardList(university, "유머");
-			break;
-		case "quest":
-			boardList = boardService.selectBoardList(university, "질문");
-			break;
+		
+		//검색으로 접근했다면 검색값을 기준으로 list get
+		if (searchType != null) {
+			boardList = boardService.searchBoard(university, searchType, searchKey);
+		} else {
+			// 분류에 따라 다르게 select
+			switch (category) {
+			case "all":
+				boardList = boardService.selectBoardList(university);
+				break;
+			case "info":
+				boardList = boardService.selectBoardList(university, "정보");
+				break;
+			case "other":
+				boardList = boardService.selectBoardList(university, "잡담");
+				break;
+			case "humor":
+				boardList = boardService.selectBoardList(university, "유머");
+				break;
+			case "quest":
+				boardList = boardService.selectBoardList(university, "질문");
+				break;
+			}
 		}
 
 		// 페이지 네이션
@@ -168,16 +173,16 @@ public class BoardController {
 	public String getBoard(@PathVariable("num") int num, @PathVariable("university") String university, Model model,
 			Principal principal, HttpServletRequest request) {
 		Board board = boardService.selectBoard(university, num);
-		//조회수 증가
+		// 조회수 증가
 		boardService.increasementBoardView(num);
 		model.addAttribute("board", board);
 		model.addAttribute("university", university);
-		
-		//게시글 목록 구하기
+
+		// 게시글 목록 구하기
 		int boardCount = boardService.getBoardCount(university, num);
-		int list_size = (int)Math.ceil((double)boardCount / listSize);
-		int range_size = (int)Math.ceil((double)list_size / rangeSize);
-		String url = "/community/"+university+"/list?page="+list_size+"&range="+range_size;
+		int list_size = (int) Math.ceil((double) boardCount / listSize);
+		int range_size = (int) Math.ceil((double) list_size / rangeSize);
+		String url = "/community/" + university + "/list?page=" + list_size + "&range=" + range_size;
 		model.addAttribute("prev", url);
 		// 사용자가 로그인 한 상태라면 ID를 보내줌
 		if (principal != null)
@@ -227,7 +232,8 @@ public class BoardController {
 
 	// 대댓글 등록
 	@RequestMapping(value = "/community/board/recomment", method = RequestMethod.POST)
-	public @ResponseBody Map<String,Object> insertRecomment(@RequestBody Map<String, Object> param, Principal principal) {
+	public @ResponseBody Map<String, Object> insertRecomment(@RequestBody Map<String, Object> param,
+			Principal principal) {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		// 로그인이 안되있다면 바로 return

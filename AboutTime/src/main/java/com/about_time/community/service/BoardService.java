@@ -62,4 +62,9 @@ public class BoardService {
 	public void increasementBoardView(int num) {
 		boardMapper.increasementBoardView(num);
 	}
+	
+	public ArrayList<Board> searchBoard(String university,String searchType, String searchKey){
+		ArrayList<Board> boardList = (ArrayList<Board>) boardMapper.searchBoard(university, searchType, searchKey);
+		return boardList;
+	}
 }
