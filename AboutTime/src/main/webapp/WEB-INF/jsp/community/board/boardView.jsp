@@ -19,10 +19,10 @@
 								<div class="col-md-3 col-sm-3 col-xs-12">
 									<div class="board-writer text-right">
 										<p>
-											<span class="glyphicon glyphicon-user" aria-hidden="true">${board.writer}</span>
+											<span class="glyphicon glyphicon-user" aria-hidden="true"> ${board.writer}</span>
 										</p>
 										<p>
-											<span class="glyphicon glyphicon-calendar" aria-hidden="true">${board.simpleUpdateDate}</span>
+											<span class="glyphicon glyphicon-calendar" aria-hidden="true"> ${board.simpleUpdateDate}</span>
 										</p>
 									</div>
 								</div>

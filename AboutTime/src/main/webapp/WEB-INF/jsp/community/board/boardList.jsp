@@ -58,7 +58,7 @@
 				</table>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="margin-bottom: 50px;">
 			<div class="col-md-2 col-sm-2 col-xs-3">
 				<a href="javascript:void(0);"
 					onclick="loginCheck('/community/${university}/edit')"
