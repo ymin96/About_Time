@@ -91,6 +91,33 @@ function commentRegister(arg) {
     });
 }
 
+//댓글 삭제
+function removeComment(arg ,num, writer) {
+    var board_num = location.pathname.split('/')[4];
+    var data = {
+        num : num,
+        board_num : board_num,
+        writer : writer
+    };
+    $.ajax({
+        type: "POST",
+        url: "/community/board/removeComment",
+        async: false,
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=UTF-8",
+        success: function (check) {
+            if (check === "false") {
+                alert("댓글은 작성자 본인만 삭제 할 수 있습니다.");
+            } else {
+                $(arg).parent().prev().html('[삭제된 댓글 입니다.]');
+            }
+        },
+        error: function (request, status, error) {
+            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+    });
+}
+
 //댓글 등록 html
 function insertHtml(comment) {
     var inHtml = '<div class="comment ' + (comment.target != null ? 'recomment' : '') + '">' +
@@ -102,7 +129,8 @@ function insertHtml(comment) {
         '</button>' +
         '</p>' +
         '<p class="comment-sub">' +
-        comment.writer + '[ <span>' + comment.simpleRegDate + '</span> ]' +
+        comment.writer + '[ <span>' + comment.simpleRegDate + '</span> ]' + 
+        '<a href="javascript:void(0);" onclick="removeComment(this,'+comment.num+','+"'"+comment.writer+"'"+')">삭제</a>' +
         '</p>' +
         '</div>';
     $(".comment-box").append(inHtml);

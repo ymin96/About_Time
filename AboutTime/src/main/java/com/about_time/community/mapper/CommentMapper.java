@@ -13,4 +13,5 @@ public interface CommentMapper {
 	public void insertComment(Comment comment);
 	public void insertRecomment(Comment comment);
 	public List<Comment> selectCommentList(int board_num);
+	public void removeComment(int num);
 }

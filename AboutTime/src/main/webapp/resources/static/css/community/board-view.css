@@ -66,3 +66,7 @@
     text-decoration: none;
     color:white;
 }
+
+.board-view .comment a{
+    float: right;
+}

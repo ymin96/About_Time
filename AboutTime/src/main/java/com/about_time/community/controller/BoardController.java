@@ -67,8 +67,8 @@ public class BoardController {
 			@RequestParam(required = false) String searchType, @RequestParam(required = false) String searchKey) {
 		model.addAttribute("university", university);
 		ArrayList<Board> boardList = new ArrayList<Board>();
-		
-		//검색으로 접근했다면 검색값을 기준으로 list get
+
+		// 검색으로 접근했다면 검색값을 기준으로 list get
 		if (searchType != null) {
 			boardList = boardService.searchBoard(university, searchType, searchKey);
 		} else {
@@ -264,6 +264,23 @@ public class BoardController {
 		return map;
 	}
 
+	@RequestMapping(value = "community/board/removeComment", method = RequestMethod.POST)
+	public @ResponseBody String removeComment(@RequestBody Map<String, Object> param, Principal principal) {
+		// 사용자가 로그인을 안했거나 댓글 작성자와 다른지 체크
+		if (principal == null)
+			return "false";
+		else {
+			String writer = (String) param.get("writer");
+			String uname = memberService.getUnameByUid(principal.getName());
+			if(!writer.equals(uname))
+				return "false";
+		}
+
+		// 댓글 삭제
+		commentService.removeComment((int)param.get("num"));
+		return "true";
+	}
+
 	// 게시글 삭제
 	@RequestMapping(value = "/community/{university}/delete/{num}", method = RequestMethod.GET)
 	public String deleteBoard(Model model, @PathVariable("university") String university, @PathVariable("num") int num,
@@ -311,4 +328,5 @@ public class BoardController {
 
 		boardService.updateBoard(map);
 	}
+
 }

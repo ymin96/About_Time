@@ -25,4 +25,8 @@ public class CommentService {
 	public List<Comment> selectCommentList(int board_num){
 		return commentMapper.selectCommentList(board_num);
 	}
+	
+	public void removeComment(int num) {
+		commentMapper.removeComment(num);
+	}
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.about_time.community.mapper.CommunityMapper;
+import com.about_time.community.vo.Board;
 import com.about_time.community.vo.University;
 
 @Service
@@ -40,5 +41,15 @@ public class CommunityService {
 			universityMap.put(locations.get(i), titles);
 		}
 		return universityMap;
+	}
+	
+	//학교에서 각 카테고리별 조회수 best5 조회
+	public Map<String, List<Board>> selectBestBoards(String university){
+		Map<String,List<Board>> bestBoards = new HashMap<String, List<Board>>();
+		bestBoards.put("info", communityMapper.selectBestBoard(university, "정보"));
+		bestBoards.put("humor", communityMapper.selectBestBoard(university, "유머"));
+		bestBoards.put("other", communityMapper.selectBestBoard(university, "잡담"));
+		bestBoards.put("quest", communityMapper.selectBestBoard(university, "질문"));
+		return bestBoards;
 	}
 }
