@@ -15,16 +15,13 @@
 <link rel="stylesheet" href="/resources/static/css/common/layout.css">
 <link rel="stylesheet" href="/resources/static/css/common/header.css">
 <link rel="stylesheet" href="/resources/static/css/common/footer.css">
-<link rel="stylesheet"
-	href="/resources/static/css/common/content-edge.css">
-<link rel="stylesheet"
-	href="/resources/static/css/community/sidemenu.css">
-<link rel="stylesheet"
-	href="/resources/static/css/community/university-main.css">
-<link rel="stylesheet"
-	href="/resources/static/css/community/board-view.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link rel="stylesheet" href="/resources/static/css/common/content-edge.css">
+<link rel="stylesheet" href="/resources/static/css/community/sidemenu.css">
+<link rel="stylesheet" href="/resources/static/css/community/university-main.css">
+<link rel="stylesheet" href="/resources/static/css/community/board-view.css">
+<link rel="stylesheet" href="/resources/calendar/core/main.css">
+<link rel="stylesheet" href="/resources/calendar/daygrid/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="/resources/static/js/common.js"></script>
 <script src="/resources/static/js/community/boardList.js"></script>

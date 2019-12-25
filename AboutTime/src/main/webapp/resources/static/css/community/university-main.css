@@ -19,3 +19,12 @@
 .university-main .writer{
     font-size: 13px;
 }
+
+.university_main #schedule-view .header{
+    margin-bottom: 20px;
+}
+
+.university_main #schedule-view .header span{
+    padding-bottom: 3px;
+    border-bottom: 2px solid #0076C0;
+}

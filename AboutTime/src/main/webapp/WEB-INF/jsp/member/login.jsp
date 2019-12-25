@@ -5,7 +5,7 @@
 <body>
 	<div class="container login">
 		<div class="row">
-			<div class="col-md-4 col-md-offset-4 col-xs-12 content-box">
+			<div class="col-md-4 col-md-offset-4 col-xs-12 content-box" style="margin-top:100px;">
 				<div class="reg-header">
 					<h2>로그인</h2>
 				</div>
