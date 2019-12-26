@@ -58,10 +58,7 @@ public class MemberController {
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public @ResponseBody String loginCheck(Principal principal) {
 		//현재 로그인 한 상태라면 true 아니라면 false반환
-		if(principal == null)
-			return "false";
-		else
-			return "true";
+		return (principal == null)? "false":"true";
 	}
 	
 	// 회원가입 처리
