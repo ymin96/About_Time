@@ -1,3 +1,22 @@
+function loginCheck() {
+    var rt;
+    $.ajax({
+        type: "POST",
+        url: "/loginCheck",
+        async: false,
+        contentType: "application/json; charset=UTF-8",
+        success: function (check) {
+            if(check === "true")
+                rt = true;
+            else
+                rt = false;
+        },
+        error: function (request, status, error) {
+            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+        }
+    });
+    return rt;
+}
 
 var calendar;
 
@@ -12,7 +31,6 @@ function calendarEvent(eventData) {
         header: {
             left: "",
             center: "title",
-            //    right: "month,basicWeek,basicDay"
             right: "today prev,next"
         },
         selectable: true,
@@ -30,26 +48,41 @@ function calendarEvent(eventData) {
             $("#schedule-view").removeClass("hidden");
             $("#schedule-view .header span").html(dateInfo.title);
             $("#schedule-view .contents p").html("· "+dateInfo.extendedProps.contents);
-            $("#view-delete").attr("info-id",dateInfo.publicId);
+            $("#view-delete").attr("info-id",dateInfo.defId);
         }
     });
     calendar.render();
-    var evt = {
-        id: 1,
-        allDay: true,
-        start: "2019-12-24",
-        end: "2019-12-25",
-        title: "테스팅",
-        contents: "내용"
-    }
-    calendar.addEvent(evt);
 }
+
+$("#input-submit").click(function (e) { 
+    var schedule={
+        allDay: true,
+        start: $("#startDate").val(),
+        end: $("#endDate").val(),
+        title: $("#calendar-title").val(),
+        contents: $("#calendar-contents").val()
+    }    
+    var event = calendar.addEvent(schedule);
+    schedule["num"] = parseInt(event._def.defId);
+    $.ajax({
+        type: "post",
+        url: "/member/add/schedule",
+        data: JSON.stringify(schedule),
+        async: true,
+        contentType: "application/json; charset=UTF-8",
+        error: function (request, status, error) {
+            alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+            event.remove();
+        }
+    });
+    $("#schedule-input").addClass("hidden");
+});
 
 $("#input-cancel").click(function (e) { 
     $("#schedule-input").addClass("hidden");
 });
 
-$("#view-submit").click(function (e) { 
+$("#view-cancel").click(function (e) { 
     $("#schedule-view").addClass("hidden");    
 });
 

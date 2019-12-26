@@ -47,7 +47,7 @@
                             </div>
                             <div class="text-right">
                                 <button id="view-delete" type="button" class="btn btn-danger">삭제</button>
-                                <button id="view-submit" type="button" class="btn btn-primary">확인</button>
+                                <button id="view-cancel" type="button" class="btn btn-primary">확인</button>
                             </div>
                         </div>
                     </div>

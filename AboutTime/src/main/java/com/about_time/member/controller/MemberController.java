@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,8 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.about_time.member.service.MemberService;
+import com.about_time.member.service.ScheduleService;
 import com.about_time.member.vo.Member;
 import com.about_time.member.vo.MemberRole;
+import com.about_time.member.vo.MemberSchedule;
+import com.about_time.timetable.vo.Schedule;
 import com.mysql.cj.Session;
 
 @Controller
@@ -28,6 +32,9 @@ public class MemberController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	ScheduleService scheduleService;
 
 	@RequestMapping("/main.do")
 	public ModelAndView query() throws Exception {
@@ -55,6 +62,7 @@ public class MemberController {
 		return "register";
 	}
 
+	//로그인 체크 (true/false)
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public @ResponseBody String loginCheck(Principal principal) {
 		//현재 로그인 한 상태라면 true 아니라면 false반환
@@ -169,5 +177,18 @@ public class MemberController {
 			msg.put("check", "fail");
 		}
 		return msg;
+	}
+
+	@RequestMapping(value = "/member/add/schedule", method = RequestMethod.POST)
+	public @ResponseBody void insertSchedule(@RequestBody Map<String,Object> map, Principal principal) {
+		MemberSchedule schedule = new MemberSchedule();
+		schedule.setUid(principal.getName());
+		schedule.setNum((int) map.get("num"));
+		schedule.setTitle((String) map.get("title"));
+		schedule.setContents((String)map.get("contents"));
+		schedule.setStartDate((String) map.get("start"));
+		schedule.setEndDate((String) map.get("end"));
+		
+		scheduleService.insertSchedule(schedule);
 	}
 }
