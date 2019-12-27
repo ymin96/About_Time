@@ -52,4 +52,8 @@ public class CommunityService {
 		bestBoards.put("quest", communityMapper.selectBestBoard(university, "질문"));
 		return bestBoards;
 	}
+	
+	public List<Board> selectDailyBoards(String university){
+		return communityMapper.selectDailyBoards(university);
+	}
 }

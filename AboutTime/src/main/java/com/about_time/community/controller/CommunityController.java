@@ -40,6 +40,7 @@ public class CommunityController {
 	public String UniversityMainPage(@PathVariable("university")String university, Model model) {
 		model.addAttribute("university", university);
 		model.addAttribute("bestBoards", communityService.selectBestBoards(university));
+		model.addAttribute("dailyBoards", communityService.selectDailyBoards(university));
 		return "universityMain";
 	}
 }

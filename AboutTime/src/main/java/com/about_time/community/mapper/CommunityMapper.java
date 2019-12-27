@@ -17,4 +17,5 @@ public interface CommunityMapper {
 	public List<String> getTitleByLocation(String location);
 	public List<String> searchTitle(@Param("title")String title, @Param("location")String location);
 	public List<Board> selectBestBoard(@Param("university")String university, @Param("category")String category);
+	public List<Board> selectDailyBoards(String university);
 }

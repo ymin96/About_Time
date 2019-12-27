@@ -22,14 +22,14 @@ var calendar;
 
 $(document).ready(function () {
     calendarEvent();
-    if(loginCheck() === true){
+    if (loginCheck() === true) {
         $.ajax({
             type: "post",
             url: "/member/get/schedule",
             async: true,
             contentType: "application/json; charset=UTF-8",
             success: function (scheduleList) {
-                for(var i = 0 ; i < scheduleList.length; i++){
+                for (var i = 0; i < scheduleList.length; i++) {
                     var schedule = scheduleList[i];
                     schedule["allDay"] = true;
                     calendar.addEvent(schedule);
@@ -56,10 +56,17 @@ function calendarEvent(eventData) {
         editable: true,
         locale: 'kr',
         select: function (dateInfo) {
-            $("#schedule-view").addClass("hidden");
-            $("#schedule-input").removeClass("hidden");
-            $("#startDate").val(dateInfo.startStr);
-            $("#endDate").val(dateInfo.endStr);
+            if (loginCheck() === true) {
+                $("#schedule-view").addClass("hidden");
+                $("#schedule-input").removeClass("hidden");
+                $("#startDate").val(dateInfo.startStr);
+                $("#endDate").val(dateInfo.endStr);
+            }else{
+                if (confirm("이 기능을 이용하려면 로그인이 필요합니다.\n로그인 화면으로 이동하시겠습니까?") == true)
+            document.location.href = "/login";
+        else
+            return;
+            }
         },
         eventClick: function (info) {
             var dateInfo = info.event._def;
@@ -117,16 +124,15 @@ $("#view-cancel").click(function (e) {
 
 $("#view-delete").click(function (e) {
     var id = $(this).attr("info-id");
-    $("#schedule-view").addClass("hidden");
     $.ajax({
         type: "post",
         url: "/member/delete/schedule",
         data: JSON.stringify(id),
-        async: false,
         contentType: "application/json; charset=UTF-8",
         success: function (response) {
             var event = calendar.getEventById(id);
             event.remove();
+            $("#schedule-view").addClass("hidden");
         },
         error: function (request, status, error) {
             alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
