@@ -4,10 +4,10 @@ import lombok.Data;
 
 @Data
 public class MemberSchedule {
-	private int num;
+	private String id;
 	private String uid;
-	private String startDate;
-	private String endDate;
+	private String start;
+	private String end;
 	private String title;
 	private String contents;
 }

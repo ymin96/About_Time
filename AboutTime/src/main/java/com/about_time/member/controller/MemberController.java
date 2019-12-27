@@ -3,7 +3,9 @@ package com.about_time.member.controller;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -178,17 +180,33 @@ public class MemberController {
 		}
 		return msg;
 	}
-
+	
+	//개인 일정 등록
 	@RequestMapping(value = "/member/add/schedule", method = RequestMethod.POST)
-	public @ResponseBody void insertSchedule(@RequestBody Map<String,Object> map, Principal principal) {
+	public @ResponseBody String insertSchedule(@RequestBody Map<String,Object> map, Principal principal) {
+		String id = UUID.randomUUID().toString();
 		MemberSchedule schedule = new MemberSchedule();
 		schedule.setUid(principal.getName());
-		schedule.setNum((int) map.get("num"));
+		schedule.setId(id);
 		schedule.setTitle((String) map.get("title"));
 		schedule.setContents((String)map.get("contents"));
-		schedule.setStartDate((String) map.get("start"));
-		schedule.setEndDate((String) map.get("end"));
+		schedule.setStart((String) map.get("start"));
+		schedule.setEnd((String) map.get("end"));
 		
 		scheduleService.insertSchedule(schedule);
+		return id;
+	}
+	
+	//개인 일정 리스트 get
+	@RequestMapping(value = "/member/get/schedule", method = RequestMethod.POST)
+	public @ResponseBody List<MemberSchedule> getScheduleList(Principal principal){
+		List<MemberSchedule> scheduleList = scheduleService.getScheduleList(principal.getName());
+		return scheduleList;
+	}
+	
+	//개인 일정 삭제
+	@RequestMapping(value = "/member/delete/schedule", method = RequestMethod.POST)
+	public @ResponseBody void deleteSchedule(@RequestBody String id) {
+		scheduleService.deleteSchedule(id);
 	}
 }

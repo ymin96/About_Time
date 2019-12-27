@@ -2,8 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.about_time.member.mapper.ScheduleMapper">
+	
 	<insert id="insertSchedule" parameterType="com.about_time.member.vo.MemberSchedule">
-		insert into MemberSchedule(num,uid,title,contents,startDate,endDate)
-		values (#{num},#{uid},#{title},#{contents},#{startDate},#{endDate})
+		insert into MemberSchedule(id,uid,title,contents,start,end)
+		values (#{id},#{uid},#{title},#{contents},#{start},#{end})
 	</insert>
+	
+	<select id="getScheduleListByUid" resultType="com.about_time.member.vo.MemberSchedule" parameterType="String">
+		select * from MemberSchedule where uid = #{uid}
+	</select>
+	
+	<delete id="deleteSchedule" parameterType="String">
+		delete from MemberSchedule where id = ${id}
+	</delete>
+	
 </mapper>
