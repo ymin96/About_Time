@@ -12,4 +12,8 @@ $(document).ready(function () {
     	$("#community").removeClass("disable");
         $("#community").addClass("target");
     }
+    else if(target === "calculator"){
+    	$("#calculator").removeClass("disable");
+    	$("#calculator").addClass("target");
+    }
 });

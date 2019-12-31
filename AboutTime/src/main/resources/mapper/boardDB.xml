@@ -16,7 +16,11 @@
 	</select>
 	
 	<select id="selectBoardListByCategory" resultType="com.about_time.community.vo.Board" parameterType="String">
-		select * from Board where university=#{university} and category=#{category} order by updateDate DESC
+		select * 
+		from (select * from Board where university=#{university}) as b 
+		left join (select board_num,count(*) as commentNum from BoardComment group by board_num) as c
+		on b.num = c.board_num
+		where category=#{category} order by updateDate DESC;
 	</select>
 	
 	<select id="selectBoard" resultType="com.about_time.community.vo.Board" parameterType="HashMap">

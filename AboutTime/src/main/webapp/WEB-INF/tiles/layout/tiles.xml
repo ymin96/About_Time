@@ -6,13 +6,10 @@
 <tiles-definitions>
 
 	<!-- main -->
-	<definition name="main-layout"
-		template="/WEB-INF/jsp/main/layout/base-main.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/jsp/common/layout/header.jsp" />
+	<definition name="main-layout" template="/WEB-INF/jsp/main/layout/base-main.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer"
-			value="/WEB-INF/jsp/common/layout/footer.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp" />
 	</definition>
 
 	<definition name="main" extends="main-layout">
@@ -164,4 +161,17 @@
 	<definition name="boardUpdate" extends="community-layout">
 		<put-attribute name="body" value="/WEB-INF/jsp/community/board/boardUpdate.jsp"/>	
 	</definition>
+	
+	<!--calculator-->
+	
+	<definition name="calculator-layout" template="/WEB-INF/jsp/calculator/layout/base-calculator.jsp">
+		<put-attribute name="header" value="/WEB-INF/jsp/common/layout/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/common/layout/footer.jsp" />
+	</definition>
+	
+	<definition name="calculator" extends="calculator-layout">
+		<put-attribute name="body" value="/WEB-INF/jsp/calculator/calculator.jsp"/>	
+	</definition>
+	
 </tiles-definitions>

@@ -1,0 +1,32 @@
+.navbar{
+    margin-bottom: 0px;
+}
+
+.calculator .row{
+    margin: 0;
+}
+
+.calculator .subject-group .subject-title{
+    margin-bottom: 5px;    
+}
+
+.calculator .subject-group .option{
+    padding-right: 0; 
+}
+
+.calculator .subject-group .option select{
+    padding-left: 3px;
+}
+
+.calculator #result-box{
+    background-color: rgb(240, 240, 240);
+    border: 1px solid #afaeae;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    padding:7px;
+}
+
+.calculator #result-box span{
+    color: #ff4e1f;
+    font-weight: bold;
+}

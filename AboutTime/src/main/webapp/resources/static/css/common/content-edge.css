@@ -12,3 +12,17 @@
     margin-bottom: 35px;
     border-bottom: solid 1px #eee;
 }
+
+.breadcrumbs{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #AAAAAA;
+}
+
+.breadcrumbs #title-box{
+    font-size: 30px;
+    margin: 12px 0px;
+}
+
+.breadcrumbs #title-box p{
+    color:#666;
+}

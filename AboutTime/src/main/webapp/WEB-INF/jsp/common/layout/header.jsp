@@ -41,7 +41,7 @@
 					<li id="timetable" class="disable"><a href="/timetable/subject/list.do">시간표</a></li>
 					<li id="carte" class="disable"><a href="/carte/list.do">식단표</a></li>
 					<li id="community" class="disable"><a href="/community">게시판</a></li>
-					<li class="disable"><a href="#">학점계산기</a></li>
+					<li id="calculator" class="disable"><a href="/calculator">학점계산기</a></li>
 				</ul>
 			</div>
 		</div>
