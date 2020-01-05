@@ -31,15 +31,15 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/main.do"><img
+				<a class="navbar-brand" href="/main"><img
 					src="/resources/static/img/logo.png" alt="AboutTime"></a>
 			</div>
 
 			<div class="collapse navbar-collapse navbar-right"
 				id="navbar-1-collapse">
 				<ul class="nav navbar-nav">
-					<li id="timetable" class="disable"><a href="/timetable/subject/list.do">시간표</a></li>
-					<li id="carte" class="disable"><a href="/carte/list.do">식단표</a></li>
+					<li id="timetable" class="disable"><a href="/timetable/subject/list">시간표</a></li>
+					<li id="carte" class="disable"><a href="/carte/list">식단표</a></li>
 					<li id="community" class="disable"><a href="/community">게시판</a></li>
 					<li id="calculator" class="disable"><a href="/calculator">학점계산기</a></li>
 				</ul>

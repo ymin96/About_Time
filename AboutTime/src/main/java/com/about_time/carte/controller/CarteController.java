@@ -18,14 +18,14 @@ public class CarteController {
 	@Autowired
 	CarteService carteService;
 
-	@RequestMapping("/carte/info.do")
+	@RequestMapping("/carte/info")
 	public String getUni(@RequestParam("title") String title, Model model) {
 		University university = carteService.getUniversity(title);
 		model.addAttribute("university", university);
 		return "carteInfo";
 	}
 	
-	@RequestMapping("/carte/list.do")
+	@RequestMapping("/carte/list")
 	public String universityList() {
 		return "carte_universityList";
 	}

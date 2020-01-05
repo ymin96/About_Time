@@ -1,0 +1,91 @@
+.navbar{
+    margin-bottom: 0;
+}
+
+.main-page .content-sm{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.main-page .content-sm .sub-title-box{
+    margin-bottom: 50px;
+}
+
+.main-page .banner{
+    border-bottom: 2px solid #AAAAAA;
+}
+
+.main-page .banner img{
+    max-height: 500px;
+    width:100%;
+    object-fit:cover;
+}
+
+.main-page .content-sm .sub-title-box h2{
+    color: #666;
+}
+
+.main-page .parallaxBg{
+    background-color: rgb(39, 39, 39);
+    padding: 60px 0;
+}
+
+.main-page .parallaxBg .element-box{
+    padding: 15px 0 10px;
+    border: 1px solid #555;
+    color:rgb(233, 232, 232);
+}
+
+.main-page .parallaxBg .element-box .element{
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.main-page .parallaxBg .element-box p{
+    margin-top: 5px;
+    color:white
+}
+
+.main-page .information{
+    padding: 60px 0;
+}
+
+.main-page .information .info-box{
+    margin: 20px 0;
+}
+
+.main-page .information .img-wrap{
+    padding: 5px;
+}
+
+.main-page .information img{
+    max-width: 100%;
+}
+
+.main-page .information .head-line{
+    display: block;
+    margin: 10px 0 25px 0;
+    border-bottom: 1px dotted #e4e9f0;
+}
+
+.main-page .information .head-line h1{
+    font-size: 26px;
+    font-weight: bold;
+    display: inline-block;
+    border-bottom: 2px solid #0076C0;
+    padding-bottom: 5px;
+    margin: 0 0 -2px 0;
+}
+
+.main-page .information .info-contents{
+    color: #555;
+    font-size: 16px;
+}
+
+.main-page .information .info-contents p{
+    margin: 15px 0;
+}
+
+.main-page .information .info-contents span{
+    font-weight: bold;
+}

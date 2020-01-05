@@ -5,7 +5,7 @@
 
 <body class="list">
 	<div id="reset-schedule">
-		<a class="btn btn-primary" href="/timetable/schedule/reset.do"
+		<a class="btn btn-primary" href="/timetable/schedule/reset"
 			role="button">초기화 <span class="glyphicon glyphicon-refresh"
 			aria-hidden="true"></span></a>
 		<button id="convertSchedule" class="btn" type="button"></button>
@@ -31,7 +31,7 @@
 						<th>${schedule.sumMajor }점</th>
 						<th>${schedule.sumLibralArts }점</th>
 						<th><c:forEach var="day" items="${schedule.hollyDay}">${day} </c:forEach></th>
-						<th><a href="/timetable/schedule/list/info.do?idx=${schedule.num}">보기</a></th>
+						<th><a href="/timetable/schedule/list/info?idx=${schedule.num}">보기</a></th>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -66,7 +66,7 @@
 		var page = ((range - 2) * rangeSize) + 1;
 		var range = range - 1;
 
-		var url = "${pageContext.request.contextPath}/timetable/schedule/list.do";
+		var url = "${pageContext.request.contextPath}/timetable/schedule/list";
 
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
@@ -77,7 +77,7 @@
 
 	//페이지 번호 클릭
 	function fn_pagination(page, range, rangeSize, searchType, keyword) {
-		var url = "${pageContext.request.contextPath}/timetable/schedule/list.do";
+		var url = "${pageContext.request.contextPath}/timetable/schedule/list";
 
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
@@ -91,7 +91,7 @@
 		var page = parseInt((range * rangeSize)) + 1;
 		var range = parseInt(range) + 1;
 
-		var url = "${pageContext.request.contextPath}/timetable/schedule/list.do";
+		var url = "${pageContext.request.contextPath}/timetable/schedule/list";
 
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
@@ -110,12 +110,12 @@
 		
 		$('#convertSchedule').click(function(){
 			if($(this).hasClass('btn-primary')){
-				var url = "/timetable/schedule/list.do";
+				var url = "/timetable/schedule/list";
 				url = url + "?convert=" + "only";
 				location.href=url;
 			}
 			else{
-				var url = "/timetable/schedule/list.do";
+				var url = "/timetable/schedule/list";
 				url = url + "?convert=" + "all";
 				location.href=url;
 			}

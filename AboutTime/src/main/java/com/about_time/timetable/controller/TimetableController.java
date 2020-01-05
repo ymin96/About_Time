@@ -27,20 +27,20 @@ import com.about_time.timetable.vo.Subject;
 public class TimetableController {
 	
 	//수강 과목 리스트 화면
-	@RequestMapping("/subject/list.do")
+	@RequestMapping("/subject/list")
 	public String time(Model model,@ModelAttribute("subjectList") List<Subject> subjectList) throws Exception {
 		model.addAttribute("subjectList", subjectList);
 		return "timetable";
 	}
 
 	//과목 입력 화면
-	@RequestMapping("/subject/addForm.do")
+	@RequestMapping("/subject/addForm")
 	public String add() throws Exception {
 		return "addForm";
 	}
 
 	//과목 수정 화면
-	@RequestMapping("/subject/update.do")
+	@RequestMapping("/subject/update")
 	public ModelAndView update(@RequestParam("idx") int idx, @ModelAttribute("subjectList") List<Subject> subjectList)
 			throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -52,7 +52,7 @@ public class TimetableController {
 	}
 
 	//시간표 리스트 화면
-	@RequestMapping(value = "schedule/list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "schedule/list", method = RequestMethod.GET)
 	public String combinationForm(@ModelAttribute("scheduleCheck") String scheduleCheck,
 			@SessionAttribute(value = "scheduleList", required = false) ArrayList<Schedule> scheduleList,
 			@RequestParam(required = false, defaultValue = "1") int page,
@@ -101,7 +101,7 @@ public class TimetableController {
 	}
 
 	//시간표 조합
-	@RequestMapping(value = "schedule/list.do", method = RequestMethod.POST)
+	@RequestMapping(value = "schedule/list", method = RequestMethod.POST)
 	public String combination(Model model, @RequestParam("credit") int credit, @RequestParam("major") int major,
 			@RequestParam("liberalArt") int liberal, @ModelAttribute("subjectList") List<Subject> subjectList,
 			@ModelAttribute("scheduleCheck") String scheduleCheck) {
@@ -112,18 +112,18 @@ public class TimetableController {
 		
 		scheduleCheck = "true"; //조합 했으므로 true로 변경
 		model.addAttribute("scheduleCheck", scheduleCheck);
-		return "redirect:/timetable/schedule/list.do";	//다시 시간표 리스트로 리다이렉션
+		return "redirect:/timetable/schedule/list";	//다시 시간표 리스트로 리다이렉션
 	}
 	
 	//시간표 리스트 리셋
-	@RequestMapping(value = "/schedule/reset.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/schedule/reset", method = RequestMethod.GET)
 	public String resetSchedule(@ModelAttribute("scheduleCheck") String scheduleCheck, Model model) {
 		scheduleCheck = "false"; 
 		model.addAttribute("scheduleCheck", scheduleCheck);
-		return "redirect:/timetable/schedule/list.do";
+		return "redirect:/timetable/schedule/list";
 	}
 	
-	@RequestMapping(value="/schedule/list/info.do")
+	@RequestMapping(value="/schedule/list/info")
 	public String scheduleInfo(Model model,@RequestParam("idx")int idx,@ModelAttribute("scheduleList")ArrayList<Schedule> scheduleList) {
 		model.addAttribute("subjects", scheduleList.get(idx-1).getSubjectList());
 		return "scheduleInfo";

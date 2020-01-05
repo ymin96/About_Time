@@ -21,7 +21,8 @@ header{
 }
 
 .navbar-nav{
-    margin-top:10px;
+	margin-top:0;
+	padding-top: 10px;
     background-color:#ffffff;
 }
 
@@ -42,33 +43,6 @@ header .navbar-brand{
 
 header .topbar{
 	position:relative;
-}
-
-header .navbar-nav .target a{
-	color: #0076C0;
-	border-bottom: 2px solid #0076C0;
-}
-
-header .navbar-nav .target a:hover{
-	color: #0076C0;
-	border-bottom: 2px solid #0076C0;
-}
-
-header .navbar-nav .disable a:hover{
-	animation-name: header-animation;
-	animation-duration: 500ms;
-	animation-fill-mode: forwards;
-}
-
-@keyframes header-animation{
-	from{
-		color: #AAAAAA;
-		border-bottom:2px solid #AAAAAA
-	}
-	to{
-		color: #0076C0;
-		border-bottom:2px solid #0076C0
-	}
 }
 
 .login-bar{

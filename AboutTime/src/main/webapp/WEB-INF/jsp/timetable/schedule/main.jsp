@@ -9,7 +9,7 @@
 			<div class="reg-header">
 				<h2>시간표 조합</h2>
 			</div>
-			<form class="form-horizontal" action="/timetable/schedule/list.do" method="post">
+			<form class="form-horizontal" action="/timetable/schedule/list" method="post">
 				<div class="form-group">
 					<label class="col-md-4 control-label">목표 학점</label>
 					<div class="col-md-3">

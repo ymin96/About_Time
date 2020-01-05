@@ -38,13 +38,6 @@ public class MemberController {
 	@Autowired
 	ScheduleService scheduleService;
 
-	@RequestMapping("/main.do")
-	public ModelAndView query() throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		return mv;
-	}
-
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request) {
 		String referrer = request.getHeader("Referer");

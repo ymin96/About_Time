@@ -378,7 +378,7 @@ $(document).ready(function(){
 			data:JSON.stringify(subject),
 			contentType : "application/json; charset=UTF-8",
 			success:function(){
-				location.href="/timetable/subject/list.do";
+				location.href="/timetable/subject/list";
 			},
 			error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

@@ -46,11 +46,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 		.logout()
 			.logoutUrl("/logout")
-			.logoutSuccessUrl("/main.do")
+			.logoutSuccessUrl("/main")
 			.permitAll()
 			.and()
 			.sessionManagement()
-			.invalidSessionUrl("/main.do");
+			.invalidSessionUrl("/main");
 		http.csrf().ignoringAntMatchers("/timetable/**")
 			.ignoringAntMatchers("/register/**")
 			.ignoringAntMatchers("/member/**")
@@ -72,7 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public AuthenticationSuccessHandler successHandler() {
-		return new CustomLoginSuccessHandler("/main.do");
+		return new CustomLoginSuccessHandler("/main");
 	}
 
 }

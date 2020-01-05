@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/resources/static/css/common/footer.css">
 <link rel="stylesheet" href="/resources/static/css/common/content-edge.css">
 <link rel="stylesheet" href="/resources/static/css/main/main-body.css">
+<link rel="stylesheet" href="/resources/aos-animation/aos.css">
 <style>
 </style>
 </head>
