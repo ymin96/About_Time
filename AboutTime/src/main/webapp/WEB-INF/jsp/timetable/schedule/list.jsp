@@ -5,56 +5,57 @@
 
 <body class="list">
 	<div id="reset-schedule">
-		<a class="btn btn-primary" href="/timetable/schedule/reset"
-			role="button">초기화 <span class="glyphicon glyphicon-refresh"
-			aria-hidden="true"></span></a>
+		<a class="btn btn-primary" href="/timetable/schedule/reset" role="button">초기화 <span
+				class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
 		<button id="convertSchedule" class="btn" type="button"></button>
 	</div>
 	<div>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>No</th>
-					<th>전체 학점</th>
-					<th>전공 학점</th>
-					<th>교양 학점</th>
-					<th>공강 요일</th>
-					<th>상세보기</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="schedule" items="${schedules}" varStatus="status">
-					<tr
-						class="subject-row <c:out value="${fn:length(schedule.hollyDay) != 0? 'success':'' }"/>">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>전체 학점</th>
+						<th>전공 학점</th>
+						<th>교양 학점</th>
+						<th>공강 요일</th>
+						<th>상세보기</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="schedule" items="${schedules}" varStatus="status">
+						<tr class="subject-row <c:out value=" ${fn:length(schedule.hollyDay) !=0? 'success' :'' }" />">
 						<th>${status.count + pagination.startList}</th>
 						<th>${schedule.sumCredit}점</th>
 						<th>${schedule.sumMajor }점</th>
 						<th>${schedule.sumLibralArts }점</th>
-						<th><c:forEach var="day" items="${schedule.hollyDay}">${day} </c:forEach></th>
+						<th>
+							<c:forEach var="day" items="${schedule.hollyDay}">${day} </c:forEach>
+						</th>
 						<th><a href="/timetable/schedule/list/info?idx=${schedule.num}">보기</a></th>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<!-- pagination{s} -->
 	<div id="paginationBox">
 		<ul class="pagination">
 			<c:if test="${pagination.prev}">
 				<li class="page-item"><a class="page-link" href="#"
-					onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+						onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a>
+				</li>
 			</c:if>
-			<c:forEach begin="${pagination.startPage}"
-				end="${pagination.endPage}" var="idx">
-				<li
-					class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
-					class="page-link" href="#"
-					onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
-						${idx} </a></li>
+			<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+				<li class="page-item <c:out value=" ${pagination.page==idx ? 'active' : '' }" /> "><a class="page-link"
+					href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+					${idx} </a></li>
 			</c:forEach>
 			<c:if test="${pagination.next}">
 				<li class="page-item"><a class="page-link" href="#"
-					onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+						onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a>
+				</li>
 			</c:if>
 		</ul>
 	</div>
@@ -71,7 +72,7 @@
 		url = url + "?page=" + page;
 		url = url + "&range=" + range;
 		url = url + "&convert=" + "${convert}";
-		
+
 		location.href = url;
 	}
 
@@ -99,25 +100,24 @@
 
 		location.href = url;
 	}
-	
-	$(document).ready(function(){
-		
-		if("${convert}" === "all")
+
+	$(document).ready(function () {
+
+		if ("${convert}" === "all")
 			$('#convertSchedule').addClass('btn-primary').html('공강만 보기');
 		else
 			$('#convertSchedule').addClass('btn-default').html('전체 보기');
 
-		
-		$('#convertSchedule').click(function(){
-			if($(this).hasClass('btn-primary')){
+
+		$('#convertSchedule').click(function () {
+			if ($(this).hasClass('btn-primary')) {
 				var url = "/timetable/schedule/list";
 				url = url + "?convert=" + "only";
-				location.href=url;
-			}
-			else{
+				location.href = url;
+			} else {
 				var url = "/timetable/schedule/list";
 				url = url + "?convert=" + "all";
-				location.href=url;
+				location.href = url;
 			}
 		});
 	});

@@ -14,20 +14,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.about_time.member.service.MemberService;
 import com.about_time.member.service.ScheduleService;
 import com.about_time.member.vo.Member;
 import com.about_time.member.vo.MemberRole;
 import com.about_time.member.vo.MemberSchedule;
-import com.about_time.timetable.vo.Schedule;
-import com.mysql.cj.Session;
 
 @Controller
 public class MemberController {

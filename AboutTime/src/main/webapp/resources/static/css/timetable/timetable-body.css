@@ -1,7 +1,9 @@
+.body #reset-schedule{
+	margin-bottom: 10px;
+}
 
-
-.body #add-subject a{
-	float: right;
+.body #add-subject{
+	margin-bottom: 10px;
 }
 
 .body tbody th{

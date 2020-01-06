@@ -21,6 +21,6 @@ public class AboutTimeApplication extends SpringBootServletInitializer {
 
 	@Bean(name = "uploadPath")
 	public String uploadPath() {
-	    return "C:/Users/Ymin/Pictures/AboutTime";
+	    return "/Pictures/AboutTime";
 	}
 }

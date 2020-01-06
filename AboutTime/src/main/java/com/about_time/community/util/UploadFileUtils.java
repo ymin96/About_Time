@@ -1,18 +1,15 @@
 package com.about_time.community.util;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.UUID;
 
-import javax.imageio.ImageIO;
 
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes.Scalar;
 
 public class UploadFileUtils {
 	 /**

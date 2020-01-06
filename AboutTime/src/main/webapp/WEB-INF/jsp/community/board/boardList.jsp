@@ -7,99 +7,100 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>분류</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>조회</th>
-							<th>작성일</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="board" items="${boardList}" varStatus="status">
-							<c:choose>
-								<c:when test="${board.commentNum != 0}">
-									<tr style="border-left: 3px #337ab7 solid">
-								</c:when>
-								<c:otherwise>
-									<tr>
-								</c:otherwise>
-							</c:choose>
-							<th>${board.num}</th>
-							<td>
-							<c:choose>
-								<c:when test="${board.category == '유머'}">
-									<a href="/community/${university}/list?cate=humor">${board.category}</a>								
-								</c:when>
-								<c:when test="${board.category == '정보'}">
-									<a href="/community/${university}/list?cate=info">${board.category}</a>
-								</c:when>
-								<c:when test="${board.category == '잡담'}">
-									<a href="/community/${university}/list?cate=other">${board.category}</a>
-								</c:when>
-								<c:when test="${board.category == '질문'}">
-									<a href="/community/${university}/list?cate=quest">${board.category}</a>
-								</c:when>
-							</c:choose>
-							</td>
-							<td><a href="/community/${university}/read/${board.num}">${board.title}<c:if
-										test="${board.commentNum != 0}">
-										<span style="font-weight: bold;"> (${board.commentNum})</span>
-									</c:if></a></td>
-							<td>${board.writer}</td>
-							<td>${board.hits}</td>
-							<td>${board.simpleListDate}</td>
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>분류</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>조회</th>
+								<th>작성일</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							<c:forEach var="board" items="${boardList}" varStatus="status">
+								<c:choose>
+									<c:when test="${board.commentNum != 0}">
+										<tr style="border-left: 3px #337ab7 solid">
+									</c:when>
+									<c:otherwise>
+										<tr>
+									</c:otherwise>
+								</c:choose>
+								<th>${board.num}</th>
+								<td>
+									<c:choose>
+										<c:when test="${board.category == '유머'}">
+											<a href="/community/${university}/list?cate=humor">${board.category}</a>
+										</c:when>
+										<c:when test="${board.category == '정보'}">
+											<a href="/community/${university}/list?cate=info">${board.category}</a>
+										</c:when>
+										<c:when test="${board.category == '잡담'}">
+											<a href="/community/${university}/list?cate=other">${board.category}</a>
+										</c:when>
+										<c:when test="${board.category == '질문'}">
+											<a href="/community/${university}/list?cate=quest">${board.category}</a>
+										</c:when>
+									</c:choose>
+								</td>
+								<td><a href="/community/${university}/read/${board.num}">${board.title}<c:if
+											test="${board.commentNum != 0}">
+											<span style="font-weight: bold;"> (${board.commentNum})</span>
+										</c:if></a></td>
+								<td>${board.writer}</td>
+								<td>${board.hits}</td>
+								<td>${board.simpleListDate}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 		<div class="row" style="margin-bottom: 50px;">
 			<div class="col-md-2 col-sm-2 col-xs-3">
-				<a href="javascript:void(0);"
-					onclick="loginCheck('/community/${university}/edit')"
+				<a href="javascript:void(0);" onclick="loginCheck('/community/${university}/edit')"
 					class="btn btn-primary">글쓰기</a>
 			</div>
 			<div class="col-md-4 col-md-offset-1 col-sm-4 col-sm-offset-1 col-xs-9">
 				<div class="input-group" style="margin-bottom: 10px;">
-                    <div class="input-group-btn">
-                        <button id="searchType" search='subject' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                            aria-expanded="false">제목 <span class="caret"></span></button>
-                        <ul id="searchList" class="dropdown-menu" role="menu">
-                            <li><a href="javascript:void(0);">제목</a></li>
-                            <li><a href="javascript:void(0);">제목+내용</a></li>
-                            <li><a href="javascript:void(0);">작성자</a></li>
-                         </ul>
-                    </div>
-                    <input id="searchKey" class="form-control text-center" type="text" id="search">
-                    <div id="search_btn" class="input-group-addon" style="font-weight: bold"><a href="javascript:void(0);"
-                            onclick="onSearch()" style="text-decoration: none;color: rgb(87, 85, 85);">검색</a></div>
-                </div>
+					<div class="input-group-btn">
+						<button id="searchType" search='subject' type="button" class="btn btn-default dropdown-toggle"
+							data-toggle="dropdown" aria-expanded="false">제목 <span class="caret"></span></button>
+						<ul id="searchList" class="dropdown-menu" role="menu">
+							<li><a href="javascript:void(0);">제목</a></li>
+							<li><a href="javascript:void(0);">제목+내용</a></li>
+							<li><a href="javascript:void(0);">작성자</a></li>
+						</ul>
+					</div>
+					<input id="searchKey" class="form-control text-center" type="text" id="search">
+					<div id="search_btn" class="input-group-addon" style="font-weight: bold"><a
+							href="javascript:void(0);" onclick="onSearch()"
+							style="text-decoration: none;color: rgb(87, 85, 85);">검색</a></div>
+				</div>
 			</div>
-			<div
-				class="col-md-4 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-12">
+			<div class="col-md-4 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-12">
 				<!-- pagination{s} -->
 				<div id="paginationBox">
 					<ul class="pagination" style="margin: 0; float: right;">
 						<c:if test="${pagination.prev}">
 							<li class="page-item"><a class="page-link" href="#"
-								onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+									onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a>
+							</li>
 						</c:if>
-						<c:forEach begin="${pagination.startPage}"
-							end="${pagination.endPage}" var="idx">
-							<li
-								class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+						<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+							<li class="page-item <c:out value=" ${pagination.page==idx ? 'active' : '' }" /> "><a
 								class="page-link" href="#"
 								onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
-									${idx} </a></li>
+								${idx} </a></li>
 						</c:forEach>
 						<c:if test="${pagination.next}">
 							<li class="page-item"><a class="page-link" href="#"
-								onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+									onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a>
+							</li>
 						</c:if>
 					</ul>
 				</div>

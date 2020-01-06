@@ -4,54 +4,59 @@
 
 
 <body class="list">
-	<div id="add-subject">
-		<a class="btn btn-primary" href="/timetable/subject/addForm" role="button" >과목추가 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+	<div id="add-subject" class="text-right">
+		<a class="btn btn-primary" href="/timetable/subject/addForm" role="button">과목추가 <span
+				class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
 	</div>
 	<div>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>No</th>
-				<th>과목명</th>
-				<th>전공 구분</th>
-				<th>학점</th>
-				<th>분반</th>
-				<th>삭제</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="subject" items="${subjectList}" varStatus="status">
-				<tr class='subject-row'>
-					<th>${status.count}</th>
-					<th><a href="/timetable/subject/update?idx=${status.index}">${subject.title}</a></th>
-					<th>${subject.major}</th>
-					<th>${subject.credit}</th>
-					<th>${subject.division}</th>
-					<th><a href="javascript:void(0);" onclick="callRemove(this);return false;" value="${status.index}">삭제</a></th>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>과목명</th>
+						<th>전공 구분</th>
+						<th>학점</th>
+						<th>분반</th>
+						<th>삭제</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="subject" items="${subjectList}" varStatus="status">
+						<tr class='subject-row'>
+							<th>${status.count}</th>
+							<th><a href="/timetable/subject/update?idx=${status.index}">${subject.title}</a></th>
+							<th>${subject.major}</th>
+							<th>${subject.credit}</th>
+							<th>${subject.division}</th>
+							<th><a href="javascript:void(0);" onclick="callRemove(this);return false;"
+									value="${status.index}">삭제</a></th>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 <script>
-	function callRemove(arg){
-		
+	function callRemove(arg) {
+
 		$.ajax({
-			type:"DELETE",
-			url:"${contextPath}/timetable/subjects/"+$(arg).attr('value'),
-			contentType : "application/json; charset=UTF-8",
-			success:function(){
+			type: "DELETE",
+			url: "${contextPath}/timetable/subjects/" + $(arg).attr('value'),
+			contentType: "application/json; charset=UTF-8",
+			success: function () {
 				$(arg).parent().parent().remove();
-				$('.subject-row').each(function(index,item){
-					$(item).find('th:first').text(index+1);
-					$(item).find('a').attr('value',index);
+				$('.subject-row').each(function (index, item) {
+					$(item).find('th:first').text(index + 1);
+					$(item).find('a').attr('value', index);
 				});
 			},
-			error:function(request,status,error){
-		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		    }
+			error: function (request, status, error) {
+				alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" +
+					error);
+			}
 		});
-		
+
 	}
 </script>
