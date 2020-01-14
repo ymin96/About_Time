@@ -101,6 +101,6 @@ hs_err_pid*
 target/
 
 # ignore DB info file #
-AboutTime/src/main/resources/*.properties
+AboutTime/src/main/resources/application.properties
 
 # End of https://www.gitignore.io/api/java,eclipse,java-web
