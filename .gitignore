@@ -10,7 +10,7 @@ tmp/
 *.bak
 *.swp
 *~.nib
-*.properties
+local.properties
 .settings/
 .loadpath
 .recommenders
@@ -99,5 +99,8 @@ hs_err_pid*
 ### Java-Web ###
 ## ignoring target file
 target/
+
+# ignore DB info file #
+AboutTime/src/main/resources/application.properties
 
 # End of https://www.gitignore.io/api/java,eclipse,java-web
